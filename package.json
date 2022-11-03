@@ -1,0 +1,60 @@
+{
+  "name": "vite-boilerplate",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "vue3",
+    "vue",
+    "typescript",
+    "vitest",
+    "storybook",
+    "pinia",
+    "vue-router",
+    "boilerplate"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest --watch --ui",
+    "coverage": "vitest run --coverage",
+    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 3000 --no-open"
+  },
+  "dependencies": {
+    "pinia": "^2.0.22",
+    "utils-sdz": "^0.0.12",
+    "v-money3": "^3.22.1",
+    "vue": "^3.2.37",
+    "vue-coerousel": "^1.0.19",
+    "vue-router": "^4.1.5",
+    "vue-the-mask": "^0.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@iconify/vue": "^4.0.0",
+    "@storybook/addon-a11y": "^6.5.12",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.4",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/vue3": "^6.5.12",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vitest/coverage-c8": "^0.24.0",
+    "@vitest/ui": "^0.24.0",
+    "@vue/test-utils": "^2.1.0",
+    "babel-loader": "^8.2.5",
+    "jsdom": "^20.0.1",
+    "sass": "^1.55.0",
+    "storybook-dark-mode": "^1.1.2",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "vite-tsconfig-paths": "^3.5.1",
+    "vitest": "^0.24.0",
+    "vue-loader": "^16.8.3",
+    "vue-tsc": "^0.40.4"
+  }
+}

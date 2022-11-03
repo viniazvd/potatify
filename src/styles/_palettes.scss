@@ -1,0 +1,90 @@
+@import './functions.scss';
+
+$primary-color:  #1E7A75;
+$secondary-color:  #46BC8F;
+$highlight-color:  #FBD700;
+$base-color: #202B36;
+$neutral-color: #F5F7F9;
+$positive-color: #2BB673;
+$negative-color: #EB5757;
+
+:root {
+  --primary-color-r: #{red($primary-color)};
+  --primary-color-g: #{green($primary-color)};
+  --primary-color-b: #{blue($primary-color)};
+
+  --secondary-color-r: #{red($secondary-color)};
+  --secondary-color-g: #{green($secondary-color)};
+  --secondary-color-b: #{blue($secondary-color)};
+
+  --highlight-color-r: #{red($highlight-color)};
+  --highlight-color-g: #{green($highlight-color)};
+  --highlight-color-b: #{blue($highlight-color)};
+
+  --base-color-r: #{red($base-color)};
+  --base-color-g: #{green($base-color)};
+  --base-color-b: #{blue($base-color)};
+
+  --neutral-color-r: #{red($neutral-color)};
+  --neutral-color-g: #{green($neutral-color)};
+  --neutral-color-b: #{blue($neutral-color)};
+
+  --positive-color-r: #{red($positive-color)};
+  --positive-color-g: #{green($positive-color)};
+  --positive-color-b: #{blue($positive-color)};
+
+  --negative-color-r: #{red($negative-color)};
+  --negative-color-g: #{green($negative-color)};
+  --negative-color-b: #{blue($negative-color)};
+}
+
+$palettes:(
+  primary:(
+    base: getRGB(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b)),
+    light: generateColor(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 12,'D'),
+    medium: generateColor(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 32,'D'),
+    dark:   generateColor(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 48,'D')
+  ),
+
+  secondary:(
+    base: getRGB(var(--secondary-color-r), var(--secondary-color-g), var(--secondary-color-b)),
+    light: generateColor(var(--secondary-color-r), var(--secondary-color-g), var(--secondary-color-b), 12,'D'),
+    medium: generateColor(var(--secondary-color-r), var(--secondary-color-g), var(--secondary-color-b), 32,'D'),
+    dark:   generateColor(var(--secondary-color-r), var(--secondary-color-g), var(--secondary-color-b), 48,'D')
+  ),
+
+  highlight:(
+    base: getRGB(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b)),
+    light: generateColor(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 88,'L'),
+    medium: generateColor(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 64,'L'),
+    dark:   generateColor(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 32,'D')
+  ),
+
+  base:(
+    base: getRGB(var(--base-color-r), var(--base-color-g), var(--base-color-b)),
+    light: generateColor(var(--base-color-r), var(--base-color-g), var(--base-color-b), 48,'L'),
+    medium: generateColor(var(--base-color-r), var(--base-color-g), var(--base-color-b), 4,'L'),
+    dark:   generateColor(var(--base-color-r), var(--base-color-g), var(--base-color-b), 72,'D')
+  ),
+
+  neutral:(
+    base:   unquote('#FFFFFF !important'),
+    light: generateColor(var(--neutral-color-r), var(--neutral-color-g), var(--neutral-color-b), 1,'D'),
+    medium: generateColor(var(--neutral-color-r), var(--neutral-color-g), var(--neutral-color-b), 5,'D'),
+    dark:   generateColor(var(--neutral-color-r), var(--neutral-color-g), var(--neutral-color-b), 10,'D')
+  ),
+
+  positive:(
+    base: getRGB(var(--positive-color-r), var(--positive-color-g), var(--positive-color-b)),
+    light: generateColor(var(--positive-color-r), var(--positive-color-g), var(--positive-color-b), 88,'L'),
+    medium: generateColor(var(--positive-color-r), var(--positive-color-g), var(--positive-color-b), 64,'L'),
+    dark:   generateColor(var(--positive-color-r), var(--positive-color-g), var(--positive-color-b), 32,'D')
+  ),
+
+  negative:(
+    base: getRGB(var(--negative-color-r), var(--negative-color-g), var(--negative-color-b)),
+    light: generateColor(var(--negative-color-r), var(--negative-color-g), var(--negative-color-b), 88,'L'),
+    medium: generateColor(var(--negative-color-r), var(--negative-color-g), var(--negative-color-b), 64,'L'),
+    dark:   generateColor(var(--negative-color-r), var(--negative-color-g), var(--negative-color-b), 32,'D')
+  )
+);

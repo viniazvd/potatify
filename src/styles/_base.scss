@@ -1,0 +1,52 @@
+@import './_variables.scss';
+
+// Base
+// ---------------------------------------------------------
+// Resolve as inconsistências de estilo padrão dos browsers, algo semelhante ao
+// que o Normalize se propõe a resolver, mas ao invés de definir o padrão de
+// normalizado, implementa nossas regras de estilo.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html,
+#app {
+  max-width: 100vw;
+  height: 100vh;
+
+  // min-width: 100%;
+  // min-height: 100%;
+
+  // color: color(base, base);
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom:  0px;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+
+a { text-decoration: none; }
+
+// Estilização do scrollbar para browsers baseados em webkit
+::-webkit-scrollbar { width: 17px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-clip: padding-box;
+  background-color: darkgrey;
+  border: 5px solid rgba(0, 0, 0, 0);
+}

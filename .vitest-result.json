@@ -1,0 +1,46 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 2,
+  "numPassedTests": 2,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1665262480593,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "HelloWorld.vue"
+          ],
+          "fullName": " HelloWorld.vue Should render the page correct",
+          "status": "passed",
+          "title": "Should render the page correct",
+          "duration": 18,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "HelloWorld.vue"
+          ],
+          "fullName": " HelloWorld.vue Should count correctly",
+          "status": "passed",
+          "title": "Should count correctly",
+          "duration": 13,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1665262482114,
+      "endTime": 1665262482145,
+      "status": "passed",
+      "message": "",
+      "name": "/home/viniazvd/pocs/vite-vue-boilerplate/src/__tests__/components/HelloWorld.test.ts"
+    }
+  ]
+}
