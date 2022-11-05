@@ -23,7 +23,7 @@
 <script lang="ts">
 import SIcon from '../SIcon/Index.vue'
 
-// import { isValid } from 'utils-sdz'
+// import { isValid } from 'composables-sdz'
 
 function isValid (value: any) {
   if (Array.isArray(value)) return !!value.length
