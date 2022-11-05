@@ -3,6 +3,8 @@ import {
   // configureCompat
 } from 'vue'
 
+import "./index.css";
+import "animate.css";
 import App from './App.vue'
 import {pinia} from "@/store";
 import {router} from "@/router";

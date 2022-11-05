@@ -1,24 +1,50 @@
 import type {Meta, Story} from "@storybook/vue3";
 import SButton from "./Index.vue";
+import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto";
 
 export default {
   title: "Form/SButton",
-  component: SButton
+  component: SButton,
+  argTypes: {
+    size: {
+      name: "Tamanho",
+      defaultValue: BTN_SIZES.MD,
+      options: Object.values(BTN_SIZES),
+      control: { type: "select" }
+    },
+    variant: {
+      name: "Variantes",
+      defaultValue: BTN_VARIANTS.DEFAULT,
+      options: Object.values(BTN_VARIANTS),
+      control: { type: "select" }
+    },
+    color: {
+      type: "string",
+      defaultValue: "primary"
+    },
+    disabled: {
+      name: "Desabilitado",
+      defaultValue: false,
+      type: "boolean"
+    },
+    loading: {
+      name: "Loading state",
+      defaultValue: false,
+      type: "boolean"
+    },
+    link: {
+      name: "Link",
+      type: "string"
+    }
+  }
 } as Meta<typeof SButton>
 
 const Template: Story<{
-  // primaryIconColor: boolean,
-  // secondaryIconColor: boolean,
-  success: boolean,
-  error: boolean,
-  loading: boolean,
-  disabled: boolean,
-  link: boolean,
-  small: boolean,
-  large: boolean,
-  outlined: boolean,
-  rounded: boolean,
-  icon: string,
+  size: typeof BTN_SIZES[keyof typeof BTN_SIZES]
+  variant: typeof BTN_VARIANTS[keyof typeof BTN_VARIANTS]
+  disabled: Boolean
+  link: String
+  loading: Boolean
 }> = (args) => ({
   components: { SButton },
 
@@ -29,28 +55,4 @@ const Template: Story<{
   template: "<SButton v-bind='args'>COEEEEEE</SButton>",
 })
 
-// export const PrimaryIconColor = Template.bind({});
-// export const SecondaryIconColor = Template.bind({});
-export const Success = Template.bind({});
-export const Error = Template.bind({});
-export const Loading = Template.bind({});
-export const Disabled = Template.bind({});
-export const Link = Template.bind({});
-export const Small = Template.bind({});
-export const Large = Template.bind({});
-export const Outlined = Template.bind({});
-export const Rounded = Template.bind({});
-export const Icon = Template.bind({});
-
-// PrimaryIconColor.args = { primaryIconColor: true }
-// SecondaryIconColor.args = { secondaryIconColor: true }
-Success.args = { success: true }
-Error.args = { error: true }
-Loading.args = { loading: true }
-Disabled.args = { disabled: true }
-Link.args = { link: true }
-Small.args = { small: true }
-Large.args = { large: true }
-Outlined.args = { outlined: true }
-Rounded.args = { rounded: true }
-Icon.args = { icon: 'akar-icons:star' }
+export const SButtonDefault = Template.bind({})
