@@ -6,6 +6,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   safelist: [
     {
       pattern: /(bg|text|border)-(primary|secondary)-(DEFAULT|200|300|400|500|contrast)/,
