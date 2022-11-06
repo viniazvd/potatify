@@ -1,5 +1,5 @@
 <template>
-  <hr :class="classes" />
+  <hr :class="classes" class="divider-base divider-color"/>
 </template>
 <script lang="ts" setup>
 import {computed, PropType} from "vue";
@@ -36,12 +36,20 @@ const inset = computed(() => ({
 
 const classes = computed(() => {
   return [
-    "border-solid",
     "border-1",
-    "border-grey-400",
     orientation.value,
     inset.value
   ]
 })
 
 </script>
+<style lang="postcss" scoped>
+.divider-base {
+  @apply border-solid
+}
+
+.divider-color {
+  @apply border-stone-300 dark:border-stone-700
+}
+
+</style>
