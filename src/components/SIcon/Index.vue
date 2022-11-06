@@ -5,8 +5,7 @@
     :width="size"
     :height="size"
     :class="classes"
-
-    v-bind="{ ...$attrs, disabled }"
+    v-bind="$attrs"
   />
 </template>
 
@@ -24,45 +23,32 @@ const props = defineProps({
     type: String,
     required: true
   },
+  color: {
+    type: String,
+    // text-gray-400
+    // hover:text-gray-300
+    default: "gray"
+  },
   size: {
     type: [String, Number],
     default: 24
   },
-  disabled: Boolean,
-  // primaryColor: Boolean,
-  // secondaryColor: Boolean
+  disabled: Boolean
 })
 
 const classes = computed(() => {
   return [
-    's-icon',
+    "s-icon",
     {
-      '--disabled': props.disabled,
-      // '--primary': props.primaryColor,
-      // '--secondary': props.secondaryColor
+      [`text-${props.color}-700`]: props.color,
+      ["text-slate-400"]: props.disabled,
     }
   ]
 })
 </script>
 
-<style lang="scss">
-@import "./src/styles/_index.scss";
+<style lang="postcss" scoped>
 .s-icon {
-  display: inline-block;
-
-  &.--disabled {
-    // fill: color(base, light);
-    & > * { stroke: color(neutral, light); }
-  }
-
-  &.--primary {
-    // fill: color(primary, base);
-    & > * { stroke: color(primary, base); }
-  }
-
-  &.--secondary {
-    // fill: color(secondary, base);
-    & > * { stroke: color(secondary, base); }
-  }
+  @apply inline-block
 }
 </style>
