@@ -11,6 +11,10 @@ export const ANIMATION_LIST = {
   ZOOM_IN: {
     ENTER: "animate__zoomIn",
     LEAVE: "animate__zoomOut"
+  },
+  SHAKE: {
+    ENTER: "animate__headShake",
+    LEAVE: ""
   }
   // FADE_IN_UP: "animate__fadeInUp",
   // FADE_OUT_DOWN: "animate__fadeOutDown",
