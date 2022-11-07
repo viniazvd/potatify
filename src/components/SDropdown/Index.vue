@@ -5,7 +5,7 @@
     </span>
 
     <STransition :name="props.animation">
-      <div class="shadow-xl rounded-sm absolute mt-1 ring-1 ring-black/5 min-w-full" v-show="isOpen" ref="dropdownTarget">
+      <div class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full" v-show="isOpen" ref="dropdownTarget">
         <slot />
       </div>
     </STransition>
@@ -13,22 +13,29 @@
 </template>
 <script lang="ts" setup>
 import {useToggle, onClickOutside} from "@vueuse/core";
-import {defineAsyncComponent, ref} from "vue";
+import {defineAsyncComponent, nextTick, provide, ref} from "vue";
 
 const STransition = defineAsyncComponent(() => import("../STransition/STransition.vue"))
 
 const [isOpen, setIsOpen] = useToggle(false);
 const eventListeners = {
   on: {
-    click: () => setIsOpen(!isOpen.value)
+    click: async () => {
+      emit("close:dropdown")
+      setIsOpen(!isOpen.value)
+    }
   }
 }
+
+defineExpose({setIsOpen, isOpen})
 
 const dropdownTarget = ref();
 const activatorSlot = ref();
 onClickOutside(dropdownTarget, () => setIsOpen(false), {
   ignore: [activatorSlot]
 });
+
+const emit = defineEmits(["close:dropdown"])
 
 const props = defineProps({
   animation: {
@@ -38,3 +45,22 @@ const props = defineProps({
 })
 
 </script>
+
+<style lang="postcss" scoped>
+.dropdown-shadows {
+  @apply shadow-xl
+}
+
+.dropdown-position {
+  @apply absolute mt-1;
+}
+
+.dropdown-borders {
+  @apply rounded-sm;
+}
+
+.dropdown-colors {
+  @apply  bg-white dark:bg-stone-800;
+}
+
+</style>
