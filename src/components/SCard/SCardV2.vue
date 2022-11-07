@@ -1,5 +1,5 @@
 <template>
-  <div class="card-shadows card-colors" :class="classes">
+  <div class="card-shadows card-colors overflow-hidden" :class="classes">
     <slot />
   </div>
 </template>
