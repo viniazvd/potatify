@@ -100,11 +100,17 @@ const hasErrors = ref(false);
 const message = ref("");
 
 function validateRules () {
-  props.rules?.forEach(rule => {
+  props.rules?.some(rule => {
     const result = rule(props.modelValue);
-    const converted = result === true ? null : result
-    message.value = converted;
-    hasErrors.value = converted
+
+    if (typeof result === "boolean") {
+      message.value = "";
+      hasErrors.value = false
+    } else {
+      hasErrors.value = true
+      message.value = result;
+      return result
+    }
   })
 }
 
