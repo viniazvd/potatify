@@ -1,11 +1,16 @@
 <template>
-  <div class="relative max-w-fit">
-    <div v-if="props.dot" class="s-badge s-dot" :class="[badgePosition, badgeOverlap]"></div>
+  <div :class="baseClass">
+    <div
+      v-if="props.dot"
+      class="s-badge s-dot"
+      :class="[relativeClasses]"
+      :style="[positioningStyles]"
+    ></div>
     <div
       v-else
       class="s-badge flex items-center justify-center"
-      :style="[badgeSize, badgeOverlap]"
-      :class="[badgePosition, badgeVariant, badgeOverlap]">
+      :style="[badgeSize, positioningStyles]"
+      :class="[badgePosition, badgeVariant, relativeClasses]">
 
       <slot name="value" v-bind="{ value }">
         <span v-if="props.icon">
@@ -36,7 +41,8 @@ const props = defineProps({
     default: 24
   },
   left: Boolean,
-  dot: Boolean
+  dot: Boolean,
+  inline: Boolean
 })
 
 const iconSize = computed(() => Number(props.size) * .8)
@@ -50,24 +56,47 @@ const badgeVariant = computed(() => ({
   "rounded-md": props.variant === "rounded",
 }));
 
-const badgeOverlap = computed(() => [
-  !props.dot && !props.noOverlap
-      // SE NÃO FOR DOT E TIVER OVERLAP
-      // @TODO rever condição confusa
-      ? { margin: `-${Number(props.size) - Number(props.size) * .3}px` }
-      : { margin: `-${props.size}px` },
-  props.dot && props.noOverlap ? "-m-3" : "-m-1",
-])
+const badgeOverlap = computed(() => ([
+  props.noOverlap
+    ? {
+        top: `-${Number(props.size)}px`,
+        right: `-${Number(props.size)}px`,
+        left: props.left && `-${Number(props.size)}px`,
+      }
+    : {
+        right: `-${Number(props.size) * .5}px`,
+        top: `-${Number(props.size) * .5}px`,
+        left: props.left && `-${Number(props.size) * .5}px`,
+      }
+]))
+
 const badgePosition = computed(() => props.left ? "left-0" : "right-0");
+
+const relativeClasses = computed(() => ([
+  props.inline ? "relative" : "absolute",
+]))
+
+const baseClass = computed(() => ([
+  "relative max-w-fit",
+  {
+    "flex gap-2 items-center": props.inline,
+    "flex-row-reverse": props.inline && !props.left
+  }
+]))
+
+const positioningStyles = computed(() => ([
+    props.inline ? null : badgeOverlap.value
+]))
+
 </script>
 <style lang="postcss" scoped>
 
 .s-badge {
-  @apply bg-red-500 absolute
+  @apply bg-red-500
 }
 
 .s-dot {
-  @apply w-[10px] h-[10px] rounded-full
+  @apply w-[10px] h-[10px] rounded-full m-[8px]
 }
 
 </style>
