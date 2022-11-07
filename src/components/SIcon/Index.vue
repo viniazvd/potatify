@@ -1,7 +1,6 @@
 <template>
   <!-- https://docs.iconify.design/icon-components/vue2/dimensions.html -->
   <Icon
-    v-memo="[icon]"
     :icon="icon"
     :width="size"
     :height="size"
