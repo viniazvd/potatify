@@ -5,16 +5,20 @@
         {{ props.label }}
       </label>
     </slot>
-    <div class="flex items-center" :class="hasOuterSlots">
-      <div @click="emit('click:prepend-outer')">
-        <slot name="prepend:outer"></slot>
+    <div class="flex items-center gap-4" :class="hasOuterSlots">
+      <div class="outer-appendages" @click="emit('click:prepend-outer')" v-if="hasOuterSlots">
+        <slot name="prepend:outer">
+          <SIcon :icon="props.prependOuterIcon" v-if="props.prependOuterIcon"/>
+        </slot>
       </div>
       <div class="grow relative">
         <span class="inner-appendages" @click="emit('click:prepend-inner')">
-          <slot name="prepend:inner"></slot>
+          <slot name="prepend:inner">
+            <SIcon :icon="props.prependInnerIcon" v-if="props.prependInnerIcon"/>
+          </slot>
         </span>
         <div>
-          <input @input="validateInput" v-model="modelValue" class="base-input min-h-[50px]" :class="inputErrors" v-bind="$attrs" :id="uniqueId" />
+          <input @input="validateInput" v-model="modelValue" class="base-input min-h-[50px]" :class="{...inputErrors, ...paddedInput}" v-bind="$attrs" :id="uniqueId" />
           <slot name="value" v-bind="{ value: modelValue }"></slot>
           <div v-show="props.hint || props.persistentHint" class="mt-2 text-xs">
             {{props.hint}}
@@ -33,7 +37,7 @@
           </slot>
         </span>
       </div>
-      <div @click="emit('click:append-outer')" class="hover:bg-primary">
+      <div @click="emit('click:append-outer')" class="hover:bg-primary outer-appendages">
         <slot name="append:outer">
           <SIcon :icon="props.appendOuterIcon" v-if="props.appendOuterIcon"/>
         </slot>
@@ -78,12 +82,10 @@ const props = defineProps({
   modelValue: {
     type: null
   },
-  appendInnerIcon: {
-    type: String
-  },
-  appendOuterIcon: {
-    type: String
-  },
+  appendInnerIcon: String,
+  appendOuterIcon: String,
+  prependInnerIcon: String,
+  prependOuterIcon: String,
   hint: String,
   error: Boolean,
   persistentHint: Boolean,
@@ -124,6 +126,11 @@ const inputErrors = computed(() => ({
   "error-text error-border": hasErrors.value
 }))
 
+const paddedInput = computed(() => ({
+  "!pl-12": props.prependInnerIcon || slots["prepend:inner"],
+  "!pr-12": props.appendOuterIcon || slots["append:inner"]
+}))
+
 </script>
 <style scoped lang="postcss">
 
@@ -140,7 +147,10 @@ const inputErrors = computed(() => ({
 }
 
 .inner-appendages {
-  @apply absolute h-full z-10 px-3 flex items-center
+  @apply absolute h-full z-10 px-3 flex items-center max-h-[50px]
+}
+.outer-appendages {
+  @apply h-[50px] self-start flex items-center
 }
 
 </style>
