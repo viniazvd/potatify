@@ -5,7 +5,7 @@
     </span>
 
     <STransition :name="props.animation">
-      <div class="shadow-xl rounded-sm absolute mt-1 ring-1 ring-black/5 min-w-full bg-white" v-show="isOpen" ref="dropdownTarget">
+      <div class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full" v-show="isOpen" ref="dropdownTarget">
         <slot />
       </div>
     </STransition>
@@ -45,3 +45,22 @@ const props = defineProps({
 })
 
 </script>
+
+<style lang="postcss" scoped>
+.dropdown-shadows {
+  @apply shadow-xl
+}
+
+.dropdown-position {
+  @apply absolute mt-1;
+}
+
+.dropdown-borders {
+  @apply rounded-sm;
+}
+
+.dropdown-colors {
+  @apply  bg-white dark:bg-stone-800;
+}
+
+</style>

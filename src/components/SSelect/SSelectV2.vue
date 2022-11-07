@@ -256,14 +256,14 @@ function isHighlighted(index: number) {
 </script>
 <style lang="postcss" scoped>
 .option {
-  @apply text-gray-700 flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-50 hover:cursor-pointer;
+  @apply text-gray-700 dark:text-stone-300 flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-stone-600 hover:cursor-pointer;
 }
 
 .s-select-active {
-  @apply bg-slate-100
+  @apply bg-slate-100 dark:bg-stone-700
 }
 
 .s-select-highlight {
-  @apply bg-green-100 !important
+  @apply bg-green-100 dark:bg-stone-500 !important
 }
 </style>
