@@ -6,11 +6,11 @@
       </label>
     </slot>
     <div class="flex items-center" :class="hasOuterSlots">
-      <div>
+      <div @click="emit('click:prepend-outer')">
         <slot name="prepend:outer"></slot>
       </div>
       <div class="grow relative">
-        <span class="inner-appendages">
+        <span class="inner-appendages" @click="emit('click:prepend-inner')">
           <slot name="prepend:inner"></slot>
         </span>
         <div>
@@ -54,7 +54,12 @@ import {useThrottleFn} from "@vueuse/core";
 
 const { uniqueId } = useUUID()
 
-const emit = defineEmits(["click:append-outer", "click:append-inner"])
+const emit = defineEmits([
+  "click:append-outer",
+  "click:append-inner",
+  "click:prepend-inner",
+  "click:prepend-outer",
+])
 
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
 
