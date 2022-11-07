@@ -22,14 +22,15 @@
 </template>
 <script lang="ts" setup>
 import SThemeProvider from "@/components/SThemeProvider/Index.vue"
-import {computed, ref, watch} from "vue";
+import {computed, ref} from "vue";
 import STransition from "@/components/STransition/STransition.vue"
-import {useMagicKeys} from "@vueuse/core";
+import {useMagicKeys, whenever} from "@vueuse/core";
 
 const { escape } = useMagicKeys();
 
-watch(escape, (escape) => {
-  if (escape) closeModal()
+// @TODO prevenir o modal de ficar ouvindo ao não estar aberto
+whenever(escape, () => {
+  if (isOpen.value) closeModal();
 })
 
 const props = defineProps({
