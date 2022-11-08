@@ -1,80 +1,35 @@
-<!-- <template>
-  <transition name="s-overlay-fade">
-    <div
-      v-if="show"
-      :class="classes"
-      @click="$emit('close')"
-    />
-  </transition>
+<template>
+  <STransition :name="props.animation">
+    <div @click="closeOverlay" v-show="isOpen" class="fixed z-10 top-0 left-0 bg-black/50 w-full h-full">
+      
+    </div>
+  </STransition>
 </template>
+<script lang="ts" setup>
+import { defineAsyncComponent, PropType } from 'vue';
+import { ANIMATION_LIST } from '../STransition/AnimationNames';
 
-<script lang="ts">
-/**
- * Overlay component, used to give focus to a fixed element that appears
- * on the screen.
- */
-export default {
-  name: 'SOverlay',
+const STransition = defineAsyncComponent(() => import("@components/STransition/STransition.vue"));
 
-  props: {
-    /**
-     * Whether to show or not the overlay
-     */
-    show: { type: Boolean },
-
-    /**
-     * Makes the overlay completely transparent.
-     */
-    transparent: { type: Boolean },
-
-    /**
-     * Makes the background slightly darker.
-     */
-    dark: { type: Boolean  }
+const props = defineProps({
+  animation: {
+    type: String as PropType<keyof typeof ANIMATION_LIST>,
+    default: "FADE_IN"
   },
+  isOpen: Boolean,
+  persistent: Boolean
+})
 
-  computed: {
-    classes () {
-      return [ 's-overlay',
-        {
-          '--dark': this.dark,
-          '--transparent': this.transparent
-        }
-      ]
-    }
-  }
+const emit = defineEmits(["close:overlay", "update:isOpen"])
+
+function closeOverlay () {
+  emit('close:overlay')
+
+  if (!props.persistent) {
+    emit('update:isOpen')
+  };
+  
 }
+
 </script>
-
-<style lang="scss">
-@import "./src/styles/_index.scss";
-
-.s-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  // z-index: $z-index-3;
-
-  height: 100vh;
-  width: 100vw;
-
-  background-color: color(base, light);
-
-  &.--transparent { opacity: .1; }
-  &.--dark { background-color: color(base, dark); }
-}
-
-.s-overlay-fade {
-  @at-root {
-    #{&}-enter-active,
-    #{&}-leave-active {
-      transition: opacity .3s ease !important;
-    }
-
-    #{&}-enter,
-    #{&}-leave-to {
-      opacity: 0 !important;
-    }
-  }
-}
-</style> -->
+<style lang="postcss"></style>
