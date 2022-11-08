@@ -15,6 +15,10 @@ export const ANIMATION_LIST = {
   SHAKE: {
     ENTER: "animate__headShake",
     LEAVE: ""
+  },
+  SLIDE_IN_LEFT: {
+    ENTER: "animate__slideInLeft",
+    LEAVE: "animate__slideOutLeft"
   }
   // FADE_IN_UP: "animate__fadeInUp",
   // FADE_OUT_DOWN: "animate__fadeOutDown",
