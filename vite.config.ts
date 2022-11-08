@@ -24,8 +24,16 @@ export default defineConfig({
       external: ['vue'],
       output: {
         // Provide global variables to use in the UMD build, for externalized deps
+        dir: "dist",
         globals: { vue: 'Vue' }
       }
+    }
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@components': path.resolve(__dirname, './src/components'),
     }
   },
 

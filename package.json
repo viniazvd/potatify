@@ -1,4 +1,4 @@
-{
+ {
   "name": "vite-boilerplate",
   "private": true,
   "version": "0.0.0",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --emitDeclarationOnly && mv dist/src dist/types",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "test": "vitest --watch --ui",
     "coverage": "vitest run --coverage",

@@ -1,6 +1,6 @@
 <template>
   <ol class="relative border-l s-timeline-colors">
-    <li class="mb-10 ml-4" v-for="(item, index) in props.timelineItems" :key="index">
+    <li class="mb-10 ml-4" v-for="item, index in timelineItems" :key="index">
       <slot name="timeline-stopper">
         <div class="s-timeline-stopper"></div>
       </slot>
@@ -25,7 +25,7 @@ import {PropType} from "vue";
 const props = defineProps({
   timelineItems: {
     required: true,
-    type: Object as PropType<{ label: string, description: string, title: string }>,
+    type: Array as PropType<{ label: string, description: string, title: string }[]>,
   }
 })
 
