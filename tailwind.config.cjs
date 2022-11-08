@@ -18,6 +18,11 @@ module.exports = {
     }
   ],
   theme: {
+    maxWidth: {
+      mobile: "768px",
+      tablet: "992px",
+      desktop: "1200px"
+    },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
       sm: ['0.875rem', { lineHeight: '1.25rem' }],
@@ -36,6 +41,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["'Inter'", ...defaultTheme.fontFamily.sans]
+      },
+      screens: {
+        mobile: '640px',
+        tablet: '1024px',
+        desktop: '1280px',
       },
       colors: {
         contrast: {
@@ -62,5 +72,24 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addBase, theme }) {
+      function extractColorVars(colorObj, colorGroup = '') {
+        return Object.keys(colorObj).reduce((vars, colorKey) => {
+          const value = colorObj[colorKey];
+
+          const newVars =
+            typeof value === 'string'
+              ? { [`--color${colorGroup}-${colorKey}`]: value }
+              : extractColorVars(value, `-${colorKey}`);
+
+          return { ...vars, ...newVars };
+        }, {});
+      }
+
+      addBase({
+        ':root': extractColorVars(theme('colors')),
+      });
+    },
+  ],
 }
