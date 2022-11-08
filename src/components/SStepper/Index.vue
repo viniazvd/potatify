@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="s-stepper">
     <ul class="stepper">
       <li
@@ -168,4 +168,4 @@ export default {
     .--is-current-step > .content { font-weight: 800; }
   }
 }
-</style>
+</style> -->

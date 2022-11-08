@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <transition name="s-overlay-fade">
     <div
       v-if="show"
@@ -77,4 +77,4 @@ export default {
     }
   }
 }
-</style>
+</style> -->

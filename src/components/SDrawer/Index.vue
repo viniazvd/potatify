@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="s-drawer">
     <div :class="classes" :style="{ '--width': width }">
       <slot />
@@ -71,4 +71,4 @@ export default {
     }
   }
 }
-</style>
+</style> -->

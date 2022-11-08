@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :class="classes">
     <label
       v-for="(option, index) in options"
@@ -158,4 +158,4 @@ export default {
     }
   }
 }
-</style>
+</style> -->

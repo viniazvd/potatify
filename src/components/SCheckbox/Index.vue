@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <label :class="classes">
     <input
       class="input"
@@ -123,4 +123,4 @@ const emit = () => {
     to { opacity: 1; transform: scale(1) }
   }
 }
-</style>
+</style> -->
