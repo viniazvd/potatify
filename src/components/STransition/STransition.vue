@@ -20,19 +20,13 @@ const ANIMATION_MODES = {
   OUT_IN: "out-in"
 } as const;
 
-interface Props {
-  name?: typeof ANIMATION_LIST[keyof typeof ANIMATION_LIST],
-  mode?: typeof ANIMATION_MODES[keyof typeof ANIMATION_MODES]
-}
-
 const props = defineProps({
   name: {
     type: String as PropType<keyof typeof ANIMATION_LIST>,
     default: "FADE_IN"
   },
   mode: {
-    type: String,
-    required: false,
+    type: String as PropType<typeof ANIMATION_MODES[keyof typeof ANIMATION_MODES]>,
     default: "out-in"
   }
 })

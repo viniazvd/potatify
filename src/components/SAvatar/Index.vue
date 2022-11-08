@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :class="classes">
     <slot />
   </div>
@@ -67,4 +67,4 @@ const classes = computed(() => [
     color: color(primary, base);
   }
 }
-</style>
+</style> -->

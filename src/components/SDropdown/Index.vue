@@ -13,7 +13,8 @@
 </template>
 <script lang="ts" setup>
 import {useToggle, onClickOutside} from "@vueuse/core";
-import {defineAsyncComponent, nextTick, provide, ref} from "vue";
+import {defineAsyncComponent, PropType, ref} from "vue";
+import { ANIMATION_LIST } from "../STransition/AnimationNames";
 
 const STransition = defineAsyncComponent(() => import("../STransition/STransition.vue"))
 
@@ -39,7 +40,7 @@ const emit = defineEmits(["close:dropdown"])
 
 const props = defineProps({
   animation: {
-    type: String,
+    type: String as PropType<keyof typeof ANIMATION_LIST>,
     default: "ZOOM_IN"
   }
 })

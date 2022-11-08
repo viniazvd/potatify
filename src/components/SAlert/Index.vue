@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :class="classes">
     <div class="header">
       <slot name="header">{{ header }}</slot>
@@ -55,4 +55,4 @@ export default {
     background: color(negative, light);
   }
 }
-</style>
+</style> -->

@@ -3,13 +3,44 @@
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import checker from 'vite-plugin-checker'
+// import tsconfigPaths from 'vite-tsconfig-paths'
+
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: { port: 8080 },
 
-  plugins: [vue(), tsconfigPaths({ loose: true })],
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: 'vue-batata',
+      fileName: (format) => `batata.${format}.js`,
+    },
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['vue'],
+      output: {
+        // Provide global variables to use in the UMD build, for externalized deps
+        dir: "dist",
+        globals: { vue: 'Vue' }
+      }
+    }
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@components': path.resolve(__dirname, './src/components'),
+    }
+  },
+
+  plugins: [
+    vue(),
+    checker({ vueTsc: true })
+  ],
 
   test: {
     environment: "jsdom",

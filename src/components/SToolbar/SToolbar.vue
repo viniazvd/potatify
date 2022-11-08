@@ -34,7 +34,7 @@ onMounted(() => {
 })
 
 const styles = computed(() => ({
-  width: props.width ? `${props.width}` : null,
+  width: props.width ? `${props.width}` : "inherit",
 }))
 
 </script>

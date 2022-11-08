@@ -10,10 +10,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": true,
+    // "emitDeclarationOnly": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "baseUrl": ".",
     "rootDir": "src",
+    "declarationDir": "dist",
     "types": [
       "vitest/globals",
       "vite/client"

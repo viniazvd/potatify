@@ -85,7 +85,7 @@ const baseClass = computed(() => ([
 ]))
 
 const positioningStyles = computed(() => ([
-    props.inline ? null : badgeOverlap.value
+    props.inline ? {} : badgeOverlap.value
 ]))
 
 </script>

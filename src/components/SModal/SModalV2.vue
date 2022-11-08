@@ -1,30 +1,28 @@
 <template>
   <Teleport to="body">
-    <SThemeProvider :isDark="true">
-      <STransition mode="in-out" name="FADE_IN">
-          <div
-            v-if="isOpen"
-            class="modal-base backdrop-color backdrop-display"
-            @click.self="closeModal"
-          >
-            <STransition name="ZOOM_IN">
-              <div
-                ref="animatedEl"
-                class="min-w-[600px]"
-                :class="animate">
-                <slot />
-              </div>
-            </STransition>
-          </div>
-      </STransition>
-    </SThemeProvider>
+    <STransition mode="in-out" name="FADE_IN">
+        <div
+          v-if="isOpen"
+          class="modal-base backdrop-color backdrop-display"
+          @click.self="closeModal"
+        >
+          <STransition name="ZOOM_IN">
+            <div
+              ref="animatedEl"
+              class="min-w-[600px]"
+              :class="animate">
+              <slot />
+            </div>
+          </STransition>
+        </div>
+    </STransition>
   </Teleport>
 </template>
 <script lang="ts" setup>
-import SThemeProvider from "@/components/SThemeProvider/Index.vue"
-import {computed, ref} from "vue";
-import STransition from "@/components/STransition/STransition.vue"
+import {computed, defineAsyncComponent, ref} from "vue";
 import {useMagicKeys, whenever} from "@vueuse/core";
+
+const STransition = defineAsyncComponent(() => import("@components/STransition/STransition.vue"));
 
 const { escape } = useMagicKeys();
 

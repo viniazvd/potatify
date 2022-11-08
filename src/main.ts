@@ -6,8 +6,8 @@ import {
 import "./index.css";
 import "animate.css";
 import App from './App.vue'
-import {pinia} from "@/store";
-import {router} from "@/router";
+import {pinia} from "./store";
+import {router} from "./router";
 
 const app = createApp(App);
 

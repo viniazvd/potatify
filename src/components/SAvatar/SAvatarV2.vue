@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="size"
+    :style="avatarSize"
     :class="classes"
     class="overflow-hidden block relative bg-primary"
   >
@@ -29,7 +29,7 @@ const props = defineProps({
   }
 })
 
-const size = computed(() => ({
+const avatarSize = computed(() => ({
   width: `${props.size}px`,
   height: `${props.size}px`
 }))

@@ -47,10 +47,11 @@ export default {
 </script>
 <script lang="ts" setup>
 import SInput from "../SInput/SInputV2.vue";
-import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/SCheckboxV2.vue";
-import {computed, nextTick, ref} from "vue";
+import {computed, defineAsyncComponent, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
+
+const SDropdown = defineAsyncComponent(() => import("../SDropdown/Index.vue"));
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -63,7 +64,7 @@ const props = defineProps({
     type: [String, Number, Object]
   },
   items: {
-    type: Array,
+    type: Array as PropType<any>,
     required: true
   },
   itemText: {
@@ -122,7 +123,7 @@ const appendInnerIcon = computed(() => (
 ))
 
 const appendOuterIcon = computed(() => (
-  props.clearable ? 'mdi:close-circle' : null
+  props.clearable ? 'mdi:close-circle' : ""
 ))
 // END INPUT APPENDED ITEMS
 
@@ -140,13 +141,15 @@ function selectItem (item: typeof props.items[0]) {
       emit("update:modelValue", Array.from(arrTracker.value));
     } else {
       const returnValue = Array.from(arrTracker.value)
-          .map(item => item[props.itemValue]);
+        // @TODO REVER ESSA TIPAGEM
+        .map((item: any) => item[props.itemValue]);
 
       emit("update:modelValue", returnValue);
     }
 
     const returnObject = Array.from(arrTracker.value);
-    value.value = returnObject.map(item => item[props.itemText]);
+    // @TODO REVER ESSA TIPAGEM
+    value.value = returnObject.map((item: any) => item[props.itemText]);
 
   } else {
     arrTracker.value.clear()
