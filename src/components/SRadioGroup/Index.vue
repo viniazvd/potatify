@@ -2,36 +2,29 @@
   <div :class="radioGroupClasses">
     <label
       v-for="(option, index) in options"
-
       :key="index"
-      :for="option.id"
+      :for="`radio-${index}`"
       :class="radioClasses"
-
-      @click="!option.disabled && emit('update:modelValue', option.value)"
     >
       <input
-        :id="option.id"
-
+        :id="`radio-${index}`"
         type="radio"
         class="input hidden"
-
+        @change="emit('update:modelValue', option.value)"
         :value="option.value"
         :disabled="option.disabled"
         :checked="option.value === modelValue"
       >
       <span :class="[
         'radio',
-        {
-          'border-gray-200': option.disabled,
-          'border-primary hover:border-4 hover:border-secondary': !option.disabled
-        }]"
+        'radio-colors',
+        option.disabled && 'radio-disabled'
+        ]"
       />
 
       <span :class="[
         'text ml-2 text-base',
-        {
-          'text-gray-200': option.disabled
-        }]
+        option.disabled && 'text-gray-200']
       ">
         {{ option.label }}
       </span>
@@ -46,7 +39,7 @@ const props = defineProps({
   modelValue: String,
 
   options: {
-    type: Array as PropType<{ id: string, label: string, disabled?: boolean, value: any }[]>,
+    type: Array as PropType<{ label: string, disabled?: boolean, value: any }[]>,
     required: true
   },
 
@@ -83,5 +76,13 @@ const radioClasses = computed(() => [
 
 .radio {
   @apply flex items-center justify-center w-6 h-6 cursor-pointer border-2 border-solid rounded-2xl
+}
+
+.radio-colors {
+  @apply border-primary hover:border-4 hover:border-secondary
+}
+
+.radio-disabled {
+  @apply hover:border-2 border-gray-200 hover:border-gray-200
 }
 </style>
