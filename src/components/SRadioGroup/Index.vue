@@ -52,19 +52,12 @@ const internalOptions = computed(() => props.options
 const emit = defineEmits(["update:modelValue"])
 
 const radioGroupClasses = computed(() => [
-  's-radio-group flex flex-wrap',
-  {
-    'flex-row': props.row,
-    'flex-col': !props.row
-  }
+  's-radio-group flex flex-wrap gap-4 flex-col',
+   props.row && 'flex-row'
 ])
 
 const radioClasses = computed(() => [
-  's-radio flex items-center',
-  {
-    'mr-4 last:mr-0': props.row,
-    'mb-4 last:mb-0': !props.row,
-  }
+  's-radio flex items-center'
 ])
 </script>
 
