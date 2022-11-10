@@ -1,20 +1,20 @@
 <template>
   <div :class="radioGroupClasses">
     <label
-      v-for="(option, index) in options"
-      :key="index"
-      :for="`radio-${index}`"
+      v-for="(option) in internalOptions"
+      :key="option.id"
       :class="radioClasses"
+      :for="option.id"
     >
       <input
-        :id="`radio-${index}`"
+        :id="option.id"
         type="radio"
         class="input hidden"
         @change="emit('update:modelValue', option.value)"
         :value="option.value"
         :disabled="option.disabled"
         :checked="option.value === modelValue"
-      >
+      />
       <span :class="[
         'radio',
         'radio-colors',
@@ -33,19 +33,22 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType, computed } from "vue"
+import {PropType, computed} from "vue"
+import {useUUID} from "@/composables/useUUID";
+
+const { generateUUID } = useUUID();
 
 const props = defineProps({
   modelValue: String,
-
   options: {
     type: Array as PropType<{ label: string, disabled?: boolean, value: any }[]>,
     required: true
   },
-
   row: Boolean
 })
-
+const internalOptions = computed(() => props.options
+    .map(item => ({ ...item, id: generateUUID() }))
+)
 const emit = defineEmits(["update:modelValue"])
 
 const radioGroupClasses = computed(() => [
@@ -79,7 +82,7 @@ const radioClasses = computed(() => [
 }
 
 .radio-colors {
-  @apply border-primary hover:border-4 hover:border-secondary
+  @apply border-primary hover:border-4 hover:border-primary
 }
 
 .radio-disabled {
