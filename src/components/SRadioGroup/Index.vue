@@ -1,161 +1,84 @@
-<!-- <template>
-  <div :class="classes">
+<template>
+  <div :class="radioGroupClasses">
     <label
-      v-for="(option, index) in options"
-
-      :key="index"
+      v-for="(option) in internalOptions"
+      :key="option.id"
+      :class="radioClasses"
       :for="option.id"
-
-      :class="getClasses(option)"
-
-      @click="!option.disabled && emit(option.value)"
     >
       <input
         :id="option.id"
-
         type="radio"
-        class="input"
-
+        class="input hidden"
+        @change="emit('update:modelValue', option.value)"
         :value="option.value"
         :disabled="option.disabled"
+        :checked="option.value === modelValue"
+      />
+      <span :class="[
+        'radio',
+        'radio-colors',
+        option.disabled && 'radio-disabled'
+        ]"
+      />
 
-        :checked="option.value === value"
-
-        @input="e => !option.disabled && $emit('input', e.target?.value)"
-      >
-
-      <span class="radio" />
-
-      <span class="text">{{ option.label }}</span>
+      <span :class="[
+        'text ml-2 text-base',
+        option.disabled && 'text-gray-200']
+      ">
+        {{ option.label }}
+      </span>
     </label>
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'SRadioGroup',
+<script lang="ts" setup>
+import {PropType, computed} from "vue"
+import {useUUID} from "@/composables/useUUID";
 
-  model: {
-    prop: 'checked',
-    event: 'change'
+const { generateUUID } = useUUID();
+
+const props = defineProps({
+  modelValue: String,
+  options: {
+    type: Array as PropType<{ label: string, disabled?: boolean, value: any }[]>,
+    required: true
   },
+  row: Boolean
+})
+const internalOptions = computed(() => props.options
+    .map(item => ({ ...item, id: generateUUID() }))
+)
+const emit = defineEmits(["update:modelValue"])
 
-  props: {
-    value: String,
+const radioGroupClasses = computed(() => [
+  's-radio-group flex flex-wrap gap-4 flex-col',
+   props.row && 'flex-row'
+])
 
-    options: {
-      type: Array,
-      required: true
-    },
-
-    row: Boolean,
-
-    label: String
-  },
-
-  computed: {
-    classes () {
-      return ['s-radio-group', {
-        '--is-row': this.row
-      }]
-    }
-  },
-
-  methods: {
-    getClasses ({ disabled, negative }: { disabled: boolean, negative: boolean }) {
-      return ['s-radio', {
-        '--is-negative': negative,
-        '--is-disabled': disabled
-      }]
-    },
-
-    emit (value: string) {
-      this.$attrs.onInput?.()
-      this.$emit('input', value)
-    }
-  }
-}
+const radioClasses = computed(() => [
+  's-radio flex items-center'
+])
 </script>
 
-<style lang="scss">
-@import "./src/styles/_index.scss";
-
-.s-radio-group {
-  display: flex;
-  flex-direction: column;
-
-  & > .s-radio {
-    display: flex;
-    align-items:center;
-
-    &:not(:last-child) { margin-bottom: 10px; }
-
-    & > .input { display: none; }
-
-    & > .radio {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      transition: border-width .1s ease;
-
-      border-width: 2px;
-      border-style: solid;
-      border-color: color(base, light);
-      border-radius: $border-radius-circular;
-
-      &:hover {
-        border-width: 2px;
-        border-color: color(base, light);
-      }
-    }
-
-    & > .text {
-      margin-left: 8px;
-      font-size: $font-size-xs;
-    }
-
-    & > .input + .radio { transition: background-color .6s ease; }
-
-    & > .input:checked + .radio {
-      animation: check;
-      background-color: color(neutral, base);
-
-      border-width: 7px;
-      border-style: solid;
-      border-color: color(primary, light);
-    }
-
-    &.--is-negative {
-      & > .text { border-color: color(negative, base); }
-      & > .radio { border-color: color(negative, base); }
-      & > .input:checked + .radio { border-color: color(negative, base); border: 7px solid; }
-    }
-
-    &.--is-disabled {
-      & > .text { border-color: color(neutral, dark); }
-      & > .radio { border-color: color(neutral, dark); cursor: not-allowed; }
-      & > .input:checked + .radio { border-color: color(neutral, dark); cursor: not-allowed; }
-    }
-
-    @keyframes check {
-      0% { opacity: $opacity-medium; }
-      50% { opacity: $opacity-intense; }
-      100% { opacity: 1; }
-    }
-  }
-
-  &.--is-row {
-    flex-wrap: wrap;
-    flex-direction: row;
-
-    & > .s-radio {
-      margin-bottom: 10px;
-      &:not(:last-child) { margin-right: 15px; }
-    }
-  }
+<style lang="postcss" scoped>
+.input:checked + .radio {
+  border-width: 7px;
+  border-style: solid;
+  border-color: #1E7A75;
+  background-color: white;
+  transition: border-width .1s ease;
 }
-</style> -->
+
+.radio {
+  @apply flex items-center justify-center w-6 h-6 cursor-pointer border-2 border-solid rounded-2xl
+}
+
+.radio-colors {
+  @apply border-primary hover:border-4 hover:border-primary
+}
+
+.radio-disabled {
+  @apply hover:border-2 border-gray-200 hover:border-gray-200
+}
+</style>
