@@ -28,7 +28,7 @@ const transitionDuration = computed(() => ({ transitionDuration: props.duration 
 
 <style lang="postcss" scoped>
 .s-progress {
-  @apply flex bg-white w-full h-2 rounded-lg
+  @apply flex bg-white w-full h-1 rounded-lg
 }
 
 .bar {

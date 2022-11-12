@@ -1,21 +1,27 @@
 <template>
   <div
     :ref="id"
-    class="relative p-5 bg-white shadow-md cursor-pointer max-w-md rounded-md"
+    class="base-feedback pb-2 ring-1 ring-black/5 relative min-h-[50px] p-4 min-w-content overflow-hidden bg-white shadow-md cursor-pointer rounded-md"
     @click.prevent="emit('close')"
   >
-    <s-icon class="absolute top-2 right-2" icon="ant-design:close-outlined" @click="emit('close')" />
+    <div class="flex place-content-between gap-2 items-center">
+      <div class="min-w-[30px]">
+        <slot name="prependIcon">
+          <s-icon size="30" :icon="icon" v-if="props.prependIcon" :color="color" />
+        </slot>
+      </div>
 
-    <div class="flex items-center pb-2">
-      <s-icon class="mr-4" size="30" :icon="icon" :color="color" />
+      <div class="max-w-[300px] break-words">
+        <div class="text-md font-bold">{{ props.title }}</div>
+        <p class="text-sm">{{ message }}</p>
+      </div>
 
-      <div>
-        <div class="text-sm pr-6">{{ props.title }}</div>
-        <p class="text-xs pt-1.5">{{ message }}</p>
+      <div class="min-w-[20px]">
+        <s-icon icon="ant-design:close-outlined" size="20" @click="emit('close')" />
       </div>
     </div>
 
-    <s-progress :color="color" :duration="props.duration" />
+    <s-progress v-if="autoClose" class="absolute bottom-0 w-full h-[5px]" :color="color" :duration="props.duration" />
   </div>
 </template>
 
@@ -38,6 +44,7 @@ const props = defineProps({
   duration: { type: Number, default: 3 },
   autoClose: { type: Boolean, default: true },
   message: { type: String, required: true },
+  prependIcon: String,
   type: { type: String as PropType<keyof typeof icons>, required: true }
 });
 
@@ -68,3 +75,10 @@ const color = computed(() => {
   return colors[props.type]
 })
 </script>
+<style lang="postcss" scoped>
+
+.base-feedback {
+  @apply border-black/25
+}
+
+</style>
