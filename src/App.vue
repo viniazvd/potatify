@@ -28,8 +28,6 @@ import useFeedback from '@/composables/useFeedback'
 
 const { feedbacks, createFeedback, removeFeedbacks } = useFeedback()
 
-console.log(feedbacks)
-
 provide('create-feedback', createFeedback)
 </script>
 
