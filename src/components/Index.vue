@@ -1,26 +1,29 @@
 <template>
-  <div class="m-12">
-    {{activeRadio}}
-<!--    <SRadio v-model="activeRadio" label="my radio"></SRadio>-->
-    <s-radio-group
-      row
-      label="label test"
-      :options="options"
-      v-model="activeRadio"
-    />
+  <div class="page-content">
+    <!-- <s-progress :duration="7" :value="100" /> -->
+
+    <div class="flex gap-4">
+      <s-button @click="createInfoFeedback">Info</s-button>
+      <s-button @click="createErrorFeedback">Error</s-button>
+      <s-button @click="createWarningFeedback">Warning</s-button>
+      <s-button @click="createSuccessFeedback">Success</s-button>
+      <s-button @click="createPersistentFeedback">Persistent</s-button>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import SRadioGroup from "@components/SRadioGroup/Index.vue";
+import { inject } from "vue"
+import { CreateFeedback } from "@/composables/useFeedback"
+// import SProgress from '@components/SProgress/Index.vue'
+import SButton from "@components/SButton/Index.vue"
 
-const activeRadio = ref('111')
+const createInfoFeedback = () => createFeedback({ type: 'info', message: 'my message boladona' })
+const createWarningFeedback = () => createFeedback({ type: 'warning', message: 'Warning' })
+const createErrorFeedback = () => createFeedback({ type: 'error', message: 'Error', duration: 10 })
+const createSuccessFeedback = () => createFeedback({ type: 'success', message: 'Success', duration: 5 })
+const createPersistentFeedback = () => createFeedback({ type: 'info', message: 'persistent', autoClose: false })
 
-const options = ref([
-  { label: '111', value: '111' },
-  { label: '222', value: '222', disabled: true },
-  { label: '333', value: '333' },
-  { label: '444', value: '444' },
-])
+const createFeedback = inject('create-feedback') as CreateFeedback
+// const createFeedback = inject('create-feedback')
 </script>
