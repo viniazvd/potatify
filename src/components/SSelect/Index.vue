@@ -46,8 +46,8 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import SInput from "../SInput/SInputV2.vue";
-import SCheckbox from "../SCheckbox/SCheckboxV2.vue";
+import SInput from "../SInput/Index.vue";
+import SCheckbox from "../SCheckbox/Index.vue";
 import {computed, defineAsyncComponent, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
 

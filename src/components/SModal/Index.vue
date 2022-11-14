@@ -22,7 +22,7 @@
 import {computed, defineAsyncComponent, ref} from "vue";
 import {useMagicKeys, whenever} from "@vueuse/core";
 
-const STransition = defineAsyncComponent(() => import("@components/STransition/STransition.vue"));
+const STransition = defineAsyncComponent(() => import("@components/STransition/Index.vue"));
 
 const { escape } = useMagicKeys();
 

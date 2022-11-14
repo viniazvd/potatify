@@ -1,171 +1,105 @@
-<!-- <template>
-  <div class="s-stepper">
-    <ul class="stepper">
-      <li
-        v-for="(item, stepIndex) in items"
-
-        :key="stepIndex"
-        :class="getClasses(item, stepIndex)"
-
-        @click="$emit('select', item)"
+<template>
+  <div class="flex border-b border-stone-300/50" :class="[tabsContainer]">
+    <div v-for="(step, id, index) in steps" :key="id" :class="[tabsSize]">
+      <slot
+        :name="`header-${id}`"
+        v-bind="{ goToNext, goToPrevious, step, stepNames, goTo }"
       >
-        <div class="content">
-          <label>{{ item.label }}</label>
-
-          <s-icon v-if="item.icon" :icon="item.icon" v-bind="$attrs" />
+        <div
+          @click="goToStep(id)"
+          class="py-3 px-6 cursor-pointer select-none relative gap-1 flex items-center"
+          :class="[
+            ...tabItems,
+            isCurrent(id) && `s-stepper-active text-${props.color} border-${props.color}`
+          ]">
+          <SIcon v-if="step.icon" :icon="step.icon"/>
+          {{step.title}}
         </div>
-      </li>
-    </ul>
+      </slot>
+    </div>
+  </div>
+  <div
+    v-for="(step, id, index) in steps"
+    :key="id"
+    v-show="isCurrent(id)"
+    >
+    <slot
+      :name="`body-${id}`"
+      v-bind="{ goToNext, goToPrevious, step, stepNames, goTo }"
+    >
+    </slot>
   </div>
 </template>
+<script lang="ts" setup>
+import {useStepper} from "@vueuse/core";
+import {computed, defineAsyncComponent, PropType} from "vue";
 
-<script lang="ts">
-import SIcon from '../SIcon/Index.vue'
+const SIcon = defineAsyncComponent(() => import("@components/SIcon/Index.vue"));
 
-export default {
-  name: 'SStepper',
-
-  components: {
-    SIcon
+const props = defineProps({
+  steps: {
+    type: null,
+    required: true
   },
+  grow: Boolean,
+  textCentered: Boolean,
+  color: String as PropType<"primary" | "secondary" | "gray" >,
+  pill: Boolean,
+  filled: Boolean
+})
 
-  props: {
-    step: Number,
+const tabsSize = computed(() => [
+  props.grow && "grow"
+])
 
-    items: { type: Array, required: true }
-  },
+const tabsContainer = computed(() => [
+    props.pill && "border-none",
+    props.filled && "p-2 pb-0 pl-0 bg-gray-100"
+])
 
-  data () {
-    return {
-      progressiveStep: 1
-    }
-  },
+const tabItems = computed(() => [
+  props.textCentered && "justify-center",
+  props.color && `hover:text-${props.color} active:text-${props.color}-400`,
+  props.pill && `pill border-none bg-gray-200 mr-4 rounded-lg`,
 
-  watch: {
-    step: 'incrementStep',
+]);
 
-    progressiveStep: {
-      handler: 'incrementStep',
-      immediate: true
-    }
-  },
+const {
+  current,
+  get,
+  goToNext,
+  goToPrevious,
+  isAfter,
+  isCurrent,
+  stepNames,
+  steps,
+  goTo,
+  next,
+  previous
+} = useStepper(props.steps);
 
-  methods: {
-    incrementStep () {
-      setTimeout(() => {
-        if (this.progressiveStep <= (this.step as number)) this.progressiveStep++
-      }, 1200)
-    },
+type Step = PropType<{ [key: string]: { title: String } }>;
 
-    getClasses (item: { label: string, icon: string, disabled: boolean }, stepIndex: number) {
-      const isActive = stepIndex <= (this.progressiveStep - 1)
+const emit = defineEmits(["go:to-step"])
 
-      return ['step', {
-        '--is-active': isActive,
-        '--is-disabled': item.disabled,
-        '--is-current-step': isActive && this.step === stepIndex
-      }]
-    }
-  }
+function goToStep (id: string | number) {
+  emit("go:to-step", id);
+  goTo(id)
 }
+
+
 </script>
-
-<style lang="scss">
-@import "./src/styles/_index.scss";
-
-.s-stepper {
-  max-width: 1000px;
-  margin: 2rem auto 0;
-
-  & > .stepper {
-    @keyframes bounce {
-      from { width: 0%; }
-      to { width: calc(100% - clamp(1.5rem, 4vw, 1.6rem) - calc(clamp(0.25rem, 2vw, 0.5rem) * 2)); }
-    }
-
-    display: flex;
-    counter-reset: step;
-
-    & > .step {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      text-align: center;
-
-      & > .content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: -75px;
-
-        & > label {
-          font-size: 12px;
-          transition: opacity .7s ease;
-        }
-      }
-
-      &::before {
-        --size: 3rem;
-        content: '';
-        display: block;
-        width: clamp(1.5rem, 4vw, 1.6rem);
-        height: clamp(1.5rem, 4vw, 1.6rem);
-        border-radius: 50%;
-        background-color: color(neutral, base);
-        margin: 0 auto 1rem;
-
-        border-width: 2px;
-        border-style: solid;
-        transition: border-color .3s ease-in-out;
-
-        content: counter(step);
-        counter-increment: step;
-      }
-
-      &:not(:last-child):after {
-        content: '';
-        position: relative;
-        top: calc(clamp(1.5rem, 4vw, 1.6rem) / 2);
-        width: calc(100% - clamp(1.5rem, 4vw, 1.6rem) - calc(clamp(0.25rem, 2vw, 0.5rem) * 2));
-        left: calc(50% + calc(clamp(1.5rem, 4vw, 1.6rem) / 2 + clamp(0.25rem, 2vw, 0.5rem)));
-        height: 2px;
-        background-color: #e0e0e0;
-        order: -1;
-      }
-    }
-
-    .--is-active {
-      &::before {
-        border-width: 3px;
-        color: color(primary, base);
-        border-color: color(primary, base);
-      }
-
-      &::after {
-        background-color: color(primary, base);
-        transition: color .3s ease-in-out,
-        border-width .3s ease-in-out,
-        background-color .3s ease-in-out;
-
-        animation: bounce 0.7s;
-      }
-
-      & > .content:last-child { color: color(primary, base); }
-    }
-
-    .--is-disabled {
-      cursor: not-allowed;
-
-      & > .content { color: gray !important; }
-
-      &::before {
-        // color: color(neutral, medium) !important;
-        // border-color: color(neutral, medium) !important;
-        color: gray !important;
-        border-color: gray !important;
-      }
-    }
-    .--is-current-step > .content { font-weight: 800; }
-  }
+<style lang="postcss" scoped>
+.s-stepper-active {
+  @apply border-b-2 bg-gray-300
 }
-</style> -->
+
+.pill {
+  @apply hover:bg-gray-300 active:bg-gray-400 text-gray-600
+}
+
+.s-stepper-active {
+  @apply bg-gray-400
+}
+
+</style>
