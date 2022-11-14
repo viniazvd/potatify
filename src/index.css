@@ -3,16 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer components {
-    .btn {
-        @apply ring-1 ring-black/5
-    }
-    .btn-outlined {
-        @apply border-2 rounded-md border-primary hover:border-primary-200 active:border-primary-300 text-primary hover:text-primary-200 active:text-primary-300 bg-transparent !important;
-    }
-}
-
-@layer {
-
-}

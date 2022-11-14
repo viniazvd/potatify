@@ -3,7 +3,7 @@ import SButton from "./Index.vue";
 import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto";
 
 export default {
-  title: "Form/SButton",
+  title: "Components/SButton",
   component: SButton,
   argTypes: {
     size: {
@@ -20,7 +20,9 @@ export default {
     },
     color: {
       type: "string",
-      defaultValue: "primary"
+      defaultValue: "primary",
+      options: ["primary", "secondary", "custom"],
+      control: { type: "select" }
     },
     disabled: {
       name: "Desabilitado",

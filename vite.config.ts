@@ -11,12 +11,11 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: { port: 8080 },
-
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'vue-batata',
-      fileName: (format) => `batata.${format}.js`,
+      name: 'potatify',
+      fileName: (format) => `potatify.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
