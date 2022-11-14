@@ -47,6 +47,9 @@ module.exports = {
         tablet: '1024px',
         desktop: '1280px',
       },
+      transitionDuration: {
+        '5000': '5000ms'
+      },
       colors: {
         contrast: {
           primary: "#fff"
