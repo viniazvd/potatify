@@ -16,7 +16,7 @@ import {useToggle, onClickOutside} from "@vueuse/core";
 import {defineAsyncComponent, PropType, ref} from "vue";
 import { ANIMATION_LIST } from "../STransition/AnimationNames";
 
-const STransition = defineAsyncComponent(() => import("../STransition/STransition.vue"))
+const STransition = defineAsyncComponent(() => import("../STransition/Index.vue"))
 
 const [isOpen, setIsOpen] = useToggle(false);
 const eventListeners = {

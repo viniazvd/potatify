@@ -1,70 +1,61 @@
-<!-- <template>
-  <div :class="classes">
-    <slot />
+<template>
+  <div
+    :style="avatarSize"
+    :class="classes"
+    class="overflow-hidden block relative bg-primary"
+  >
+    <div class="absolute w-full h-full top-1/2 -translate-y-1/2 flex items-center justify-center">
+      <slot>
+        <img
+          class="w-full h-full"
+          :src="props.src"
+          :alt="props.alt"
+        >
+      </slot>
+    </div>
   </div>
 </template>
-
 <script lang="ts" setup>
-import { defineProps, computed } from 'vue'
+
+import {computed, PropType} from "vue";
 
 const props = defineProps({
-  size: {
-    type: String,
-    validator: function (value: string) {
-      return ['p', 'm', 'g'].indexOf(value) !== -1
-    },
-    default: 'm'
-  },
-
-  color: {
-    type: String,
-    validator: function (value: string) {
-      return ['light', 'dark'].indexOf(value) !== -1
-    },
-    default: 'light'
+  src: String,
+  alt: String,
+  size: [Number, String],
+  variant: {
+    type: String as PropType<"circle" | "square" | "rounded">,
+    default: "circle"
   }
 })
 
-const classes = computed(() => [
-  's-avatar',
-  `--is-size-${props.size}`,
-  `--is-color-${props.color}`
-])
-</script>
+const avatarSize = computed(() => ({
+  width: `${props.size}px`,
+  height: `${props.size}px`
+}))
 
-<style lang="scss">
-@import "./src/styles/_index.scss";
-.s-avatar {
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: color(neutral, base);
-  overflow: hidden;
-  .s-image {
-    margin-top: 4px;
-  }
-  &.--is-size-p{
-    height: 24px;
-    width: 24px;
-    & > .s-icon{
-      font-size: 0.9rem !important
-    }
-  }
-  &.--is-size-m{
-    height: 40px;
-    width: 40px;
-  }
-  &.--is-size-g{
-    height: 64px;
-    width: 64px;
-  }
-  &.--is-color-light{
-    background: color(primary, base);
-  }
-  &.--is-color-dark{
-    background: color(neutral, base);
-    color: color(primary, base);
-  }
+const imageVariant = computed(() => ({
+  "s-img-circle": props.variant === "circle",
+  "s-img-rounded": props.variant === "rounded",
+}))
+
+const classes = computed(() => ({
+    ...imageVariant.value,
+}))
+
+</script>
+<style lang="postcss" scoped>
+
+.s-img {
+  @apply inline-block h-6 w-6 rounded-full;
 }
-</style> -->
+
+.s-img-circle {
+  @apply rounded-full
+}
+
+.s-img-rounded {
+  @apply rounded-lg
+}
+
+</style>

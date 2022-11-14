@@ -53,7 +53,7 @@ export default {
 <script lang="ts" setup>
 import {computed, defineAsyncComponent, defineProps, onMounted, PropType, ref, useAttrs, useSlots} from "vue";
 import {useUUID} from "@/composables/useUUID";
-import STransition from "../STransition/STransition.vue";
+import STransition from "../STransition/Index.vue";
 import {useThrottleFn} from "@vueuse/core";
 
 const { uniqueId } = useUUID()
