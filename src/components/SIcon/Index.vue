@@ -1,21 +1,16 @@
 <template>
-  <!-- https://docs.iconify.design/icon-components/vue2/dimensions.html -->
   <Icon
     :icon="icon"
     :width="size"
     :height="size"
     :class="classes"
+    :style="{ color: props.color }"
     v-bind="$attrs"
   />
 </template>
 
 <script lang="ts" setup>
-// https://github.com/antfu/unplugin-icons/issues/5
-// unplugin-icon limitation: designed to be used statically
-// because of that it had to be combined with @iconify/vue2
-// import { Icon } from '@iconify/vue2'
 import { Icon } from '@iconify/vue';
-
 import { defineProps, computed } from 'vue'
 
 const props = defineProps({
@@ -25,8 +20,6 @@ const props = defineProps({
   },
   color: {
     type: String,
-    // text-gray-400
-    // hover:text-gray-300
     default: "gray"
   },
   size: {
