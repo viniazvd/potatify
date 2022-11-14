@@ -1,4 +1,4 @@
- {
+{
   "name": "vite-boilerplate",
   "private": true,
   "version": "0.0.0",
@@ -35,6 +35,7 @@
   },
   "types": "./dist/types/index.d.ts",
   "dependencies": {
+    "@formkit/auto-animate": "^1.0.0-beta.3",
     "@vueuse/core": "^9.4.0",
     "animate.css": "^4.1.1",
     "pinia": "^2.0.22",

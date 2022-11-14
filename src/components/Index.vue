@@ -1,6 +1,6 @@
 <template>
   <div class="m-12">
-    {{selected}}
+    <!-- {{selected}}
   <SCard no-padding>
     <SDataTable
       class="min-w-full"
@@ -16,15 +16,26 @@
         <SIcon icon="mdi:account"/>
       </template>
     </SDataTable>
-  </SCard>
+  </SCard> -->
+
+  <s-collapsible :is-opened="isOpened" @toggle="isOpened = !isOpened">
+    opa
+    <br>
+    opa
+    <br>
+    opa
+  </s-collapsible>
   </div>
 </template>
 
 <script setup lang="ts">
 import {onMounted, ref, watch} from 'vue'
 import SDataTable from "@components/SDataTable/SDataTable.vue";
+import SCollapsible from "@components/SCollapsible/Index.vue";
 import SCard from "@components/SCard/SCardV2.vue";
 import SIcon from "@components/SIcon/Index.vue";
+
+const isOpened = ref(false)
 
 const isLoading = ref(false)
 const selected = ref([])
