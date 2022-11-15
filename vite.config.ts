@@ -4,13 +4,15 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import checker from 'vite-plugin-checker'
-// import tsconfigPaths from 'vite-tsconfig-paths'
+import viteCompression from 'vite-plugin-compression'
+// import windiCss from 'vite-plugin-windicss'
 
 import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: { port: 8080 },
+
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
@@ -18,11 +20,8 @@ export default defineConfig({
       fileName: (format) => `potatify.${format}.js`,
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
       external: ['vue'],
       output: {
-        // Provide global variables to use in the UMD build, for externalized deps
         dir: "dist",
         globals: { vue: 'Vue' }
       }
@@ -37,8 +36,13 @@ export default defineConfig({
   },
 
   plugins: [
+    // windiCss(),
     vue(),
-    checker({ vueTsc: true })
+    checker({ vueTsc: true }),
+    viteCompression({
+      algorithm: 'gzip',
+      // deleteOriginFile: true
+    })
   ],
 
   test: {
