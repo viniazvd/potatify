@@ -31,5 +31,5 @@ export { default as SToggle } from './components/SToggle/Index.vue'
 export * from './components/SToolbar'
 export { default as STransition } from './components/STransition/Index.vue'
 
-// FUNCTIONS 
-export * from "./functions"
+// COMPOSABLES
+export * from "./composables"
