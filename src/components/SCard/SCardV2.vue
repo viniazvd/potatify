@@ -1,5 +1,5 @@
 <template>
-  <div class="card-shadows card-colors overflow-hidden" :class="classes">
+  <div data-testid="cardV2" class="base card-shadows card-colors overflow-hidden" :class="classes">
     <slot />
   </div>
 </template>
@@ -9,23 +9,28 @@ import {computed} from "vue";
 
 const props = defineProps({
   noPadding: { type: Boolean, default: false },
+
   backgroundColor: { type: String, default: "" }
 })
 
 const classes = computed(() => ({
   "card-padding": !props.noPadding,
-  [props.backgroundColor]: props.backgroundColor
+  [`bg-${props.backgroundColor}`]: props.backgroundColor
 }))
 
 </script>
 <style lang="postcss" scoped>
 
+.base {
+  @apply ring-1 ring-black/5 rounded-lg
+}
+
 .card-shadows {
-  @apply shadow sm:rounded-md dark:shadow-lg
+  @apply shadow shadow-xl dark:shadow-xl
 }
 
 .card-colors {
-  @apply ring-1 ring-black/5 bg-white dark:bg-stone-800
+  @apply bg-white dark:bg-stone-800
 }
 
 .card-padding {
