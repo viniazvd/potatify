@@ -1,6 +1,4 @@
-import "./index.css";
-
-export * from "./components/Grid"
+export * from "./components/Grid/Index"
 export { default as SAlert } from './components/SAlert/Index.vue'
 export { default as SAvatar } from './components/SAvatar/Index.vue'
 export { default as SBadge } from './components/SBadge/Index.vue'
