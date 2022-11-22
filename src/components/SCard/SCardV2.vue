@@ -1,5 +1,5 @@
 <template>
-  <div data-testid="cardV2" class="base card-shadows card-colors overflow-hidden" :class="classes">
+  <div data-testid="SCard" class="base card-shadows card-colors overflow-hidden" :class="classes">
     <slot />
   </div>
 </template>
