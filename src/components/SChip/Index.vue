@@ -21,9 +21,9 @@
 <script lang="ts" setup>
 import { computed } from '@vue/reactivity';
 import { defineAsyncComponent, PropType } from 'vue';
-import {CHIP_SIZES} from "@components/SChip/interfaces/chip-sizes.enum";
+import {CHIP_SIZES} from "./interfaces/chip-sizes.enum";
 
-const SIcon = defineAsyncComponent(() => import("@components/SIcon/Index.vue"));
+const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"));
 
 const props = defineProps({
   clearable: Boolean,
