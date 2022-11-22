@@ -15,7 +15,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "build:css": "NODE_ENV=production tailwindcss -o dist/tailwind.css -m",
+    "build": "vite build && vue-tsc --emitDeclarationOnly && yarn build:css",
     "preview": "vite preview",
     "test": "vitest --watch --ui",
     "coverage": "vitest run --coverage",
