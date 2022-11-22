@@ -1,15 +1,12 @@
 <template>
   <STransition :name="props.animation">
-    <div @click="closeOverlay" v-show="isOpen" class="fixed z-10 top-0 left-0 bg-black/50 w-full h-full">
-
-    </div>
+    <div v-show="isOpen" class="fixed z-10 top-0 left-0 bg-black/50 w-full h-full" @click="closeOverlay" />
   </STransition>
 </template>
 <script lang="ts" setup>
-import { defineAsyncComponent, PropType } from 'vue';
+import { PropType } from 'vue';
+import STransition from "../STransition/Index.vue";
 import { ANIMATION_LIST } from '../STransition/AnimationNames';
-
-const STransition = defineAsyncComponent(() => import("@components/STransition/Index.vue"));
 
 const props = defineProps({
   animation: {
@@ -30,6 +27,4 @@ function closeOverlay () {
   };
 
 }
-
 </script>
-<style lang="postcss"></style>
