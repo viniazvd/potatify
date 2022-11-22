@@ -1,7 +1,7 @@
 import { describe as when, it } from "vitest";
 import {shallowMount, VueWrapper} from "@vue/test-utils";
-import SAvatarV2 from "./SAvatar.vue";
-import {S_AVATAR_VARIANTS} from "./interfaces/SAvatar.variants";
+import SAvatarV2 from "../SAvatar.vue";
+import {S_AVATAR_VARIANTS} from "../interfaces/SAvatar.variants";
 
 let wrapper: VueWrapper;
 
