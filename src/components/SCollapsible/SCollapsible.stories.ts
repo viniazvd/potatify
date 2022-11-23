@@ -1,7 +1,7 @@
 import type { Meta, Story } from "@storybook/vue3";
 import { ref } from 'vue';
 import SCollapsible from "./Index.vue";
-import SButton from "../SButton/Index.vue";
+import SButton from "../SButton/SButton.vue";
 
 interface SCollapsibleProps {
   height?: number,

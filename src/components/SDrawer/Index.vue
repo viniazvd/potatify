@@ -7,7 +7,6 @@
 </template>
 <script lang="ts" setup>
 import STransition from "@components/STransition/Index.vue";
-
 import SSidebar from "@components/SSidebar/SSidebar.vue"
 
 const props = defineProps({

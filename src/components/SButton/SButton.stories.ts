@@ -1,5 +1,5 @@
 import type {Meta, Story} from "@storybook/vue3";
-import SButton from "./Index.vue";
+import SButton from "./SButton.vue";
 import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto";
 
 export default {

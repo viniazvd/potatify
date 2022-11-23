@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { provide } from 'vue'
-import SButton from '@components/SButton/Index.vue'
+import SButton from '@components/SButton/SButton.vue'
 import SFeedback from '@components/SFeedback/Index.vue'
 import useFeedback from '@/composables/useFeedback'
 

@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import type { Meta, Story } from "@storybook/vue3"
 import SDrawer from "./Index.vue"
-import SButton from "../SButton/Index.vue";
+import SButton from "../SButton/SButton.vue";
 
 interface SDrawerProps {
   isOpened: boolean,
