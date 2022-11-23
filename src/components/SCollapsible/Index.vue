@@ -1,6 +1,6 @@
 <template>
   <!-- <keep-alive> -->
-    <div ref="collapsibleEl">
+    <div ref="collapsibleEl" class="w-full">
       <div v-if="!noHeader" class="header" @click.stop="emit('toggle')">
         <slot name="header">
           <s-icon icon="ant-design:close-outlined" />
@@ -36,6 +36,6 @@ const emit = defineEmits<{ (e: 'toggle'): void }>()
 
 <style lang="postcss" scoped>
 .header {
-  @apply cursor-pointer text-right pr-4 p-2
+  @apply w-full cursor-pointer pr-4 p-2
 }
 </style>
