@@ -1,8 +1,8 @@
 <template>
-  <div class="flex bg-primary rounded">
+  <div class="flex rounded bg-primary select-none">
     <s-collapsible :is-opened="isOpened">
-      <template v-slot:header>
-        <div @click.stop="isOpened = !isOpened; emit('select:item', props.item)" class="relative w-full flex items-center">
+      <template #header>
+        <div @click.stop="onClick" :class="['item rounded', disabled, hover]">
           <s-icon :icon="props.item.icon" color="white" />
 
           <span class="pl-3 text-white">{{ props.item.text }}</span>
@@ -11,15 +11,15 @@
             v-if="items?.length"
             icon="mdi:chevron-down"
             color="white"
-            :class="['absolute right-0', isOpened && 'rotate-180']"
+            :class="['absolute right-2 transition-transform', isOpened && 'rotate-180']"
           />
         </div>
       </template>
 
       <div
         v-for="groupItem in items"
-        :key="item.text"
-        class="w-full flex items-center p-2"
+        :key="groupItem.text"
+        :class="['item', groupItem.disabled ? 'bg-gray-400' : 'hover:bg-teal-600']"
         @click.stop="emit('select:item', groupItem)"
       >
         <s-icon :icon="groupItem.icon" color="white" />
@@ -32,14 +32,15 @@
 
 <script lang="ts" setup>
 import { computed, defineAsyncComponent, PropType, ref } from 'vue'
+import SCollapsible from '../SCollapsible/Index.vue'
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
-const SCollapsible = defineAsyncComponent(() => import("../SCollapsible/Index.vue"))
 
 type Item = {
   icon: string,
   text: string,
   active?: boolean,
-  items?: Array<{ icon: string, text: string }>
+  disabled?: boolean,
+  items?: Array<{ icon: string, text: string, disabled?: boolean }>
 }
 
 const props = defineProps({
@@ -55,4 +56,19 @@ const emit = defineEmits<{ (e: 'select:item', item: Item): void }>()
 
 const isOpened = ref(!!props.item.active)
 const items = computed(() => props.item?.items)
+const disabled = computed(() => props.item.disabled && 'bg-gray-400')
+const hover = computed(() => props.item.disabled ? 'hover:bg-gray-400' : 'hover:bg-teal-600')
+
+function onClick (): void {
+  if (props.item.disabled) return
+
+  emit('select:item', props.item)
+  isOpened.value = !isOpened.value
+}
 </script>
+
+<style lang="postcss" scoped>
+.item {
+  @apply w-full flex items-center p-2 transition-all
+}
+</style>
