@@ -36,6 +36,6 @@ const emit = defineEmits<{ (e: 'toggle'): void }>()
 
 <style lang="postcss" scoped>
 .header {
-  @apply w-full cursor-pointer pr-4 p-2
+  @apply w-full cursor-pointer
 }
 </style>
