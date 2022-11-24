@@ -2,13 +2,13 @@
   <div class="flex flex-col gap-4 p-4">
     <s-button @click="createFeedback({ type: 'info', message: 'kkkk' })">from app</s-button>
 
-    <s-list-item v-for="item in items" :key="item.text" :item="item" class="w-52" />
+    <s-list v-for="item in items" :key="item.text" :item="item" class="w-52" />
 
     <hr>
 
-    <s-list-item :item="item" />
+    <!-- <s-list :item="item" /> -->
 
-    <s-list-item :item="itemGroup" />
+    <!-- <s-list :item="itemGroup" /> -->
 
     <router-view></router-view>
 
@@ -31,19 +31,19 @@
 <script setup lang="ts">
 import { provide, ref } from 'vue'
 import SButton from '@components/SButton/Index.vue'
-import SListItem from '@components/SListItem/Index.vue'
+import SList from '@components/SList/Index.vue'
 import SFeedback from '@components/SFeedback/Index.vue'
 import useFeedback from '@/composables/useFeedback'
 
 const { feedbacks, createFeedback, removeFeedbacks } = useFeedback()
 
-const item = ref({ icon: 'material-symbols:star-outline-rounded', text: 'Item sozinho boladao' })
+const item = ref({ icon: 'material-symbols:star-outline-rounded', text: 'Item sozinho boladao', disabled: true })
 
 const itemGroup = ref({
   icon: 'material-symbols:star-outline-rounded',
   text: 'Item grupo boladao',
   items: [
-    { icon: 'material-symbols:star-outline-rounded', text: 'Item 1' },
+    { icon: 'material-symbols:star-outline-rounded', text: 'Item 11', disabled: true },
     { icon: 'material-symbols:star-outline-rounded', text: 'Item 2' },
   ]
 })
@@ -55,11 +55,14 @@ const items = ref([
     text: 'Item 2',
     active: true,
     items: [
-      { icon: 'material-symbols:star-outline-rounded', text: 'Item 21' },
+      { icon: 'material-symbols:star-outline-rounded', text: 'Item 211', disabled: true },
       { icon: 'material-symbols:star-outline-rounded', text: 'Item 22' },
     ]
   },
-  { icon: 'material-symbols:star-outline-rounded', text: 'Item 3' },
+  { icon: 'material-symbols:star-outline-rounded', text: 'Item 3', items: [
+      { icon: 'material-symbols:star-outline-rounded', text: 'Item 211', disabled: true },
+      { icon: 'material-symbols:star-outline-rounded', text: 'Item 22' },
+    ] },
   { icon: 'material-symbols:star-outline-rounded', text: 'Item 4' },
 ])
 
