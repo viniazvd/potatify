@@ -1,6 +1,14 @@
 <template>
   <div class="m-12">
-    <SCard no-padding>
+    <SSelect
+      v-model="modelValue"
+      :items="items"
+      itemValue="id"
+      item-text="name"
+      multiple
+      label="Meu select"
+    ></SSelect>
+    <SCard no-padding class="mt-12">
       <div class="p-4 prose prose-xl dark:prose-invert">
         <h3>Garlic bread with cheese: What the science tells us</h3>
       </div>
@@ -13,7 +21,7 @@
         </p>
       </div>
     </SCard>
-
+<!--    // https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1-->
     <SThemeProvider dark #default="{ toggleDarkTheme, isDark }">
       <button @click="toggleDarkTheme">Change dark mode - {{isDark}}</button>
       <SCard no-padding>
@@ -30,5 +38,12 @@
 import SCard from "./SCard/SCardV2.vue";
 import SDivider  from "./SDivider/Index.vue";
 import SThemeProvider from "./SThemeProvider/SThemeProvider.vue";
+import SSelect from "./SSelect/Index.vue";
+import {ref} from "vue";
 
+const modelValue = ref();
+const items = ref([
+  { name: "Allan", favoriteThing: "Gnocci", id: 1 },
+  { name: "Jojo", favoriteThing: "Bizarre Adventures", id: 2 },
+])
 </script>

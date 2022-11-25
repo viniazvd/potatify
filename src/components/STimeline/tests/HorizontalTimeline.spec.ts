@@ -12,7 +12,7 @@ when("I create a horizontal timeline", () => {
     const timelineItems = [
       { description: "description", title: "title", subtitle: "subtitle", icon: "mdi:close" },
       { description: "description", title: "title", subtitle: "subtitle", icon: "mdi:close" },
-      { description: "description", title: "title", subtitle: "subtitle", icon: "mdi:close" }
+      { description: "description", title: "title", subtitle: "subtitle", icon: "mdi:close" },
     ] as TimelineItem[];
 
     wrapper = shallowMount(SHorizontalTimeline, {

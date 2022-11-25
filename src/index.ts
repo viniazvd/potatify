@@ -1,13 +1,13 @@
-export * from "./components/Grid/Index"
+export * from "./components/Grid/Index";
 export { default as SAlert } from './components/SAlert/Index.vue'
 export { default as SAvatar } from './components/SAvatar/Index.vue'
-export { default as SBadge } from './components/SBadge/Index.vue'
+export * from './components/SBadge';
 export { default as SButton } from './components/SButton/Index.vue'
-export { default as SCard } from './components/SCard/SCardV2.vue'
+export * from './components/SCard';
 export { default as SCheckbox } from './components/SCheckbox/Index.vue'
 export { default as SChip } from './components/SChip/Index.vue'
 export { default as SCollapsible } from './components/SCollapsible/Index.vue'
-export * from './components/SDataTable'
+export * from './components/SDataTable';
 export { default as SDivider } from './components/SDivider/Index.vue'
 export { default as SDrawer } from './components/SDrawer/Index.vue'
 export { default as SDropdown } from './components/SDropdown/Index.vue'
@@ -24,10 +24,10 @@ export { default as SRadioGroup } from './components/SRadioGroup/Index.vue'
 export { default as SSelect } from './components/SSelect/Index.vue'
 export { default as SSidebar } from './components/SSidebar/SSidebar.vue'
 export { default as SStepper } from './components/SStepper/Index.vue'
-export { default as STimeline } from './components/STimeline/Index.vue'
+export * from './components/STimeline';
 export { default as SToggle } from './components/SToggle/Index.vue'
-export * from './components/SToolbar'
+export * from './components/SToolbar';
 export { default as STransition } from './components/STransition/Index.vue'
 
 // COMPOSABLES
-export * from "./composables"
+export * from "./composables";
