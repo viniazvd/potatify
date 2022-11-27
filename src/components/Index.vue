@@ -1,49 +1,80 @@
 <template>
   <div class="m-12">
-    <SSelect
-      v-model="modelValue"
-      :items="items"
-      itemValue="id"
-      item-text="name"
-      multiple
-      label="Meu select"
-    ></SSelect>
-    <SCard no-padding class="mt-12">
-      <div class="p-4 prose prose-xl dark:prose-invert">
-        <h3>Garlic bread with cheese: What the science tells us</h3>
-      </div>
-      <SDivider />
-      <div>
-        <p class="prose prose-xl p-4 dark:prose-invert">
-          For years parents have espoused the health benefits of eating garlic bread with cheese to their
-          children, with the food earning such an iconic status in our culture that kids will often dress
-          up as warm, cheesy loaf for Halloween.
-        </p>
-      </div>
-    </SCard>
-<!--    // https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1-->
-    <SThemeProvider dark #default="{ toggleDarkTheme, isDark }">
-      <button @click="toggleDarkTheme">Change dark mode - {{isDark}}</button>
-      <SCard no-padding>
-        <div class="p-4">
-          meus dados
-        </div>
-      </SCard>
-    </SThemeProvider>
+    <SCardV2 class="dropdown-style max-w-[500px] prose prose-stone prose:md">
+      <p class="mb-4 pl-2">Actions center</p>
 
+      <div class="grid gap-4 grid-rows-3 grid-cols-4">
+        <SCardV2 class="row-span-3 col-span-2 dropdown-style lighten h-fit py-2 px-6" no-padding>
+          <!-- @TODO avaliar como SList -->
+          <div class="flex gap-2 items-center rounded-lg">
+            <div class="rounded-full bg-blue-500 p-1 w-[40px] h-[40px] flex items-center justify-center">
+              <SIcon icon="mdi:wifi" color="white"></SIcon>
+            </div>
+            <p>Wifi</p>
+          </div>
+          <div class="flex gap-2 items-center rounded-lg">
+            <!-- @TODO incluir opção no SButton -->
+            <div class="rounded-full bg-blue-500 p-1 w-[40px] h-[40px] flex items-center justify-center">
+              <SIcon icon="mdi:bluetooth" color="white"></SIcon>
+            </div>
+            <p>Bluetooth</p>
+          </div>
+          <div class="flex gap-2 items-center rounded-lg">
+            <!-- @TODO incluir opção no SButton -->
+            <div class="rounded-full bg-blue-500 p-1 w-[40px] h-[40px] flex items-center justify-center">
+              <SIcon icon="mdi:apple" color="white"></SIcon>
+            </div>
+            <p>Airdrop</p>
+          </div>
+        </SCardV2>
+
+        <SCardV2 class="row-span-1 col-span-2 dropdown-style lighten" no-padding>
+          <div class="flex gap-4 items-center px-4">
+            <div class="rounded-full bg-indigo-500 p-1 w-[40px] h-[40px] flex items-center justify-center">
+              <SIcon icon="ri:moon-fill" color="white"></SIcon>
+            </div>
+            <p>Sleep</p>
+          </div>
+        </SCardV2>
+        <SCardV2 class="row-span-2 h-fit col-span-1 dropdown-style lighten w-full" no-padding>
+          <div class="p-4 text-center">
+            <div class="rounded-full m-auto w-[40px] h-[40px] flex items-center justify-center rotate-90">
+              <SIcon size="30" icon="ic:baseline-battery-20" color="gray"></SIcon>
+            </div>
+            <p class="m-1">Battery</p>
+          </div>
+        </SCardV2>
+        <SCardV2 class="row-span-2 h-fit col-span-1 dropdown-style lighten w-full" no-padding>
+          <div class="p-4 text-center">
+            <div class="rounded-full m-auto w-[40px] h-[40px] flex items-center justify-center">
+              <SIcon icon="ion:copy" color="gray"></SIcon>
+            </div>
+            <!-- REAVALIAR OS ESPAÇAMENTOS ENTRE TAGS P -->
+            <p class="m-1">Share</p>
+          </div>
+        </SCardV2>
+      </div>
+
+    </SCardV2>
   </div>
 </template>
 
 <script setup lang="ts">
-import SCard from "./SCard/SCardV2.vue";
-import SDivider  from "./SDivider/Index.vue";
-import SThemeProvider from "./SThemeProvider/SThemeProvider.vue";
-import SSelect from "./SSelect/Index.vue";
-import {ref} from "vue";
+import SCardV2 from "./SCard/SCardV2.vue";
+import SIcon from "./SIcon/Index.vue";
 
-const modelValue = ref();
-const items = ref([
-  { name: "Allan", favoriteThing: "Gnocci", id: 1 },
-  { name: "Jojo", favoriteThing: "Bizarre Adventures", id: 2 },
-])
 </script>
+<style scoped>
+
+/* ISSO PODE SER UM UTIL PRA BLUR BACKDROP */
+.dropdown-style {
+  @apply rounded-2xl shadow-xl backdrop-blur-2xl bg-blend-overlay;
+  background-color: #ffffff7d;
+}
+
+.dropdown-style.lighten {
+  @apply bg-blend-lighten backdrop-blur-2xl;
+  background-color: #ffffff5d;
+}
+
+</style>

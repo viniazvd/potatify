@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col gap-4 p-4">
+  <main class="flex flex-col gap-4 p-4">
     <router-view></router-view>
 
     <SCard>
       <SHorizontalTimeline :timeline-items="timelineItems" />
     </SCard> 
 
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -35,3 +35,10 @@ const timelineItems = ref([
 ])
 
 </script>
+<style>
+html {
+  background: url("./assets/wallpaper-challenge.jpg");
+  background-size: cover;
+  background-position-x: -450px;
+}
+</style>
