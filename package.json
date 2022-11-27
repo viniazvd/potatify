@@ -15,7 +15,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "build:css": "cross-env NODE_ENV=production tailwindcss -o dist/tailwind.css -m",
+    "build": "vite build && vue-tsc --emitDeclarationOnly && yarn build:css",
     "preview": "vite preview",
     "test": "vitest --watch --ui",
     "coverage": "vitest run --coverage",
@@ -54,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@iconify/vue": "^4.0.0",
+    "@pinia/testing": "^0.0.14",
     "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
@@ -70,6 +72,8 @@
     "@vue/test-utils": "^2.1.0",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.2.5",
+    "cross-env": "^7.0.3",
+    "form-data": "^4.0.0",
     "jsdom": "^20.0.1",
     "postcss": "^8.4.18",
     "sass": "^1.55.0",

@@ -32,7 +32,8 @@
                   index: item.index,
                   isSelected: isSelected(item.data)
                 }">
-                <SCheckbox :checked="isSelected(item.data)" :label="item.data.name" />
+                <SCheckbox v-if="props.multiple" :checked="isSelected(item.data)" :label="item.data[props.itemText]" />
+                <span v-else>{{ item.data[props.itemText] }}</span>
               </slot>
             </div>
           </div>

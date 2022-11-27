@@ -11,7 +11,7 @@
         <span class="inner-appendages">
           <slot name="prepend:inner"></slot>
         </span>
-        <input v-model="modelValue" class="base-input" v-bind="$attrs" :id="uniqueId" />
+        <input v-model="value" class="base-input" v-bind="$attrs" :id="uniqueId" />
         <span
             @click="emit('click:append-inner')"
             class="inner-appendages right-0 top-0 hover:bg-primary" v-if="props.appendInnerIcon">
@@ -36,7 +36,7 @@ import {useUUID} from "@/composables/useUUID";
 
 const { uniqueId } = useUUID()
 
-const emit = defineEmits(["click:append-outer", "click:append-inner"])
+const emit = defineEmits(["click:append-outer", "click:append-inner", "update:modelValue"])
 
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
 
@@ -46,6 +46,13 @@ const slots = useSlots();
 const hasOuterSlots = computed(() => ({
   "gap-3": Object.keys(slots).includes("outer")
 }))
+
+const value = computed({
+  get: () => props.modelValue,
+  set: (value) => {
+    emit("update:modelValue", value)
+  }
+})
 
 const props = defineProps({
   label: {

@@ -1,0 +1,1 @@
+export { default as SCard } from "./SCardV2.vue";
