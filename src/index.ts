@@ -1,5 +1,5 @@
 export * from "./components/Grid/Index";
-export { default as SAlert } from './components/SAlert/Index.vue'
+export * from './components/SAlert'
 export { default as SAvatar } from './components/SAvatar/Index.vue'
 export * from './components/SBadge';
 export { default as SButton } from './components/SButton/Index.vue'
