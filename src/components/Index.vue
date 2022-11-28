@@ -56,12 +56,28 @@
       </div>
 
     </SCardV2>
+
+    <SDropzoneUpload
+      v-model="fileUpload"
+      accept="image/png, image/svg, image/jpg"
+      error-message="Sua imagem não respeita os limites"
+      multiple
+      :max-width="1600"
+      :max-height="1600"
+    ></SDropzoneUpload>
+    <p>Dropped {{fileUpload}}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import SCardV2 from "./SCard/SCardV2.vue";
 import SIcon from "./SIcon/Index.vue";
+import SDropzoneUpload from "./SUpload/SDropzoneUpload.vue"
+import {ref, watch} from "vue";
+
+const fileUpload = ref();
+
+watch(fileUpload, (newVal) => console.log(newVal))
 
 </script>
 <style scoped>

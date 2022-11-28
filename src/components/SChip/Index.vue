@@ -6,8 +6,9 @@
       :class="[clearable, withSize]"
       >
       <slot name="image">
-        <img src="" alt="" :class="[withImage]" />
+        <img :src="props.imgSrc" alt="" :class="[withImage]" />
       </slot>
+
       <slot />
 
       <slot name="clearable">
@@ -73,6 +74,10 @@ const withImage = computed(() => props.imgSrc && "chip-image")
 
 .chips .large.clearable {
   @apply pr-3 !important
+}
+
+.chip-image {
+  @apply h-6 w-6 rounded-full
 }
 
 </style>

@@ -1,418 +1,57 @@
 {
-  "numTotalTestSuites": 19,
-  "numPassedTestSuites": 19,
-  "numFailedTestSuites": 0,
+  "numTotalTestSuites": 3,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 1,
   "numPendingTestSuites": 0,
-  "numTotalTests": 32,
-  "numPassedTests": 32,
+  "numTotalTests": 3,
+  "numPassedTests": 3,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1669401080564,
-  "success": true,
+  "startTime": 1669613957317,
+  "success": false,
   "testResults": [
     {
       "assertionResults": [
         {
           "ancestorTitles": [
             "",
-            "No props are informed"
+            "I customize the upload icon"
           ],
-          "fullName": " No props are informed Should render with defaults",
-          "status": "skipped",
-          "title": "Should render with defaults",
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Props are modified"
-          ],
-          "fullName": " Props are modified Should have no padding",
-          "status": "skipped",
-          "title": "Should have no padding",
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Props are modified"
-          ],
-          "fullName": " Props are modified Should change the colours",
-          "status": "skipped",
-          "title": "Should change the colours",
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669401080564,
-      "endTime": 1669401080564,
-      "status": "failed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SCard/SCard.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a SCard"
-          ],
-          "fullName": " I create a SCard Should have a padding and no background-color",
+          "fullName": " I customize the upload icon Should not change the default icon when not passed through props",
           "status": "passed",
-          "title": "Should have a padding and no background-color",
-          "duration": 57,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card with no padding"
-          ],
-          "fullName": " I create a card with no padding Should include a class no-padding",
-          "status": "passed",
-          "title": "Should include a class no-padding",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card and give a background color"
-          ],
-          "fullName": " I create a card and give a background color Should have a class starting with bg",
-          "status": "passed",
-          "title": "Should have a class starting with bg",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card and give a background color"
-          ],
-          "fullName": " I create a card and give a background color Should have a class starting with bg",
-          "status": "passed",
-          "title": "Should have a class starting with bg",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card and give a background color"
-          ],
-          "fullName": " I create a card and give a background color Should have a class starting with bg",
-          "status": "passed",
-          "title": "Should have a class starting with bg",
-          "duration": 4,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669401092826,
-      "endTime": 1669401092899,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SCard/tests/SCard.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a chip"
-          ],
-          "fullName": " I create a chip Should create a chip with size sm",
-          "status": "passed",
-          "title": "Should create a chip with size sm",
-          "duration": 40,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a chip"
-          ],
-          "fullName": " I create a chip Should create a chip with size md",
-          "status": "passed",
-          "title": "Should create a chip with size md",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a chip"
-          ],
-          "fullName": " I create a chip Should create a chip with size lg",
-          "status": "passed",
-          "title": "Should create a chip with size lg",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a clearable chip"
-          ],
-          "fullName": " I create a clearable chip Should have a button",
-          "status": "passed",
-          "title": "Should have a button",
-          "duration": 8,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669401092855,
-      "endTime": 1669401092911,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SChip/tests/chip.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "no props are informed"
-          ],
-          "fullName": " no props are informed should use the fallback content",
-          "status": "passed",
-          "title": "should use the fallback content",
-          "duration": 38,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "used with src and alt"
-          ],
-          "fullName": " used with src and alt Should render the component correctly",
-          "status": "passed",
-          "title": "Should render the component correctly",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should render a rounded image when rounded argument is informed",
-          "status": "passed",
-          "title": "Should render a rounded image when rounded argument is informed",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should render a circle image when circle argument is informed",
-          "status": "passed",
-          "title": "Should render a circle image when circle argument is informed",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should render a square image when square argument is informed",
-          "status": "passed",
-          "title": "Should render a square image when square argument is informed",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I define the size"
-          ],
-          "fullName": " I define the size Should apply width and height equally to the image",
-          "status": "passed",
-          "title": "Should apply width and height equally to the image",
-          "duration": 6,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669401092856,
-      "endTime": 1669401092928,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SAvatar/tests/SAvatar.test.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should put the label exactly as informed in props",
-          "status": "passed",
-          "title": "Should put the label exactly as informed in props",
-          "duration": 36,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should change the values as parent changes them",
-          "status": "passed",
-          "title": "Should change the values as parent changes them",
-          "duration": 24,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should change the values as parent changes them",
-          "status": "passed",
-          "title": "Should change the values as parent changes them",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should be disabled when I set on component and should add the classes accordingly",
-          "status": "passed",
-          "title": "Should be disabled when I set on component and should add the classes accordingly",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should invert the label in case it is needed",
-          "status": "passed",
-          "title": "Should invert the label in case it is needed",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should apply the size (undefined) classes (md-button) accordingly ",
-          "status": "passed",
-          "title": "Should apply the size (undefined) classes (md-button) accordingly ",
-          "duration": 15,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should apply the size (lg) classes (lg-button) accordingly ",
-          "status": "passed",
-          "title": "Should apply the size (lg) classes (lg-button) accordingly ",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should apply the size (md) classes (md-button) accordingly ",
-          "status": "passed",
-          "title": "Should apply the size (md) classes (md-button) accordingly ",
-          "duration": 3,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669401093046,
-      "endTime": 1669401093144,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SToggle/tests/SToggle.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a horizontal timeline"
-          ],
-          "fullName": " I create a horizontal timeline Should have the length of items defined in timeline items",
-          "status": "passed",
-          "title": "Should have the length of items defined in timeline items",
+          "title": "Should not change the default icon when not passed through props",
           "duration": 30,
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "I create a horizontal timeline"
+            "I customize the upload icon"
           ],
-          "fullName": " I create a horizontal timeline Should render the items with only the title",
+          "fullName": " I customize the upload icon Should change the icon as passed in props",
           "status": "passed",
-          "title": "Should render the items with only the title",
-          "duration": 4,
+          "title": "Should change the icon as passed in props",
+          "duration": 5,
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "I create a horizontal timeline"
+            "I customize the upload icon"
           ],
-          "fullName": " I create a horizontal timeline Should render the props with de values accordingly",
+          "fullName": " I customize the upload icon Should change the icon as passed in props",
           "status": "passed",
-          "title": "Should render the props with de values accordingly",
-          "duration": 3,
+          "title": "Should change the icon as passed in props",
+          "duration": 4,
           "failureMessages": []
         }
       ],
-      "startTime": 1669401209322,
-      "endTime": 1669401209359,
+      "startTime": 1669619866153,
+      "endTime": 1669619866192,
       "status": "passed",
       "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/STimeline/tests/HorizontalTimeline.spec.ts"
+      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SUpload/tests/SDropzoneInput.spec.ts"
     }
   ]
 }
