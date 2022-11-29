@@ -154,11 +154,9 @@ function update (x: number, y: number) {
   const halfSelector = selector.value / 2
   const { width, height } = coordinates.value
 
-  coordinates.value.y = y <= selector.value / 2 ? halfSelector : height - halfSelector
-
-  // if (y <= selector.value / 2) coordinates.value.y = halfSelector // up
+  if (y <= selector.value / 2) coordinates.value.y = halfSelector // up
   if (x <= selector.value / 2) coordinates.value.x = halfSelector // left
-  // if (y >= height - selector.value / 2) coordinates.value.y = height - halfSelector // down
+  if (y >= height - selector.value / 2) coordinates.value.y = height - halfSelector // down
   if (x >= width - selector.value / 2) coordinates.value.x = width - halfSelector // right
 
   if (selector.value > size.value) selector.value = size.value
