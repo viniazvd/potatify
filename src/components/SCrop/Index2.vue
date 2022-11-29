@@ -51,6 +51,8 @@ const props = defineProps({
   image: String
 })
 
+const emit = defineEmits(['crop'])
+
 const container = ref(null)
 const draggable = ref(null)
 
@@ -90,12 +92,12 @@ function crop () {
     container.value,
     // Math.ceil(cropX.value || 0),
     // Math.ceil(cropY.value || 0),
-    0, 0,    // top left corner of the grab
+    cropX.value, cropY.value,    // top left corner of the grab
     500, 500,  // how big of a grab
     0, 0,    // where you want the crop to be placed
     200, 300 // size of placement of what was grabbed
   )
 
-  console.log(canvas.value.toDataURL?.())
+  emit('crop', canvas.value.toDataURL?.())
 }
 </script>
