@@ -1,37 +1,44 @@
 <template>
-  <main class="flex flex-col gap-4 p-4">
+  <main class="flex flex-col gap-4">
     <router-view></router-view>
 
     <input type="file" @change="getBase64">
 
-    <s-crop ref="cropRef" :src="src" @cropped="image = $event" />
+<!--    <s-crop ref="cropRef" :src="src" @cropped="image = $event" />-->
+    <s-crop2 class="m-auto" :image="image" />
 
-    <img v-if="image" class="image" :src="image" />
+<!--    <img v-if="image" class="image" :src="image" />-->
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import SCrop from '@components/SCrop/Index.vue'
+import SCrop2 from '@components/SCrop/Index2.vue'
 
 const src = ref('')
-const image = ref(null)
+const image = ref('')
 const cropRef = ref(null)
 
 function getBase64 (event: any) {
   const file = event.target.files[0]
+  //
+  // let reader = new FileReader()
+  // reader.readAsDataURL(file)
+  // reader.onload = () => {
+  //   // @ts-ignore
+  //   src.value = reader.result
+  // }
 
-  let reader = new FileReader()
-  reader.readAsDataURL(file)
-  // @ts-ignore
-  reader.onload = () => src.value = reader.result
+  image.value = URL.createObjectURL(event!.target!.files[0])
 }
 </script>
 
 <style>
 html {
-  background: url("./assets/wallpaper-challenge.jpg");
-  background-size: cover;
-  background-position-x: -450px;
+  background-color: lightgray;
+  /*background: url("./assets/wallpaper-challenge.jpg");*/
+  /*background-size: cover;*/
+  /*background-position-x: -450px;*/
 }
 </style>
