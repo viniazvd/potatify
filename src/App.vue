@@ -2,39 +2,32 @@
   <main class="flex flex-col gap-4 p-4">
     <router-view></router-view>
 
-    <SCard>
-      <SHorizontalTimeline :timeline-items="timelineItems" />
-    </SCard> 
+    <input type="file" @change="getBase64">
 
+    <s-crop ref="cropRef" :src="src" @cropped="image = $event" />
+
+    <img v-if="image" class="image" :src="image" />
   </main>
 </template>
 
 <script setup lang="ts">
-import SButton from '@components/SButton/Index.vue'
-import SCard from '@components/SCard/SCardV2.vue'
-import SHorizontalTimeline from "@components/STimeline/HorizontalTimeline.vue";
-import { ref } from 'vue';
+import { ref } from 'vue'
+import SCrop from '@components/SCrop/Index.vue'
 
-const timelineItems = ref([
-  { 
-    title: "Potatify Library v1.0.0",
-    subtitle: "Released on December 2, 2021",
-    description: "Get started with dozens of web components and interactive elements.",
-    icon: "mdi:calendar"
-  },
-  { 
-    title: "Potatify Library v1.2.0",
-    subtitle: "Released on December 23, 2021",
-    description: "Get started with dozens of web components and interactive elements."
-  },
-  { 
-    title: "Potatify Library v1.3.0",
-    subtitle: "Released on December 23, 2021",
-    description: "Get started with dozens of web components and interactive elements."
-  }
-])
+const src = ref('')
+const image = ref(null)
+const cropRef = ref(null)
 
+function getBase64 (event: any) {
+  const file = event.target.files[0]
+
+  let reader = new FileReader()
+  reader.readAsDataURL(file)
+  // @ts-ignore
+  reader.onload = () => src.value = reader.result
+}
 </script>
+
 <style>
 html {
   background: url("./assets/wallpaper-challenge.jpg");
