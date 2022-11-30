@@ -16,6 +16,7 @@ export { default as SIcon } from './components/SIcon/Index.vue'
 export { default as SInput } from './components/SInput/Index.vue'
 export { default as SInputContainer } from './components/SInputContainer/Index.vue'
 export { default as SLink } from './components/SLink/Index.vue'
+export { default as SList } from './components/SList/Index.vue'
 export { default as SLoader } from './components/SLoader/Index.vue'
 export { default as SModal } from './components/SModal/Index.vue'
 export { default as SOverlay } from './components/SOverlay/Index.vue'
@@ -25,7 +26,7 @@ export { default as SSelect } from './components/SSelect/Index.vue'
 export { default as SSidebar } from './components/SSidebar/SSidebar.vue'
 export { default as SStepper } from './components/SStepper/Index.vue'
 export { default as STabber } from './components/STabber/Index.vue'
-export * from './components/STabber';
+// export * from './components/STabber';
 export * from './components/STimeline';
 export { default as SToggle } from './components/SToggle/Index.vue'
 export * from './components/SToolbar';
