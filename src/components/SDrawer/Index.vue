@@ -6,6 +6,7 @@
       tabindex="-1"
       class="s-drawer border-r border-stone-500/20"
       aria-labelledby="drawer-navigation-label"
+      :class="[behavior]"
     >
       <slot />
     </div>
@@ -24,16 +25,22 @@ const props = defineProps({
   size: {
     type: Number,
     default: 320
-  }
+  },
+
+  permanent: Boolean
 })
 
-const width = computed(() => ({
-  width: `${props.size}px`
-}))
+const width = computed(() => ({ width: `${props.size}px` }))
+const behavior = computed(() => [ props.permanent ? 'permanent' : 'flex' ])
+// const side = computed(() => [ props.side === "right" ? "right" : "left" ])
 </script>
 
 <style lang="postcss" scoped>
 .s-drawer {
-  @apply fixed top-0 left-0 z-50 h-screen overflow-y-auto bg-white dark:bg-stone-800;
+  @apply z-50 h-screen overflow-y-auto bg-white dark:bg-stone-800;
+}
+
+.permanent {
+  @apply fixed top-0 left-0
 }
 </style>
