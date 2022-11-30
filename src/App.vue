@@ -1,44 +1,45 @@
 <template>
-  <main class="flex flex-col gap-4 p-4">
+  <main class="flex flex-col gap-4">
     <router-view></router-view>
 
-    <SCard>
-      <SHorizontalTimeline :timeline-items="timelineItems" />
-    </SCard> 
+    <input type="file" @change="getBase64">
 
+<!--    <s-crop ref="cropRef" :src="src" @cropped="image = $event" />-->
+    <s-crop2 class="m-auto" :image="image" @crop="croppedImage = $event"/>
+
+    <img v-if="croppedImage" class="w-[400px] h-[200px]" :src="croppedImage" />
   </main>
 </template>
 
 <script setup lang="ts">
-import SButton from '@components/SButton/Index.vue'
-import SCard from '@components/SCard/SCardV2.vue'
-import SHorizontalTimeline from "@components/STimeline/HorizontalTimeline.vue";
-import { ref } from 'vue';
+import { ref } from 'vue'
+import SCrop from '@components/SCrop/Index.vue'
+import SCrop2 from '@components/SCrop/Index2.vue'
 
-const timelineItems = ref([
-  { 
-    title: "Potatify Library v1.0.0",
-    subtitle: "Released on December 2, 2021",
-    description: "Get started with dozens of web components and interactive elements.",
-    icon: "mdi:calendar"
-  },
-  { 
-    title: "Potatify Library v1.2.0",
-    subtitle: "Released on December 23, 2021",
-    description: "Get started with dozens of web components and interactive elements."
-  },
-  { 
-    title: "Potatify Library v1.3.0",
-    subtitle: "Released on December 23, 2021",
-    description: "Get started with dozens of web components and interactive elements."
-  }
-])
+const src = ref('')
+const image = ref('')
+const cropRef = ref(null)
+const croppedImage = ref(null)
 
+function getBase64 (event: any) {
+  const file = event.target.files[0]
+  //
+  // let reader = new FileReader()
+  // reader.readAsDataURL(file)
+  // reader.onload = () => {
+  //   // @ts-ignore
+  //   src.value = reader.result
+  // }
+
+  image.value = URL.createObjectURL(event!.target!.files[0])
+}
 </script>
+
 <style>
 html {
-  background: url("./assets/wallpaper-challenge.jpg");
-  background-size: cover;
-  background-position-x: -450px;
+  background-color: lightgray;
+  /*background: url("./assets/wallpaper-challenge.jpg");*/
+  /*background-size: cover;*/
+  /*background-position-x: -450px;*/
 }
 </style>
