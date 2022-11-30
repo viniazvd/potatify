@@ -24,6 +24,8 @@ export { default as SRadioGroup } from './components/SRadioGroup/Index.vue'
 export { default as SSelect } from './components/SSelect/Index.vue'
 export { default as SSidebar } from './components/SSidebar/SSidebar.vue'
 export { default as SStepper } from './components/SStepper/Index.vue'
+export { default as STabber } from './components/STabber/Index.vue'
+export * from './components/STabber';
 export * from './components/STimeline';
 export { default as SToggle } from './components/SToggle/Index.vue'
 export * from './components/SToolbar';
