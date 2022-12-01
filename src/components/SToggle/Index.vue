@@ -1,5 +1,5 @@
 <template>
-  <label data-testid="SToggleParent" :class="[disabled, invertedLabel]" :for="inputId" class="inline-flex relative items-center mb-5 cursor-pointer">
+  <label data-testid="SToggleParent" :class="[disabled, invertedLabel]" :for="inputId" class="inline-flex relative items-center cursor-pointer">
     <input
       data-testid="SToggleInput"
       :disabled="props.disabled"
@@ -39,7 +39,6 @@ const props = defineProps({
   color: String,
   invertLabel: Boolean
 })
-
 
 const internalValue = computed({
   get: () => props.modelValue,

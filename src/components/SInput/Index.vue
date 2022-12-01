@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <label :for="uniqueId" >
       {{ props.label }}
     </label>
@@ -56,7 +56,6 @@ const value = computed({
 
 const props = defineProps({
   label: {
-    required: true,
     type: String
   },
   modelValue: {
