@@ -5,7 +5,7 @@
     </span>
 
     <STransition :name="props.animation">
-      <div class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full" v-show="isOpen" ref="dropdownTarget">
+      <div class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full z-10" v-show="isOpen" ref="dropdownTarget">
         <slot />
       </div>
     </STransition>

@@ -6,7 +6,7 @@
       tabindex="-1"
       class="s-drawer border-r border-stone-500/20"
       aria-labelledby="drawer-navigation-label"
-      :class="[behavior]"
+      :class="[behavior, positioning]"
     >
       <slot />
     </div>
@@ -15,24 +15,30 @@
 
 <script lang="ts" setup>
 import STransition from '@components/STransition/Index.vue'
-import { computed } from 'vue';
+import {computed, PropType, ref} from 'vue';
+
+const positionClasses = ref<{ [name: string]: string }>({
+  "left": "position-left",
+  "right": "position-right",
+  "bottom": "position-bottom"
+});
 
 const props = defineProps({
   isOpen: Boolean,
-
-  // noOverlay: Boolean,
-
   size: {
     type: Number,
     default: 320
   },
-
-  permanent: Boolean
+  permanent: Boolean,
+  position: {
+    type: String,
+    default: String as PropType<"left" | "right" | "bottom">
+  }
 })
 
-const width = computed(() => ({ width: `${props.size}px` }))
-const behavior = computed(() => [ props.permanent ? 'permanent' : 'flex' ])
-// const side = computed(() => [ props.side === "right" ? "right" : "left" ])
+const width = computed(() => ({ width: `${props.size}px` }));
+const behavior = computed(() => [ props.permanent ? 'permanent' : 'flex' ]);
+const positioning = computed(() => [positionClasses.value[props.position]]);
 </script>
 
 <style lang="postcss" scoped>
@@ -41,6 +47,7 @@ const behavior = computed(() => [ props.permanent ? 'permanent' : 'flex' ])
 }
 
 .permanent {
-  @apply fixed top-0 left-0
+  @apply fixed
 }
+
 </style>

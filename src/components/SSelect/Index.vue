@@ -14,7 +14,7 @@
           @click:append-outer="clearInput"
         />
       </template>
-      <div v-bind="containerProps" class="min-w-full py-1 h-[300px]">
+      <div v-bind="containerProps" class="min-w-full py-1 h-fit">
         <div v-bind="wrapperProps" ref="listItem">
             <div
               role="menuitem"
@@ -65,7 +65,7 @@ const props = defineProps({
     type: [String, Number, Object]
   },
   items: {
-    type: Array as PropType<any>,
+    type: Array as PropType<any[]>,
     required: true
   },
   itemText: {
@@ -91,7 +91,7 @@ const props = defineProps({
 })
 
 // LOGIC BEHIND THE VIRTUAL LIST
-const {list, containerProps, wrapperProps, scrollTo} = useVirtualList(props.items, {
+const {list, containerProps, wrapperProps, scrollTo} = useVirtualList(computed(() => props.items), {
   itemHeight: 40
 })
 

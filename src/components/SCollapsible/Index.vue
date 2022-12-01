@@ -1,14 +1,14 @@
 <template>
   <!-- <keep-alive> -->
-    <div ref="collapsibleEl">
-      <div v-if="!noHeader" class="header" @click.stop="emit('toggle')">
-        <slot name="header">
+    <div ref="collapsibleEl" @click.stop="!noHeader && toggleCollapsible">
+      <div v-if="!noHeader" class="header">
+        <slot name="header" v-bind="{ isOpen, on: { click: toggleCollapsible } }">
           <s-icon icon="ant-design:close-outlined" />
         </slot>
       </div>
 
       <!-- <s-transition> -->
-        <div v-if="props.isOpened">
+        <div v-if="isOpen">
           <slot />
         </div>
       <!-- </s-transition> -->
@@ -17,25 +17,33 @@
 </template>
 
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue'
-// import STransition from '../STransition/STransition.vue'
+import {defineAsyncComponent, ref} from 'vue'
 import { useAutoAnimate } from '@formkit/auto-animate/vue'
 const SIcon = defineAsyncComponent(() => import('@components/SIcon/Index.vue'))
 
 const props = defineProps({
   noHeader: Boolean,
-  duration: { type: Number, default: 200 },
-  isOpened: { type: Boolean, required: true }
+  duration: { type: Number, default: 200 }
 })
 
-const [ collapsibleEl ] = useAutoAnimate({ duration: props.duration })
+const isOpen = ref(false);
 
-const emit = defineEmits<{ (e: 'toggle'): void }>()
+const [ collapsibleEl ] = useAutoAnimate({ duration: props.duration });
+const emit = defineEmits<{ (e: 'update:isOpen', value: boolean): void }>();
+
+function toggleCollapsible () {
+  isOpen.value = !isOpen.value
+}
+
+defineExpose({
+  toggleCollapsible,
+  isOpen
+})
 
 </script>
 
 <style lang="postcss" scoped>
 .header {
-  @apply cursor-pointer text-right pr-4 p-2
+  @apply cursor-pointer text-right
 }
 </style>

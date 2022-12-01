@@ -33,14 +33,16 @@
 <script lang="ts" setup>
 import {useStepper} from "@vueuse/core";
 import {computed, defineAsyncComponent, PropType} from "vue";
+import {Step} from "./interfaces/step.interface";
 
 const SIcon = defineAsyncComponent(() => import("@components/SIcon/Index.vue"));
 
 const props = defineProps({
   steps: {
-    type: null,
+    type: Object as PropType<Step>,
     required: true
   },
+  initialStep: String,
   grow: Boolean,
   textCentered: Boolean,
   color: String as PropType<"primary" | "secondary" | "gray" >,
@@ -76,9 +78,7 @@ const {
   goTo,
   next,
   previous
-} = useStepper(props.steps);
-
-type Step = PropType<{ [key: string]: { title: String } }>;
+} = useStepper(props.steps, props.initialStep);
 
 const emit = defineEmits(["go:to-step"])
 

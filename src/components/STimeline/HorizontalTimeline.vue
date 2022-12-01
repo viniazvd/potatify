@@ -7,7 +7,11 @@
     >
       <div class="flex items-center">
         <div
-          class="flex z-10 justify-center items-center w-6 h-6 bg-primary rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0"
+          :style="{
+            backgroundColor: timelineItem.color
+          }"
+          :class="[!timelineItem.color && 'bg-primary']"
+          class="flex z-10 justify-center items-center w-6 h-6 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0"
         >
           <SIcon 
             v-if="timelineItem.icon" 
