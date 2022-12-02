@@ -39,7 +39,11 @@ const classes = computed(() => {
   ]
 })
 </script>
-
+<script lang="ts">
+export default {
+  name: "SIcon"
+}
+</script>
 <style lang="postcss" scoped>
 .s-icon {
   @apply inline-block

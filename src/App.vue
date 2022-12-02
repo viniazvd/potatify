@@ -1,23 +1,25 @@
 <template>
   <main class="flex flex-col gap-4 p-4">
     <router-view></router-view>
-
+    <SButton loading />
     <s-list v-for="item in items" :key="item.text" :item="item" class="w-52" />
 
     <!-- <s-list :item="item" /> -->
 
     <!-- <s-list :item="itemGroup" /> -->
 
-    <div class="w-[600px] mx-auto">
+    <SCardV2 class="w-[600px] mx-auto" no-padding>
 <!--      <s-tabber :tabs="tabs" :active-tab="activeTab" @select:tab="(t: Tab) => activeTab = t" />-->
 
-      <s-tabber :tabs="tabs" :active-tab="activeTab" @select:tab="(t: Tab) => activeTab = t">
-        <template v-slot="{ tab }">
-          <s-icon v-if="tab.icon" :icon="tab.icon" />
-          {{ tab.name }}
-        </template>
-      </s-tabber>
-    </div>
+      <s-tabber
+        :tabs="tabs"
+        :active-tab="activeTab"
+        @select:tab="(t: Tab) => activeTab = t"
+      />
+      <div class="p-4">
+        alguma coisa
+      </div>
+    </SCardV2>
 
 <!--    <SCard>-->
 <!--      <SHorizontalTimeline :timeline-items="timelineItems" />-->
@@ -29,14 +31,16 @@
 <script setup lang="ts">
 import SList from '@components/SList/Index.vue'
 import STabber from '@components/STabber/Index.vue'
+import SButton from '@components/SButton/Index.vue'
 import SIcon from '@components/SIcon/Index.vue'
 import { Tab } from '@components/STabber/interfaces/index'
 import SHorizontalTimeline from "@components/STimeline/HorizontalTimeline.vue";
 import { ref } from 'vue';
+import SCardV2 from "@components/SCard/SCardV2.vue";
 
 const tabs = ref<Tab[]>([
-  { id: 1, name: 'tab 1', icon: 'uit:arrow-circle-down' },
-  { id: 2, name: 'tab 2', icon: 'uit:arrow-circle-left' },
+  { id: 1, name: 'tab 1', icon: 'mdi:account' },
+  { id: 2, name: 'tab 2', icon: 'uit:arrow-circle-left', disabled: true },
   { id: 3, name: 'tab 3', icon: 'uit:arrow-circle-right' },
   { id: 4, name: 'tab 4', icon: 'uit:arrow-circle-left' },
   { id: 5, name: 'tab 5', icon: 'uit:arrow-circle-right' }

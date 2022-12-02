@@ -4,7 +4,9 @@
     :class="classes"
     :disabled="props.disabled"
   >
-    <SLoader v-if="props.loading" size="24" />
+    <div v-if="props.loading"  class="h-full w-full">
+      <SLoader color="white" class="opacity-80 mx-auto" size="24"/>
+    </div>
     <slot v-else />
   </button>
 </template>

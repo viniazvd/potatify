@@ -18,6 +18,7 @@ export default defineConfig({
       fileName: (format) => `potatify.${format}.js`,
     },
     rollupOptions: {
+
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue'],
@@ -33,9 +34,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
+      'tailwind.config.cjs': path.resolve(__dirname, 'tailwind.config.cjs'),
     }
   },
-
+  optimizeDeps: {
+    include: [
+      'tailwind.config.cjs',
+    ]
+  },
   plugins: [
     vue(),
     checker({ vueTsc: true })
