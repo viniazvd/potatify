@@ -4,9 +4,9 @@
       <li
         v-for="(tab, index) in tabs"
         :key="index"
-        class="flex-1 max-w-[100px] bg-primary/30 hover:bg-primary/60 px-3 py-2 max-w-[150px] text-center rounded cursor-pointer select-none transition-all"
-        :class="{ 'bg-primary/60': tab.id === props.activeTab.id }"
-        @click="emit('select:tab', tab)"
+        class="tabber-head-item"
+        :class="[isDisabled(tab)]"
+        @click="emitTabSelection(tab)"
       >
         <slot v-bind="{ tab }">
           {{ tab.name }}

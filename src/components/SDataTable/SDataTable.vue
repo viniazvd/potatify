@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div data-testid="pagination" class="flex justify-between items-center py-2 px-6" v-if="pagination">
+    <div data-testid="pagination" class="flex justify-between bg-white items-center py-2 px-6" v-if="pagination">
 <!--      <div v-if="false">-->
 <!--        <button @click="paginate(changePerPage, 25)"-->
 <!--                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"-->
