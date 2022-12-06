@@ -62,7 +62,7 @@
         @click="paginate(previousPage)"
         class="pagination-button !pr-4"
         :class="pagination.page === 1 && 'disabled-pagination'"
-        :disabled="pagination.page === 1"
+        :disabled="pagination.page === 1 || props.loading"
       >
         <SIcon icon="material-symbols:arrow-right-alt-rounded" class="rotate-180"></SIcon>
         Anterior
@@ -82,7 +82,7 @@
         @click="paginate(nextPage)"
         class="pagination-button !pl-4"
         :class="totalPages === pagination.page && 'disabled-pagination'"
-        :disabled="totalPages === pagination.page"
+        :disabled="totalPages === pagination.page || props.loading"
       >Próximo
         <SIcon icon="material-symbols:arrow-right-alt-rounded"></SIcon>
       </button>

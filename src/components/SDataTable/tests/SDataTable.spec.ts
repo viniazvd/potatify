@@ -347,3 +347,28 @@ when("I need a pagination functionality", () => {
 });
 
 when.todo("I want a selectable row");
+
+when("table is loading", () => {
+  it.only("Should disable all buttons when is loading", async () => {
+    wrapper = shallowMount(SDataTable, {
+      props: {
+        data: items,
+        cols,
+        loading: true,
+        perPage: 1
+      }
+    })
+    const findPagination = () => wrapper.find("[data-testid=pagination]");
+    const previousPage = findPagination()
+      .find("[data-testid=previousPage]");
+
+    const nextPage = findPagination()
+      .find("[data-testid=nextPage]");
+
+    await nextPage.trigger("click");
+    await nextTick();
+
+    expect(previousPage.attributes("disabled")).toBe("")
+    expect(nextPage.attributes("disabled")).toBe("")
+  })
+})

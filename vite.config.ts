@@ -52,6 +52,7 @@ export default defineConfig({
     globals: true,
     reporters: ["dot", "json"],
     outputFile: ".vitest-result.json",
+    setupFiles: ["test.config.ts"],
     root: ".",
     coverage: {
       all: true,
