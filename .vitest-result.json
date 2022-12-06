@@ -1,679 +1,16 @@
 {
-  "numTotalTestSuites": 34,
-  "numPassedTestSuites": 34,
+  "numTotalTestSuites": 5,
+  "numPassedTestSuites": 5,
   "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 80,
-  "numPassedTests": 80,
+  "numTotalTests": 27,
+  "numPassedTests": 27,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 1,
-  "startTime": 1669745222501,
+  "startTime": 1670335296192,
   "success": true,
   "testResults": [
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a horizontal timeline"
-          ],
-          "fullName": " I create a horizontal timeline Should have the length of items defined in timeline items",
-          "status": "passed",
-          "title": "Should have the length of items defined in timeline items",
-          "duration": 45,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a horizontal timeline"
-          ],
-          "fullName": " I create a horizontal timeline Should render the items with only the title",
-          "status": "passed",
-          "title": "Should render the items with only the title",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a horizontal timeline"
-          ],
-          "fullName": " I create a horizontal timeline Should render the props with de values accordingly",
-          "status": "passed",
-          "title": "Should render the props with de values accordingly",
-          "duration": 4,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745229916,
-      "endTime": 1669745229969,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/STimeline/tests/HorizontalTimeline.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a SCard"
-          ],
-          "fullName": " I create a SCard Should have a padding and no background-color",
-          "status": "passed",
-          "title": "Should have a padding and no background-color",
-          "duration": 27,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card with no padding"
-          ],
-          "fullName": " I create a card with no padding Should include a class no-padding",
-          "status": "passed",
-          "title": "Should include a class no-padding",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card and give a background color"
-          ],
-          "fullName": " I create a card and give a background color Should have a class starting with bg",
-          "status": "passed",
-          "title": "Should have a class starting with bg",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card and give a background color"
-          ],
-          "fullName": " I create a card and give a background color Should have a class starting with bg",
-          "status": "passed",
-          "title": "Should have a class starting with bg",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a card and give a background color"
-          ],
-          "fullName": " I create a card and give a background color Should have a class starting with bg",
-          "status": "passed",
-          "title": "Should have a class starting with bg",
-          "duration": 3,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745230734,
-      "endTime": 1669745230771,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SCard/tests/SCard.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a chip"
-          ],
-          "fullName": " I create a chip Should create a chip with size sm",
-          "status": "passed",
-          "title": "Should create a chip with size sm",
-          "duration": 34,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a chip"
-          ],
-          "fullName": " I create a chip Should create a chip with size md",
-          "status": "passed",
-          "title": "Should create a chip with size md",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a chip"
-          ],
-          "fullName": " I create a chip Should create a chip with size lg",
-          "status": "passed",
-          "title": "Should create a chip with size lg",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a clearable chip"
-          ],
-          "fullName": " I create a clearable chip Should have a button",
-          "status": "passed",
-          "title": "Should have a button",
-          "duration": 5,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745230734,
-      "endTime": 1669745230780,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SChip/tests/chip.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "no props are informed"
-          ],
-          "fullName": " no props are informed should use the fallback content",
-          "status": "passed",
-          "title": "should use the fallback content",
-          "duration": 30,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "used with src and alt"
-          ],
-          "fullName": " used with src and alt Should render the component correctly",
-          "status": "passed",
-          "title": "Should render the component correctly",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should render a rounded image when rounded argument is informed",
-          "status": "passed",
-          "title": "Should render a rounded image when rounded argument is informed",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should render a circle image when circle argument is informed",
-          "status": "passed",
-          "title": "Should render a circle image when circle argument is informed",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should render a square image when square argument is informed",
-          "status": "passed",
-          "title": "Should render a square image when square argument is informed",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 3,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a variant image"
-          ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 2,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I define the size"
-          ],
-          "fullName": " I define the size Should apply width and height equally to the image",
-          "status": "passed",
-          "title": "Should apply width and height equally to the image",
-          "duration": 4,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745230760,
-      "endTime": 1669745230818,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SAvatar/tests/SAvatar.test.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I want a title for my alert"
-          ],
-          "fullName": " I want a title for my alert Should render the title I've put in props",
-          "status": "passed",
-          "title": "Should render the title I've put in props",
-          "duration": 41,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a title for my alert"
-          ],
-          "fullName": " I want a title for my alert Should render the title I've put in props",
-          "status": "passed",
-          "title": "Should render the title I've put in props",
-          "duration": 7,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a message for my alert"
-          ],
-          "fullName": " I want a message for my alert should render the message correctly",
-          "status": "passed",
-          "title": "should render the message correctly",
-          "duration": 7,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a message for my alert"
-          ],
-          "fullName": " I want a message for my alert should render the message correctly",
-          "status": "passed",
-          "title": "should render the message correctly",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want a message for my alert"
-          ],
-          "fullName": " I want a message for my alert Shouldn't render message when no message is sent",
-          "status": "passed",
-          "title": "Shouldn't render message when no message is sent",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I need an icon for my alert"
-          ],
-          "fullName": " I need an icon for my alert Should have an icon defined",
-          "status": "passed",
-          "title": "Should have an icon defined",
-          "duration": 9,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I need an icon for my alert"
-          ],
-          "fullName": " I need an icon for my alert Should have an icon defined",
-          "status": "passed",
-          "title": "Should have an icon defined",
-          "duration": 5,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I need an icon for my alert"
-          ],
-          "fullName": " I need an icon for my alert Should not have an icon when no icon prop is sent",
-          "status": "passed",
-          "title": "Should not have an icon when no icon prop is sent",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want to customize the alert"
-          ],
-          "fullName": " I want to customize the alert Should have an title slot",
-          "status": "passed",
-          "title": "Should have an title slot",
-          "duration": 17,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want to customize the alert"
-          ],
-          "fullName": " I want to customize the alert Should have an actions slot",
-          "status": "passed",
-          "title": "Should have an actions slot",
-          "duration": 5,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745230775,
-      "endTime": 1669745230884,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SAlert/tests/SAlert.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "Only the mandatory arguments are passed"
-          ],
-          "fullName": " Only the mandatory arguments are passed should create a 5 star rating with no defined rating",
-          "status": "passed",
-          "title": "should create a 5 star rating with no defined rating",
-          "duration": 51,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Only the mandatory arguments are passed"
-          ],
-          "fullName": " Only the mandatory arguments are passed should have a description saying that no rating was given",
-          "status": "passed",
-          "title": "should have a description saying that no rating was given",
-          "duration": 11,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "It is informed a rating"
-          ],
-          "fullName": " It is informed a rating should change the summary to show what rating was selected",
-          "status": "passed",
-          "title": "should change the summary to show what rating was selected",
-          "duration": 12,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "It is informed a rating"
-          ],
-          "fullName": " It is informed a rating should change the summary to show what rating was selected",
-          "status": "passed",
-          "title": "should change the summary to show what rating was selected",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "It is informed a rating"
-          ],
-          "fullName": " It is informed a rating should change the summary to show what rating was selected",
-          "status": "passed",
-          "title": "should change the summary to show what rating was selected",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "It is informed a rating"
-          ],
-          "fullName": " It is informed a rating Should mark as active the same number the prop has received",
-          "status": "passed",
-          "title": "Should mark as active the same number the prop has received",
-          "duration": 9,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "It clicks on an element"
-          ],
-          "fullName": " It clicks on an element Should emit an event containing the star number and change the stars",
-          "status": "passed",
-          "title": "Should emit an event containing the star number and change the stars",
-          "duration": 12,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want an icon"
-          ],
-          "fullName": " I want an icon Should be an star if no icon is sent",
-          "status": "passed",
-          "title": "Should be an star if no icon is sent",
-          "duration": 9,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want an icon"
-          ],
-          "fullName": " I want an icon Should be a specified icon mdi:house",
-          "status": "passed",
-          "title": "Should be a specified icon mdi:house",
-          "duration": 8,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I want an icon"
-          ],
-          "fullName": " I want an icon Should be a specified icon mdi:wallet",
-          "status": "passed",
-          "title": "Should be a specified icon mdi:wallet",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I change the sise"
-          ],
-          "fullName": " I change the sise Should have the size informed as 60",
-          "status": "passed",
-          "title": "Should have the size informed as 60",
-          "duration": 7,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I change the sise"
-          ],
-          "fullName": " I change the sise Should have the size informed as 160",
-          "status": "passed",
-          "title": "Should have the size informed as 160",
-          "duration": 4,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745230786,
-      "endTime": 1669745230928,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SRating/tests/SRating.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should put the label exactly as informed in props",
-          "status": "passed",
-          "title": "Should put the label exactly as informed in props",
-          "duration": 50,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should change the values as parent changes them",
-          "status": "passed",
-          "title": "Should change the values as parent changes them",
-          "duration": 31,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should change the values as parent changes them",
-          "status": "passed",
-          "title": "Should change the values as parent changes them",
-          "duration": 6,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should be disabled when I set on component and should add the classes accordingly",
-          "status": "passed",
-          "title": "Should be disabled when I set on component and should add the classes accordingly",
-          "duration": 7,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should invert the label in case it is needed",
-          "status": "passed",
-          "title": "Should invert the label in case it is needed",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should apply the size (undefined) classes (md-button) accordingly ",
-          "status": "passed",
-          "title": "Should apply the size (undefined) classes (md-button) accordingly ",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should apply the size (lg) classes (lg-button) accordingly ",
-          "status": "passed",
-          "title": "Should apply the size (lg) classes (lg-button) accordingly ",
-          "duration": 4,
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "I create a toggle button"
-          ],
-          "fullName": " I create a toggle button Should apply the size (md) classes (md-button) accordingly ",
-          "status": "passed",
-          "title": "Should apply the size (md) classes (md-button) accordingly ",
-          "duration": 3,
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745231036,
-      "endTime": 1669745231145,
-      "status": "passed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SToggle/tests/SToggle.spec.ts"
-    },
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": [
-            "",
-            "No props are informed"
-          ],
-          "fullName": " No props are informed Should render with defaults",
-          "status": "skipped",
-          "title": "Should render with defaults",
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Props are modified"
-          ],
-          "fullName": " Props are modified Should have no padding",
-          "status": "skipped",
-          "title": "Should have no padding",
-          "failureMessages": []
-        },
-        {
-          "ancestorTitles": [
-            "",
-            "Props are modified"
-          ],
-          "fullName": " Props are modified Should change the colours",
-          "status": "skipped",
-          "title": "Should change the colours",
-          "failureMessages": []
-        }
-      ],
-      "startTime": 1669745222501,
-      "endTime": 1669745222501,
-      "status": "failed",
-      "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SCard/SCard.spec.ts"
-    },
     {
       "assertionResults": [
         {
@@ -682,9 +19,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should render the tabular data with as many array entries as it has length",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should render the tabular data with as many array entries as it has length",
-          "duration": 66,
           "failureMessages": []
         },
         {
@@ -693,9 +29,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should not render a loading div when no loading is present",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should not render a loading div when no loading is present",
-          "duration": 20,
           "failureMessages": []
         },
         {
@@ -704,9 +39,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should have slots available for each value sent by value",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have slots available for each value sent by value",
-          "duration": 40,
           "failureMessages": []
         },
         {
@@ -715,9 +49,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should have slots available for each value sent by value",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have slots available for each value sent by value",
-          "duration": 25,
           "failureMessages": []
         },
         {
@@ -726,9 +59,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should render a checkbox with each row when selectable is sent",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should render a checkbox with each row when selectable is sent",
-          "duration": 29,
           "failureMessages": []
         },
         {
@@ -737,9 +69,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should render a loader when isLoading prop is true",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should render a loader when isLoading prop is true",
-          "duration": 15,
           "failureMessages": []
         },
         {
@@ -748,9 +79,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should render the header with each column mapping to a name in cols",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should render the header with each column mapping to a name in cols",
-          "duration": 15,
           "failureMessages": []
         },
         {
@@ -759,9 +89,8 @@
             "I send data to the data table"
           ],
           "fullName": " I send data to the data table Should render a selectable thead with an input checkbox inside when prop selectable is passed",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should render a selectable thead with an input checkbox inside when prop selectable is passed",
-          "duration": 20,
           "failureMessages": []
         },
         {
@@ -770,9 +99,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality should have a total quantity of registries written in the pagination section",
-          "status": "passed",
+          "status": "skipped",
           "title": "should have a total quantity of registries written in the pagination section",
-          "duration": 14,
           "failureMessages": []
         },
         {
@@ -781,9 +109,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "duration": 12,
           "failureMessages": []
         },
         {
@@ -792,9 +119,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "duration": 9,
           "failureMessages": []
         },
         {
@@ -803,9 +129,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "duration": 7,
           "failureMessages": []
         },
         {
@@ -814,9 +139,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "duration": 8,
           "failureMessages": []
         },
         {
@@ -825,9 +149,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "duration": 7,
           "failureMessages": []
         },
         {
@@ -836,9 +159,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
-          "duration": 6,
           "failureMessages": []
         },
         {
@@ -847,9 +169,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and accordingly",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and accordingly",
-          "duration": 19,
           "failureMessages": []
         },
         {
@@ -858,9 +179,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and accordingly",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and accordingly",
-          "duration": 14,
           "failureMessages": []
         },
         {
@@ -869,9 +189,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and accordingly",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and accordingly",
-          "duration": 12,
           "failureMessages": []
         },
         {
@@ -880,9 +199,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and accordingly",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and accordingly",
-          "duration": 8,
           "failureMessages": []
         },
         {
@@ -891,9 +209,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and accordingly",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and accordingly",
-          "duration": 9,
           "failureMessages": []
         },
         {
@@ -902,9 +219,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and accordingly",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and accordingly",
-          "duration": 11,
           "failureMessages": []
         },
         {
@@ -913,9 +229,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change pages and not go over the max pages available",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change pages and not go over the max pages available",
-          "duration": 8,
           "failureMessages": []
         },
         {
@@ -924,9 +239,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should change back the pages",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should change back the pages",
-          "duration": 10,
           "failureMessages": []
         },
         {
@@ -935,9 +249,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should not go back after the minimum of 1",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should not go back after the minimum of 1",
-          "duration": 6,
           "failureMessages": []
         },
         {
@@ -946,9 +259,8 @@
             "I need a pagination functionality"
           ],
           "fullName": " I need a pagination functionality Should show the correct number of items based on pagination premises",
-          "status": "passed",
+          "status": "skipped",
           "title": "Should show the correct number of items based on pagination premises",
-          "duration": 9,
           "failureMessages": []
         },
         {
@@ -960,10 +272,21 @@
           "status": "todo",
           "title": "Should change perPage when clicked",
           "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "table is loading"
+          ],
+          "fullName": " table is loading Should disable all buttons when is loading",
+          "status": "passed",
+          "title": "Should disable all buttons when is loading",
+          "duration": 36,
+          "failureMessages": []
         }
       ],
-      "startTime": 1669745240191,
-      "endTime": 1669745240590,
+      "startTime": 1670336456841,
+      "endTime": 1670336456877,
       "status": "failed",
       "message": "",
       "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SDataTable/tests/SDataTable.spec.ts"
