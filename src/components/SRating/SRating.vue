@@ -51,6 +51,11 @@ function changeRating(selectedRating: number) {
   emit("change:rating", { rating: selectedRating })
 }
 </script>
+<script lang="ts">
+export default {
+  name: "SRating"
+}
+</script>
 <style scoped>
 .rating {
   @apply cursor-pointer hover:opacity-50

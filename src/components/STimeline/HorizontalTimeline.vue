@@ -58,4 +58,9 @@ const props = defineProps({
 })
 
 </script>
+<script lang="ts">
+export default {
+  name: "SHorizontalTimeline"
+}
+</script>
 <style lang="postss" scoped></style>

@@ -56,7 +56,11 @@ const props = defineProps({
 })
 
 </script>
-
+<script lang="ts">
+export default {
+  name: "SDropdown"
+}
+</script>
 <style lang="postcss" scoped>
 .dropdown-shadows {
   @apply shadow-xl

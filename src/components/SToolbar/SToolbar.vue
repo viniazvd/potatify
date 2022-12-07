@@ -38,6 +38,11 @@ const styles = computed(() => ({
 }))
 
 </script>
+<script lang="ts">
+export default {
+  name: "SToolbar"
+}
+</script>
 <style lang="postcss" scoped>
 
 .s-toolbar {

@@ -32,6 +32,11 @@ const props = defineProps({
 })
 
 </script>
+<script lang="ts">
+export default {
+  name: "STransition"
+}
+</script>
 <style>
 :root {
   --animate-duration: .30s;

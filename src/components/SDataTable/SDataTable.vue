@@ -281,6 +281,12 @@ const colors = {}
 const borders = {}
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SDataTan;e"
+}
+</script>
 <style lang="postcss" scoped>
 
 table {

@@ -59,6 +59,11 @@ const buttonSize = computed(() => ({
 }))
 
 </script>
+<script lang="ts">
+export default {
+  name: "SToggle"
+}
+</script>
 <style lang="postcss" scoped>
 
 .s-input-switch {

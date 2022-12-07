@@ -20,6 +20,12 @@ const withFluid = computed(() => {
 });
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SContainer"
+}
+</script>
 <style lang="postcss" scoped>
 
 .s-container { 

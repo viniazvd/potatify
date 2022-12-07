@@ -28,7 +28,8 @@ const props = defineProps({
 <script lang="ts">
 // use normal <script> to declare options
 export default {
-  inheritAttrs: false
+  inheritAttrs: false,
+  name: "SCheckbox"
 }
 </script>
 <style lang="postcss" scoped>

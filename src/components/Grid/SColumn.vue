@@ -19,6 +19,11 @@ const css = computed(() => ({
 }))
 
 </script>
+<script lang="ts">
+export default {
+  name: "SColumn"
+}
+</script>
 <style scoped lang="postcss">
 .grid-size {
   min-width: calc(8.33% - 10px);

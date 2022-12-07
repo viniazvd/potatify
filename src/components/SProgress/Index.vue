@@ -25,7 +25,11 @@ const width = computed(() => ({ width: progress.value + '%' }))
 const color = computed(() => ({ backgroundColor: props.color }))
 const transitionDuration = computed(() => ({ transitionDuration: props.duration + 's' }))
 </script>
-
+<script lang="ts">
+export default {
+  name: "SProgress"
+}
+</script>
 <style lang="postcss" scoped>
 .s-progress {
   @apply flex bg-white w-full h-1 rounded-lg
