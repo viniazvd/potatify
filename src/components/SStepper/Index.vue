@@ -89,6 +89,11 @@ function goToStep (id: string | number) {
 
 
 </script>
+<script lang="ts">
+export default {
+  name: "SStepper"
+}
+</script>
 <style lang="postcss" scoped>
 .s-stepper-active {
   @apply border-b-2 bg-gray-300

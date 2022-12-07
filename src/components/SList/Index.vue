@@ -66,7 +66,11 @@ function onClick (): void {
   isOpened.value = !isOpened.value
 }
 </script>
-
+<script lang="ts">
+export default {
+  name: "SList"
+}
+</script>
 <style lang="postcss" scoped>
 .item {
   @apply w-full flex items-center p-2 transition-all

@@ -40,7 +40,11 @@ const width = computed(() => ({ width: `${props.size}px` }));
 const behavior = computed(() => [ props.permanent ? 'permanent' : 'flex' ]);
 const positioning = computed(() => [positionClasses.value[props.position]]);
 </script>
-
+<script lang="ts">
+export default {
+  name: "SDrawer"
+}
+</script>
 <style lang="postcss" scoped>
 .s-drawer {
   @apply z-50 h-screen overflow-y-auto bg-white dark:bg-stone-800;

@@ -70,6 +70,11 @@ const isOpen = computed({
 })
 
 </script>
+<script lang="ts">
+export default {
+  name: "SModal"
+}
+</script>
 <style lang="postcss" scoped>
 
 .modal-base {

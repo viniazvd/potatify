@@ -107,3 +107,9 @@ const classes = ref([
 ])
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SButton"
+}
+</script>

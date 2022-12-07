@@ -43,7 +43,8 @@
 </template>
 <script lang="ts">
 export default {
-  inheritAttrs: false
+  inheritAttrs: false,
+  name: "SSelect"
 }
 </script>
 <script lang="ts" setup>

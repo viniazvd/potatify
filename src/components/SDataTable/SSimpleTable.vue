@@ -17,6 +17,12 @@ const props = defineProps({
 })
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SSimpleTable"
+}
+</script>
 <style lang="postcss" scoped>
 .table {
   @apply w-full text-sm text-left text-stone-500 dark:text-stone-400;

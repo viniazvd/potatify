@@ -32,6 +32,11 @@ const props = defineProps({
 const emit = defineEmits(["click:action"]);
 
 </script>
+<script lang="ts">
+export default {
+  name: "SVerticalTimeline"
+}
+</script>
 <style lang="postcss" scoped>
 
 .s-timeline-colors {

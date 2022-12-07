@@ -27,7 +27,8 @@
 </template>
 <script lang="ts">
 export default {
-  inheritAttrs: false
+  inheritAttrs: false,
+  name: "SInput"
 }
 </script>
 <script lang="ts" setup>

@@ -42,6 +42,11 @@ defineExpose({
 
 </script>
 
+<script lang="ts">
+export default {
+  name: "SCollapsible"
+}
+</script>
 <style lang="postcss" scoped>
 .header {
   @apply cursor-pointer text-right

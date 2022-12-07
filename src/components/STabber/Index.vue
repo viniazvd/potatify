@@ -71,6 +71,11 @@ const emit = defineEmits<{
   (e: "select:tab", t: Tab): void
 }>()
 </script>
+<script lang="ts">
+export default {
+  name: "STabber"
+}
+</script>
 <style lang="postcss" scoped>
 .tabber-wrapper {
   @apply text-sm font-medium text-center border-b border-gray-200

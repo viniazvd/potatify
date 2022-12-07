@@ -60,7 +60,11 @@ const radioClasses = computed(() => [
   's-radio flex items-center'
 ])
 </script>
-
+<script lang="ts">
+export default {
+  name: "SRadioGroup"
+}
+</script>
 <style lang="postcss" scoped>
 .input:checked + .radio {
   border-width: 7px;

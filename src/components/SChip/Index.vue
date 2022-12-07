@@ -49,6 +49,12 @@ const withSize = computed(() => sizeOptions[props.size])
 const withImage = computed(() => props.imgSrc && "chip-image")
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SChip"
+}
+</script>
 <style lang="postcss" scoped>
 .chips .clearable  {
   @apply pr-2 !important;

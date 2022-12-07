@@ -43,6 +43,12 @@ const classes = computed(() => {
 })
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SDivider"
+}
+</script>
 <style lang="postcss" scoped>
 .divider-base {
   @apply border-solid

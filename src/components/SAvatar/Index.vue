@@ -44,6 +44,12 @@ const classes = computed(() => ({
 }))
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SAvatar"
+}
+</script>
 <style lang="postcss" scoped>
 
 .s-img {

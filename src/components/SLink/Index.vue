@@ -45,3 +45,8 @@ const type = computed(() => {
         ? 'nuxt-link' : 'router-link'
 })
 </script>
+<script lang="ts">
+export default {
+  name: "SLink"
+}
+</script>

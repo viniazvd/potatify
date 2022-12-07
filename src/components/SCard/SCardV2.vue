@@ -19,6 +19,12 @@ const classes = computed(() => ({
 }))
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SCard"
+}
+</script>
 <style lang="postcss" scoped>
 
 .base {

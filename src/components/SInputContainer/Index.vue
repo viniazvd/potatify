@@ -47,7 +47,8 @@
 </template>
 <script lang="ts">
 export default {
-  inheritAttrs: false
+  inheritAttrs: false,
+  name: "SinputContainer"
 }
 </script>
 <script lang="ts" setup>

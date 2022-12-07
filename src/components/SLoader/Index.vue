@@ -42,3 +42,8 @@ const currentColor = computed(() => ({
   color: props.color ?? currentTheme.theme?.colors?.primary?.DEFAULT
 }))
 </script>
+<script lang="ts">
+export default {
+  name: "SLoader"
+}
+</script>

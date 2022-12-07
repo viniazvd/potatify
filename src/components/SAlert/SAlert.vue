@@ -44,3 +44,9 @@ const baseStyle = computed(() => [{
 }]);
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SAlert"
+}
+</script>
