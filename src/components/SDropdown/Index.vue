@@ -1,10 +1,10 @@
 <template>
   <div class="relative">
     <span ref="activatorSlot">
-      <slot name="activator" v-bind="eventListeners" />
+      <slot name="activator" v-bind="{on: eventListeners.on, isOpen}" />
     </span>
 
-    <STransition :name="props.animation">
+    <STransition>
       <div
         class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full z-10"
         :class="[anchor]"
@@ -17,10 +17,9 @@
 </template>
 <script lang="ts" setup>
 import {useToggle, onClickOutside} from "@vueuse/core";
-import {computed, defineAsyncComponent, PropType, ref} from "vue";
+import {computed, PropType, ref} from "vue";
 import { ANIMATION_LIST } from "../STransition/AnimationNames";
-
-const STransition = defineAsyncComponent(() => import("../STransition/Index.vue"))
+import STransition from "../STransition/Index.vue";
 
 const [isOpen, setIsOpen] = useToggle(false);
 const eventListeners = {

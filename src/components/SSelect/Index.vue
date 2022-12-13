@@ -49,11 +49,10 @@ export default {
 </script>
 <script lang="ts" setup>
 import SInput from "../SInput/Index.vue";
+import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
-import {computed, defineAsyncComponent, nextTick, PropType, ref} from "vue";
+import {computed, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
-
-const SDropdown = defineAsyncComponent(() => import("../SDropdown/Index.vue"));
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -194,6 +193,9 @@ const {arrowDown, arrowUp, space, escape} = useMagicKeys({
   passive: false,
   onEventFired: (event) => {
     // THIS WILL PREVENT THE PAGE FROM SCROLLING
+
+    if (!SSelectDropdown.value.isOpen) return;
+
     const isArrowUpOrDown = (event.key === 'ArrowDown' || event.key === 'ArrowUp');
     const isSpaceKey = (event.code === 'Space');
     if ((isArrowUpOrDown || isSpaceKey) && event.type === 'keydown')
