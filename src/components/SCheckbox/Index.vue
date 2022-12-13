@@ -5,7 +5,7 @@
       type="checkbox"
       class="s-checkbox-input focus:ring-primary-500"
       v-bind="$attrs"
-      v-model="modelValue"
+      v-model="value"
     >
     <label :for="uniqueId" class="s-checkbox-label">
       {{props.label}}
@@ -13,6 +13,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { computed } from 'vue'
 import {useUUID} from "@/composables/useUUID";
 
 const { uniqueId } = useUUID()
@@ -23,6 +24,15 @@ const props = defineProps({
     required: true
   },
   modelValue: Boolean
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const value = computed({
+  get: () => props.modelValue,
+  set: (value) => {
+    emit("update:modelValue", value)
+  }
 })
 </script>
 <script lang="ts">
