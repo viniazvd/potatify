@@ -100,7 +100,7 @@ const {list, containerProps, wrapperProps, scrollTo} = useVirtualList(computed((
 const SSelectDropdown = ref();
 async function closeDropdown () {
   // WE SHOULD SET THE TRACKER OF HIGHTLIGHT TO THIS EVERYTIME WE CLOSE THE DROPDOWN
-  SSelectDropdown.value.setIsOpen(false);
+  SSelectDropdown.value?.setIsOpen?.(false);
 
   await nextTick();
 
