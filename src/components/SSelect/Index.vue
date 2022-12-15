@@ -3,7 +3,7 @@
     <SDropdown @close:dropdown="closeDropdown" ref="SSelectDropdown" animation="FADE_IN" >
       <template #activator="{ on }">
         <SInput
-          :value="value"
+          v-model="value"
           :label="props.label"
           v-bind="$attrs"
           class="hover:cursor-pointer"
@@ -50,8 +50,8 @@ export default {
 <script lang="ts" setup>
 import SInput from "../SInput/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
-import {computed, defineAsyncComponent, nextTick, PropType, ref} from "vue";
-import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
+import {computed, defineAsyncComponent, nextTick, PropType, ref, watch} from "vue";
+import {tryOnBeforeUnmount, useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
 
 const SDropdown = defineAsyncComponent(() => import("../SDropdown/Index.vue"));
 
@@ -130,10 +130,12 @@ const appendOuterIcon = computed(() => (
 // END INPUT APPENDED ITEMS
 
 // START SELECT ITEM AND MODEL MANAGEMENT LOGIC
-const value = ref(); // THIS TRACKS THE VALUE SHOWN INSIDE THE INPUT
+const value = ref(props.modelValue); // THIS TRACKS THE VALUE SHOWN INSIDE THE INPUT
 const arrTracker = ref(new Set()); // THIS TRACKS THE V-MODEL WHICH WILL BE MADE AVAILABLE
 
 function selectItem (item: typeof props.items[0]) {
+  if (!item) return
+
   if (props.multiple) {
     arrTracker.value.has(item)
     ? arrTracker.value.delete(item)
@@ -157,12 +159,12 @@ function selectItem (item: typeof props.items[0]) {
     arrTracker.value.clear()
     arrTracker.value.add(item)
 
-    value.value = item[props.itemText];
+    value.value = item[props.itemText] || item;
 
     if (props.returnObject) {
       emit("update:modelValue", item);
     } else {
-      emit("update:modelValue", item[props.itemValue]);
+      emit("update:modelValue", item[props.itemValue] || item);
     }
 
     closeDropdown();
@@ -200,6 +202,10 @@ const {arrowDown, arrowUp, space, escape} = useMagicKeys({
       event.preventDefault()
   }
 });
+
+watch(() => props.modelValue, (v) => {
+  selectItem(v)
+}, { deep: true, immediate: true })
 
 whenever(escape, () => {
   if (!SSelectDropdown.value.isOpen) return;
