@@ -10,7 +10,7 @@
         :class="[anchor]"
         v-show="isOpen"
         ref="dropdownTarget">
-        <slot />
+        <slot v-bind="eventListeners" />
       </div>
     </STransition>
   </div>
