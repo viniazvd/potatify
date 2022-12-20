@@ -78,7 +78,7 @@ export default {
 <style lang="postcss" scoped>
 
 .modal-base {
-  @apply fixed top-0 left-0 w-full h-full z-10;
+  @apply fixed top-0 left-0 w-full h-full z-50;
 }
 
 .backdrop-color {
