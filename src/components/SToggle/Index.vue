@@ -29,7 +29,6 @@ const props = defineProps({
   },
   disabled: Boolean,
   label: {
-    required: true,
     type: String
   },
   size: {
