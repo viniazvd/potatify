@@ -51,10 +51,8 @@ export default {
 import SInput from "../SInput/Index.vue";
 import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
-import {computed, defineAsyncComponent, nextTick, PropType, ref, watch} from "vue";
-import {tryOnBeforeUnmount, useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
-
-const SDropdown = defineAsyncComponent(() => import("../SDropdown/Index.vue"));
+import {computed, nextTick, PropType, ref, watch} from "vue";
+import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
 
 const emit = defineEmits(["update:modelValue"]);
 
