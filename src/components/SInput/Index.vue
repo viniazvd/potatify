@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="grow">
     <label :for="uniqueId" >
       {{ props.label }}
     </label>
