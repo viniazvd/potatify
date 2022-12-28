@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <SDropdown @close:dropdown="closeDropdown" ref="SSelectDropdown" animation="FADE_IN" >
       <template #activator="{ on }">
         <SInputContainer

@@ -2,7 +2,7 @@
   <!-- <keep-alive> -->
     <div ref="collapsibleEl" @click.stop="!noHeader && toggleCollapsible">
       <div v-if="!noHeader" class="header">
-        <slot name="header" v-bind="{ isOpen, on: { click: toggleCollapsible } }">
+        <slot name="header" v-bind="{ isOpen, toggleCollapsible }">
           <s-icon icon="ant-design:close-outlined" />
         </slot>
       </div>
@@ -29,7 +29,6 @@ const props = defineProps({
 const isOpen = ref(false);
 
 const [ collapsibleEl ] = useAutoAnimate({ duration: props.duration });
-const emit = defineEmits<{ (e: 'update:isOpen', value: boolean): void }>();
 
 function toggleCollapsible () {
   isOpen.value = !isOpen.value

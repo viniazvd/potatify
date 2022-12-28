@@ -5,7 +5,8 @@
 </template>
 <script lang="ts">
 export default {
-  name: "SInput",
+  inheritAttrs: false,
+  name: "SInput"
 }
 </script>
 <script lang="ts" setup>

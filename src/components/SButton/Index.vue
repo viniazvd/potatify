@@ -1,6 +1,7 @@
 <template>
   <button
     ref="SButton"
+    v-bind="$attrs"
     :class="classes"
     :disabled="props.disabled"
   >
@@ -96,7 +97,7 @@ const booleans = computed(() => [
   }
 ])
 
-const classes = ref([
+const classes = computed(() => [
   "btn",
   size.value,
   color.value,
