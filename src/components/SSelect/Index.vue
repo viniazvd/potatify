@@ -2,7 +2,7 @@
   <div>
     <SDropdown @close:dropdown="closeDropdown" ref="SSelectDropdown" animation="FADE_IN" >
       <template #activator="{ on }">
-        <SInput
+        <SInputContainer
           v-model="value"
           :label="props.label"
           v-bind="$attrs"
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import SInput from "../SInput/Index.vue";
+import SInputContainer from "../SInputContainer/SInputContainer.vue";
 import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
 import {computed, nextTick, PropType, ref, watch} from "vue";

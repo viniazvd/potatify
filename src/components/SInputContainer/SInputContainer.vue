@@ -1,24 +1,27 @@
 <template>
   <div>
     <slot name="label" v-bind="{ label }">
-      <label :for="uniqueId" >
-        {{ props.label }}
+      <label :for="uniqueId" :class="labelClasses">
+        {{ props.label }}{{ requiredAsterisk }}
       </label>
     </slot>
-    <div class="flex items-center gap-4" :class="hasOuterSlots">
-      <div class="outer-appendages" @click="emit('click:prepend-outer')" v-if="hasOuterSlots">
+    <div class="flex items-center gap-4" :class="prependedOuterSlotsClasses">
+      <div class="outer-appendages" @click="emit('click:prepend-outer')" v-if="hasPrependedOuterIconsOrSlots">
         <slot name="prepend:outer">
           <SIcon :icon="props.prependOuterIcon" v-if="props.prependOuterIcon"/>
         </slot>
       </div>
       <div class="grow relative">
-        <span class="inner-appendages" @click="emit('click:prepend-inner')">
+        <span
+          v-if="(hasPrependedInnerSlots || props.prependInnerIcon)"
+          class="inner-appendages" @click="emit('click:prepend-inner')">
           <slot name="prepend:inner">
             <SIcon :icon="props.prependInnerIcon" v-if="props.prependInnerIcon"/>
           </slot>
         </span>
         <div>
-          <input @input="validateInput" v-model="modelValue" class="base-input min-h-[50px]" :class="{...inputErrors, ...paddedInput}" v-bind="$attrs" :id="uniqueId" />
+          <input @change="validateInput" v-model="modelValue" class="base-input min-h-[50px]" :class="{...inputErrors,
+          ...paddedInput}" v-bind="$attrs" :id="uniqueId" />
           <slot name="value" v-bind="{ value: modelValue }"></slot>
           <div v-show="props.hint || props.persistentHint" class="mt-2 text-xs">
             {{props.hint}}
@@ -30,14 +33,18 @@
           </STransition>
         </div>
         <span
+            v-if="(hasAppendedInnerSlots || props.appendInnerIcon)"
             @click="emit('click:append-inner')"
-            class="inner-appendages right-0 top-0 hover:bg-primary">
+            class="inner-appendages right-0 top-0">
           <slot name="append-inner">
             <SIcon :icon="props.appendInnerIcon" v-if="props.appendInnerIcon"/>
           </slot>
         </span>
       </div>
-      <div @click="emit('click:append-outer')" class="hover:bg-primary outer-appendages">
+      <div
+        @click="emit('click:append-outer')"
+        class="outer-appendages"
+        v-if="(hasAppendedOuterSlots || props.appendOuterIcon)">
         <slot name="append:outer">
           <SIcon :icon="props.appendOuterIcon" v-if="props.appendOuterIcon"/>
         </slot>
@@ -59,22 +66,6 @@ import {useThrottleFn} from "@vueuse/core";
 
 const { uniqueId } = useUUID()
 
-const emit = defineEmits([
-  "click:append-outer",
-  "click:append-inner",
-  "click:prepend-inner",
-  "click:prepend-outer",
-])
-
-const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
-
-const attrs = useAttrs();
-const slots = useSlots();
-
-const hasOuterSlots = computed(() => ({
-  "gap-3": Object.keys(slots).includes("outer")
-}))
-
 const props = defineProps({
   label: {
     required: true,
@@ -83,12 +74,13 @@ const props = defineProps({
   modelValue: {
     type: null
   },
+  required: Boolean,
   appendInnerIcon: String,
   appendOuterIcon: String,
   prependInnerIcon: String,
   prependOuterIcon: String,
   hint: String,
-  error: Boolean,
+  errorMessage: String,
   persistentHint: Boolean,
   rules: {
     type: Array as PropType<Array<Function>>,
@@ -97,8 +89,36 @@ const props = defineProps({
   eager: Boolean
 })
 
-const hasErrors = ref(false);
-const message = ref("");
+const emit = defineEmits([
+  "click:append-outer",
+  "click:append-inner",
+  "click:prepend-inner",
+  "click:prepend-outer",
+  "update:errorMessage"
+])
+
+const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
+
+const attrs = useAttrs();
+const slots = useSlots();
+
+const hasPrependedOuterSlots = computed(() => Object.keys(slots).includes("prepend:outer"));
+const hasPrependedInnerSlots = computed(() => Object.keys(slots).includes("prepend:inner"));
+const hasAppendedOuterSlots = computed(() => Object.keys(slots).includes("append:outer"));
+const hasAppendedInnerSlots = computed(() => Object.keys(slots).includes("append:inner"));
+
+const hasPrependedOuterIconsOrSlots = computed(() => (hasPrependedOuterSlots.value || props.prependOuterIcon));
+
+const prependedOuterSlotsClasses = computed(() => ({
+  "gap-3": hasPrependedOuterIconsOrSlots
+}))
+
+const labelClasses = computed(() => ({
+  "ml-10": hasPrependedOuterIconsOrSlots.value
+}))
+
+const hasErrors = ref(Boolean(props.errorMessage));
+const message = ref(props.errorMessage);
 
 function validateRules () {
   props.rules?.some(rule => {
@@ -126,7 +146,7 @@ const validateInput = useThrottleFn(() => {
 }, 250, true)
 
 const isErrored = computed(() => ({
-  "error-text": props.error || hasErrors.value
+  "error-text": hasErrors.value
 }))
 
 const inputErrors = computed(() => ({
@@ -138,15 +158,12 @@ const paddedInput = computed(() => ({
   "!pr-12": props.appendOuterIcon || slots["append:inner"]
 }))
 
+const requiredAsterisk = computed(() => (props.required && "*") || null)
 </script>
 <style scoped lang="postcss">
 
 .base-input {
   @apply relative block w-full appearance-none rounded-md border border-stone-200 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary focus:outline-none focus:ring-primary sm:text-sm dark:bg-transparent dark:text-slate-100;
-}
-
-.error-border {
-  @apply border-red-600 dark:border-red-300;
 }
 
 .error-text {
@@ -158,6 +175,10 @@ const paddedInput = computed(() => ({
 }
 .outer-appendages {
   @apply h-[50px] self-start flex items-center
+}
+
+.error-border {
+  @apply border-red-600 dark:border-red-300 !important;
 }
 
 </style>
