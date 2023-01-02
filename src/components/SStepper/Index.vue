@@ -1,19 +1,38 @@
 <template>
-  <div class="flex border-b border-stone-300/50" :class="[tabsContainer]">
-    <div v-for="(step, id, index) in steps" :key="id" :class="[tabsSize]">
+  <div class="stepper rounded-md" :class="[tabsContainer, borderedStepper]">
+    <div
+      v-for="(step, id, index) in steps"
+      :key="id"
+      :class="[
+        tabsSize,
+        isCurrent(id) && `s-stepper-active text-${props.color} border-${props.color}`
+      ]"
+      class="stepper-head-step stepper-line"
+      @click="goToStep(id)"
+    >
       <slot
         :name="`header-${id}`"
         v-bind="{ goToNext, goToPrevious, step, stepNames, goTo }"
       >
         <div
-          @click="goToStep(id)"
-          class="py-3 px-6 cursor-pointer select-none relative gap-1 flex items-center"
+          class="py-3 px-6 cursor-pointer select-none relative flex items-center"
           :class="[
             ...tabItems,
-            isCurrent(id) && `s-stepper-active text-${props.color} border-${props.color}`
           ]">
           <SIcon v-if="step.icon" :icon="step.icon"/>
-          {{step.title}}
+          <div
+            v-else
+            class="default-step-marker"
+            :class="[
+                isAfter(id) && 'step-completed',
+                step.error && 'step-error'
+            ]"
+          >
+            {{index + 1}}
+          </div>
+          <span class="ml-4">
+            {{step.title}}
+          </span>
         </div>
       </slot>
     </div>
@@ -47,7 +66,8 @@ const props = defineProps({
   textCentered: Boolean,
   color: String as PropType<"primary" | "secondary" | "gray" >,
   pill: Boolean,
-  filled: Boolean
+  filled: Boolean,
+  bordered: Boolean
 })
 
 const tabsSize = computed(() => [
@@ -72,6 +92,7 @@ const {
   goToNext,
   goToPrevious,
   isAfter,
+  isBefore,
   isCurrent,
   stepNames,
   steps,
@@ -87,6 +108,7 @@ function goToStep (id: string | number) {
   goTo(id)
 }
 
+const borderedStepper = computed(() => props.bordered && "stepper-border")
 
 </script>
 <script lang="ts">
@@ -95,16 +117,53 @@ export default {
 }
 </script>
 <style lang="postcss" scoped>
+.stepper {
+  @apply flex justify-between overflow-x-hidden;
+}
+
+.stepper-border {
+  @apply border border-gray-100
+}
+
+.stepper-head-step {
+  @apply flex items-center hover:bg-gray-100 hover:cursor-pointer active:bg-gray-200;
+  min-height: 4.5rem;
+  width: 100%;
+}
+
+.stepper-head-step:last-child {
+  @apply flex-row-reverse
+}
+
+.stepper-head-step:not(:first-child):not(:last-child):before {
+  flex: 1;
+  height: 1px;
+  width: 100%;
+  content: "";
+  background-color: rgba(0,0,0,.1);
+}
+
+.stepper-line:after {
+  flex: 1;
+  height: 1px;
+  width: 100%;
+  content: "";
+  background-color: rgba(0,0,0,.1);
+}
+
+.default-step-marker {
+  @apply bg-blue-700 w-6 h-6 flex items-center justify-center rounded-full text-white;
+}
+
+.step-completed {
+  @apply bg-green-700
+}
+
 .s-stepper-active {
-  @apply border-b-2 bg-gray-300
+  @apply bg-gray-200;
 }
 
-.pill {
-  @apply hover:bg-gray-300 active:bg-gray-400 text-gray-600
+.step-error {
+  @apply bg-red-700
 }
-
-.s-stepper-active {
-  @apply bg-gray-400
-}
-
 </style>
