@@ -106,7 +106,7 @@ const emit = defineEmits([
 
 const vModel = computed({
   get: () => props.modelValue,
-  set: (value: string) => emit("update:modelValue")
+  set: (value: string) => emit("update:modelValue", value)
 })
 
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
