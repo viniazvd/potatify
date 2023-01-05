@@ -22,13 +22,13 @@
         <div>
           <input
             @blur="validateInput"
-            v-model="modelValue"
+            v-model="props.modelValue"
             class="base-input min-h-[50px]"
             :class="{...inputErrors, ...paddedInput}"
             v-bind="$attrs"
             :id="uniqueId"
           />
-          <slot name="value" v-bind="{ value: modelValue }"></slot>
+          <slot name="value" v-bind="{ value: props.modelValue }"></slot>
           <div v-show="props.hint || props.persistentHint" class="mt-2 text-xs">
             {{props.hint}}
           </div>
