@@ -48,7 +48,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import SInputContainer from "../SInputContainer/SInputContainer.vue";
+import SInputContainer from "../SInputContainer/Index.vue";
 import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
 import {computed, nextTick, PropType, ref, watch} from "vue";
