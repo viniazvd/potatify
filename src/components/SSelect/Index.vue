@@ -2,17 +2,17 @@
   <div class="w-full">
     <SDropdown @close:dropdown="closeDropdown" ref="SSelectDropdown" animation="FADE_IN" >
       <template #activator="{ on }">
-        <SInputContainer
-          v-model="value"
-          :label="props.label"
-          v-bind="$attrs"
-          class="hover:cursor-pointer"
-          v-on="on"
-          readonly
-          :append-inner-icon="appendInnerIcon"
-          :append-outer-icon="appendOuterIcon"
-          @click:append-outer="clearInput"
-        />
+        <div v-on="on">
+          <SInput
+            :label="props.label"
+            v-bind="$attrs"
+            :value="shownValue"
+            class="hover:cursor-pointer"
+            readonly
+            :append-inner-icon="appendInnerIcon"
+            :append-outer-icon="appendOuterIcon"
+          />
+        </div>
       </template>
       <div v-bind="containerProps" class="min-w-full py-1 h-fit">
         <div v-bind="wrapperProps" ref="listItem">
@@ -48,10 +48,10 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import SInputContainer from "../SInputContainer/Index.vue";
+import SInput from "../SInput/Index.vue";
 import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
-import {computed, nextTick, PropType, ref, watch} from "vue";
+import {computed, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
 
 const emit = defineEmits(["update:modelValue"]);
@@ -129,7 +129,7 @@ const appendOuterIcon = computed(() => (
 // END INPUT APPENDED ITEMS
 
 // START SELECT ITEM AND MODEL MANAGEMENT LOGIC
-const value = ref(props.modelValue); // THIS TRACKS THE VALUE SHOWN INSIDE THE INPUT
+const shownValue = ref(""); // THIS TRACKS THE VALUE SHOWN INSIDE THE INPUT
 const arrTracker = ref(new Set()); // THIS TRACKS THE V-MODEL WHICH WILL BE MADE AVAILABLE
 
 function selectItem (item: typeof props.items[0]) {
@@ -149,16 +149,12 @@ function selectItem (item: typeof props.items[0]) {
 
       emit("update:modelValue", returnValue);
     }
-
-    const returnObject = Array.from(arrTracker.value);
-    // @TODO REVER ESSA TIPAGEM
-    value.value = returnObject.map((item: any) => item[props.itemText]);
-
-  } else {
+  }
+  else {
     arrTracker.value.clear()
     arrTracker.value.add(item)
 
-    value.value = item[props.itemText] || item;
+    shownValue.value = item[props.itemText] || item;
 
     if (props.returnObject) {
       emit("update:modelValue", item);
@@ -169,25 +165,12 @@ function selectItem (item: typeof props.items[0]) {
     closeDropdown();
   }
 }
-
-// THIS CLEARS ALL INPUT VALUES
-async function clearInput () {
-  arrTracker.value.clear();
-
-  await nextTick();
-
-  const returnValue = Array.from(arrTracker.value);
-  value.value = returnValue;
-  emit("update:modelValue", returnValue);
-}
-
 // THIS DECIDES CLASSES WHICH WILL BE APPENDED TO THE ITEM
 // WHILE SELECTING AND NAVIGATING
 const menuItemClasses = (item:any, index: number) => ({
   's-select-active': isSelected(item),
   's-select-highlight': isHighlighted(index)
 })
-
 
 // LOGIC BEHIND ARROWS NAVIGATION
 const highlightedItem = ref(-1);
@@ -204,10 +187,6 @@ const {arrowDown, arrowUp, space, escape} = useMagicKeys({
       event.preventDefault()
   }
 });
-
-watch(() => props.modelValue, (v) => {
-  selectItem(v)
-}, { deep: true, immediate: true })
 
 whenever(escape, () => {
   if (!SSelectDropdown.value.isOpen) return;
