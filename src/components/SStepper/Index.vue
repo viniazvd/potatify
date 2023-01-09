@@ -108,6 +108,14 @@ function goToStep (id: string | number) {
   goTo(id)
 }
 
+defineExpose({
+  current,
+  goToNext,
+  goToPrevious,
+  stepNames,
+  steps,
+  goTo
+})
 const borderedStepper = computed(() => props.bordered && "stepper-border")
 
 </script>
