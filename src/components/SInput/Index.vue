@@ -1,10 +1,8 @@
 <template>
-  <SInputContainer v-bind="props"/>
+  <SInputContainer v-bind="{...props, ...$attrs }" />
 </template>
 
 <script lang="ts">
-// interface Props extends InputContainerType {}
-
 export default {
   name: "SInput",
   inheritAttrs: false
@@ -13,20 +11,27 @@ export default {
 
 <script lang="ts" setup>
 import SInputContainer from "../SInputContainer/Index.vue";
-import { defineProps } from "vue";
+import {defineProps, PropType} from "vue";
 
-const props = defineProps<{
-  label: string,
-  modelValue?: any,
-  required?: boolean,
-  appendInnerIcon?: string,
-  appendOuterIcon?: string,
-  prependInnerIcon?: string,
-  prependOuterIcon?: string,
-  hint?: string,
-  errorMessage?: string,
-  persistentHint?: boolean,
-  rules?: Array<(value: string) => boolean | string>,
-  eager?: boolean
-}>()
+const props = defineProps({
+  label: {
+    required: true,
+    type: String
+  },
+  modelValue: null,
+  value: String,
+  required: Boolean,
+  appendInnerIcon: String,
+  appendOuterIcon: String,
+  prependInnerIcon: String,
+  prependOuterIcon: String,
+  hint: String,
+  errorMessage: String,
+  persistentHint: Boolean,
+  rules: {
+    type: Array as PropType<Array<Function>>,
+    default: []
+  },
+  eager: Boolean
+})
 </script>
