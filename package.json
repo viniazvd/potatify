@@ -45,11 +45,9 @@
     "pinia": "^2.0.22",
     "utils-sdz": "^0.0.12",
     "uuid": "^9.0.0",
-    "v-money3": "^3.22.1",
     "vue": "^3.2.37",
     "vue-coerousel": "^1.0.19",
-    "vue-router": "^4.1.5",
-    "vue-the-mask": "^0.11.1"
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

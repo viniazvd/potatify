@@ -76,9 +76,7 @@ const props = defineProps({
     required: true,
     type: String
   },
-  modelValue: {
-    type: null
-  },
+  modelValue: null,
   value: String,
   required: Boolean,
   appendInnerIcon: String,

@@ -11170,11 +11170,6 @@
   "resolved" "https://registry.npmjs.org/uuid/-/uuid-9.0.0.tgz"
   "version" "9.0.0"
 
-"v-money3@^3.22.1":
-  "integrity" "sha512-3EPM+BXCwgV6OuSe2Wf8WY9QAgaRYw5/Qjfk76Mhf4iXcqVQG4pC3ON467yrET6gdxuw+GE/DS3sSYxnc9ZS6Q=="
-  "resolved" "https://registry.npmjs.org/v-money3/-/v-money3-3.22.2.tgz"
-  "version" "3.22.2"
-
 "v8-compile-cache@^2.0.3":
   "integrity" "sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA=="
   "resolved" "https://registry.npmjs.org/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz"
@@ -11397,11 +11392,6 @@
   dependencies:
     "@vue/devtools-api" "^6.1.4"
 
-"vue-the-mask@^0.11.1":
-  "integrity" "sha512-UquSfnSWejD0zAfcD+3jJ1chUAkOAyoxya9Lxh9acCRtrlmGcAIvd0cQYraWqKenbuZJUdum+S174atv2AuEHQ=="
-  "resolved" "https://registry.npmjs.org/vue-the-mask/-/vue-the-mask-0.11.1.tgz"
-  "version" "0.11.1"
-
 "vue-tsc@^0.40.4":
   "integrity" "sha512-xzuN3g5PnKfJcNrLv4+mAjteMd5wLm5fRhW0034OfNJZY4WhB07vhngea/XeGn7wNYt16r7syonzvW/54dcNiA=="
   "resolved" "https://registry.npmjs.org/vue-tsc/-/vue-tsc-0.40.13.tgz"
@@ -11410,7 +11400,7 @@
     "@volar/vue-language-core" "0.40.13"
     "@volar/vue-typescript" "0.40.13"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.1", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.37", "vue@>= 3.2.0", "vue@>=2", "vue@>=3", "vue@3.2.40":
+"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.1", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.37", "vue@>=2", "vue@>=3", "vue@3.2.40":
   "integrity" "sha512-1mGHulzUbl2Nk3pfvI5aXYYyJUs1nm4kyvuz38u4xlQkLUn1i2R7nDbI4TufECmY8v1qNBHYy62bCaM+3cHP2A=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.40.tgz"
   "version" "3.2.40"
