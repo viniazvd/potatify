@@ -51,7 +51,7 @@
 </template>
 <script lang="ts" setup>
 import {useStepper} from "@vueuse/core";
-import {computed, defineAsyncComponent, PropType} from "vue";
+import {computed, defineAsyncComponent, PropType, defineExpose} from "vue";
 import {Step} from "./interfaces/step.interface";
 
 const SIcon = defineAsyncComponent(() => import("@components/SIcon/Index.vue"));
