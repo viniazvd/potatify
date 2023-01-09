@@ -2,21 +2,8 @@
   <main class="flex flex-col gap-4 p-4">
     <router-view></router-view>
 
-    <SDropdown>
-      <template #activator="{on}">
-        <button v-on="on">Abrri dropdown</button>
-      </template>
-      <div>
-        conteudo do dropdown <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        dropdown
-      </div>
-    </SDropdown>
+    <button @click="isLoading = !isLoading">toggle</button>
+    <s-button :loading="isLoading" :disabled="isLoading">Loader button</s-button>
   </main>
 </template>
 
@@ -31,6 +18,7 @@ import SHorizontalTimeline from "@components/STimeline/HorizontalTimeline.vue";
 import { ref } from 'vue';
 import SCardV2 from "@components/SCard/SCardV2.vue";
 
+const isLoading = ref(false)
 const tabs = ref<Tab[]>([
   { id: 1, name: 'tab 1', icon: 'mdi:account' },
   { id: 2, name: 'tab 2', icon: 'uit:arrow-circle-left', disabled: true },
