@@ -22,7 +22,7 @@
         <div>
           <input
             @blur="validateInput"
-            v-model="vModel"
+            :value="props.value ?? props.modelValue"
             class="base-input min-h-[50px]"
             :class="{...inputErrors, ...paddedInput}"
             v-bind="$attrs"
@@ -80,6 +80,7 @@ const props = defineProps({
   modelValue: {
     type: null
   },
+  value: String,
   required: Boolean,
   appendInnerIcon: String,
   appendOuterIcon: String,
@@ -105,8 +106,12 @@ const emit = defineEmits([
 ])
 
 const vModel = computed({
-  get: () => props.modelValue,
-  set: (value: string) => emit("update:modelValue", value)
+  get: () => props.value ?? props.modelValue,
+  set: (value: string) => {
+    if (props.modelValue) {
+      emit("update:modelValue", value)
+    }
+  }
 })
 
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
@@ -146,6 +151,10 @@ function validateRules () {
     }
   })
 }
+
+defineExpose({
+  validateRules
+})
 
 onMounted(() => {
   if (props.eager) {
