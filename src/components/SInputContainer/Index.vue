@@ -22,7 +22,7 @@
         <div>
           <input
             @blur="validateInput"
-            :value="props.value ?? props.modelValue"
+            :value="props.modelValue"
             class="base-input min-h-[50px]"
             :class="{...inputErrors, ...paddedInput}"
             v-bind="$attrs"
