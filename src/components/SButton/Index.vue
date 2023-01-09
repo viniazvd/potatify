@@ -5,15 +5,20 @@
     :class="classes"
     :disabled="props.disabled"
   >
-    <div v-if="props.loading"  class="h-full w-full">
-      <SLoader color="white" class="opacity-80 mx-auto" size="24"/>
-    </div>
-    <slot v-else />
+    <span v-show="!loading">
+      <slot />
+    </span>
+
+    <!-- <s-transition name="FADE_IN"> -->
+    <s-loader v-show="loading" color="white" class="opacity-80 mx-auto" size="24"/>
+    <!-- </s-transition> -->
   </button>
 </template>
+
 <script lang="ts" setup>
 import {computed, defineAsyncComponent, defineProps, ref, watch} from 'vue'
-import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto";
+import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto"
+// import STransition from "../STransition/Index.vue"
 
 const SLoader = defineAsyncComponent(() => import('../SLoader/Index.vue'))
 
