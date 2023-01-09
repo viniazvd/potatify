@@ -103,7 +103,7 @@ const emit = defineEmits([
 ])
 
 const vModel = computed({
-  get: () => props.modelValue,
+  get: () => props.value ?? props.modelValue,
   set: (val: string) => emit("update:modelValue", val)
 })
 

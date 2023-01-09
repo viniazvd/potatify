@@ -1,5 +1,5 @@
 <template>
-  <SInputContainer v-bind="{...props, ...$attrs }" />
+  <SInputContainer v-bind="{...props, ...$attrs }" v-model="modelValue" />
 </template>
 
 <script lang="ts">

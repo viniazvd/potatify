@@ -3,12 +3,12 @@
     <SDropdown @close:dropdown="closeDropdown" ref="SSelectDropdown" animation="FADE_IN" >
       <template #activator="{ on }">
         <div v-on="on">
-          <SInput
-            :label="props.label"
+          <SinputContainer
             v-bind="$attrs"
-            :value="shownValue"
             class="hover:cursor-pointer"
+            :label="props.label"
             readonly
+            :value="shownValue"
             :append-inner-icon="appendInnerIcon"
             :append-outer-icon="appendOuterIcon"
           />
@@ -53,6 +53,7 @@ import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
 import {computed, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
+import SinputContainer from "@components/SInputContainer/Index.vue";
 
 const emit = defineEmits(["update:modelValue"]);
 
