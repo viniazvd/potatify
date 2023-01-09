@@ -21,7 +21,6 @@
         </span>
         <div>
           <input
-            @blur="validateInput"
             v-model="modelValue"
             class="base-input min-h-[50px]"
             :class="{...inputErrors, ...paddedInput}"
