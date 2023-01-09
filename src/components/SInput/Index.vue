@@ -1,5 +1,5 @@
 <template>
-  <SInputContainer v-bind="{...props, ...$attrs }" v-model="modelValue" />
+  <SInputContainer v-bind="Object.assign({}, props, $attrs)" v-model="vModel" />
 </template>
 
 <script lang="ts">
@@ -11,7 +11,16 @@ export default {
 
 <script lang="ts" setup>
 import SInputContainer from "../SInputContainer/Index.vue";
-import {defineProps, PropType} from "vue";
+import {computed, defineProps, PropType} from "vue";
+
+const emit = defineEmits(["update:modelValue"]);
+
+const vModel = computed({
+  get: () => props.modelValue,
+  set: (val: string) => {
+    emit("update:modelValue", val)
+  }
+});
 
 const props = defineProps({
   label: {
