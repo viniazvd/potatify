@@ -22,13 +22,13 @@
         <div>
           <input
             @blur="validateInput"
-            :value="props.modelValue"
+            v-model="props.modelValue"
             class="base-input min-h-[50px]"
             :class="{...inputErrors, ...paddedInput}"
             v-bind="$attrs"
             :id="uniqueId"
           />
-          <slot name="value" v-bind="{ value: vModel }"></slot>
+          <slot name="value" v-bind="{ value: props.modelValue }"></slot>
           <div v-show="props.hint || props.persistentHint" class="mt-2 text-xs">
             {{props.hint}}
           </div>
@@ -101,18 +101,8 @@ const emit = defineEmits([
   "click:append-inner",
   "click:prepend-inner",
   "click:prepend-outer",
-  "update:errorMessage",
-  "update:modelValue"
+  "update:errorMessage"
 ])
-
-const vModel = computed({
-  get: () => props.value ?? props.modelValue,
-  set: (value: string) => {
-    if (props.modelValue) {
-      emit("update:modelValue", value)
-    }
-  }
-})
 
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
 
@@ -139,7 +129,7 @@ const message = ref(props.errorMessage);
 
 function validateRules () {
   props.rules?.some(rule => {
-    const result = rule(vModel);
+    const result = rule(props.modelValue);
 
     if (typeof result === "boolean") {
       message.value = "";
