@@ -21,7 +21,7 @@
         </span>
         <div>
           <input
-            v-model="modelValue"
+            v-model="vModel"
             class="base-input min-h-[50px]"
             :class="{...inputErrors, ...paddedInput}"
             v-bind="$attrs"
@@ -100,8 +100,14 @@ const emit = defineEmits([
   "click:append-inner",
   "click:prepend-inner",
   "click:prepend-outer",
-  "update:errorMessage"
+  "update:errorMessage",
+  "update:modelValue"
 ])
+
+const vModel = computed({
+  get: () => props.modelValue,
+  set: (val: string) => emit("update:modelValue", val)
+})
 
 const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"))
 
