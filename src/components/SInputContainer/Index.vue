@@ -127,36 +127,37 @@ const labelClasses = computed(() => ({
   "ml-10": hasPrependedOuterIconsOrSlots.value
 }))
 
-const hasErrors = ref(Boolean(props.errorMessage));
-const message = ref(props.errorMessage);
+const hasErrors = computed(() => Boolean(props.errorMessage));
+const message = computed(() => props.errorMessage);
 
-function validateRules () {
-  props.rules?.some(rule => {
-    const result = rule(props.modelValue);
+// @TODO re-implementar corretamente
+// function validateRules () {
+//   props.rules?.some(rule => {
+//     const result = rule(props.modelValue);
+//
+//     if (typeof result === "boolean") {
+//       message.value = "";
+//       hasErrors.value = false
+//     } else {
+//       hasErrors.value = true
+//       message.value = result;
+//       return result
+//     }
+//   })
+// }
 
-    if (typeof result === "boolean") {
-      message.value = "";
-      hasErrors.value = false
-    } else {
-      hasErrors.value = true
-      message.value = result;
-      return result
-    }
-  })
-}
+// defineExpose({
+//   validateRules
+// })
 
-defineExpose({
-  validateRules
-})
-
-onMounted(() => {
-  if (props.eager) {
-    validateRules()
-  }
-})
+// onMounted(() => {
+//   if (props.eager) {
+//     validateRules()
+//   }
+// })
 
 const validateInput = useThrottleFn(() => {
-  validateRules()
+  // validateRules()
 }, 250, true)
 
 const isErrored = computed(() => ({
