@@ -1,19 +1,19 @@
 <template>
   <div
     :ref="id"
-    class="base-feedback pb-2 ring-1 ring-black/5 relative min-h-[50px] p-4 min-w-content overflow-hidden bg-white shadow-md cursor-pointer rounded-md"
+    class="base-feedback ring-1 ring-black/5 relative min-h-[50px] p-4 mb-2 min-w-content overflow-hidden bg-white shadow-md cursor-pointer rounded-md"
     @click.prevent="emit('close')"
   >
     <div class="flex place-content-between gap-2 items-center">
       <div class="min-w-[30px]">
         <slot name="prependIcon">
-          <s-icon size="30" :icon="icon" v-if="props.prependIcon" :color="color" />
+          <s-icon size="30" :icon="icon" :color="color" />
         </slot>
       </div>
 
       <div class="max-w-[300px] break-words">
         <div class="text-md font-bold">{{ props.title }}</div>
-        <p class="text-sm">{{ message }}</p>
+        <p class="text-sm break-all">{{ message }}</p>
       </div>
 
       <div class="min-w-[20px]">
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <s-progress v-if="autoClose" class="absolute bottom-0 w-full h-[5px]" :color="color" :duration="props.duration" />
+    <s-progress class="absolute bottom-0 right-0 w-full h-[5px]" :color="color" :duration="props.duration" />
   </div>
 </template>
 
@@ -62,7 +62,7 @@ onMounted(() => {
   timer.value = setTimeout(() => emit('close'), delay.value)
 })
 
-const icon = computed(() => icons[props.type])
+const icon = computed(() => props.prependIcon || icons[props.type])
 
 const color = computed(() => {
   const colors = {
