@@ -25,7 +25,7 @@ type Options = {
 type CreateFeedback = { (options: Options): void }
 // export const CREATE_FEEDBACK: InjectionKey<Options> = Symbol('create-feedback')
 
-export function useFeedbacks() {
+export function useFeedback() {
   const feedbacks = ref<Feedback[]>([])
 
   const createFeedback: CreateFeedback = (options: Options) => {
