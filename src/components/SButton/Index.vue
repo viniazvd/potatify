@@ -1,16 +1,24 @@
 <template>
   <button
     ref="SButton"
+    v-bind="$attrs"
     :class="classes"
     :disabled="props.disabled"
   >
-    <SLoader v-if="props.loading" size="24" />
-    <slot v-else />
+    <span v-show="!loading">
+      <slot />
+    </span>
+
+    <!-- <s-transition name="FADE_IN"> -->
+    <s-loader v-show="loading" color="white" class="opacity-80 mx-auto" size="24"/>
+    <!-- </s-transition> -->
   </button>
 </template>
+
 <script lang="ts" setup>
 import {computed, defineAsyncComponent, defineProps, ref, watch} from 'vue'
-import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto";
+import {BTN_SIZES, BTN_VARIANTS} from "./SButton.dto"
+// import STransition from "../STransition/Index.vue"
 
 const SLoader = defineAsyncComponent(() => import('../SLoader/Index.vue'))
 
@@ -94,7 +102,7 @@ const booleans = computed(() => [
   }
 ])
 
-const classes = ref([
+const classes = computed(() => [
   "btn",
   size.value,
   color.value,
@@ -104,4 +112,10 @@ const classes = ref([
   "px-[1rem]"
 ])
 
+</script>
+
+<script lang="ts">
+export default {
+  name: "SButton"
+}
 </script>

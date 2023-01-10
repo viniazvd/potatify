@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="w-full">
     <SDropdown @close:dropdown="closeDropdown" ref="SSelectDropdown" animation="FADE_IN" >
       <template #activator="{ on }">
-        <SInput
-          :value="value"
-          :label="props.label"
-          v-bind="$attrs"
-          class="hover:cursor-pointer"
-          v-on="on"
-          readonly
-          :append-inner-icon="appendInnerIcon"
-          :append-outer-icon="appendOuterIcon"
-          @click:append-outer="clearInput"
-        />
+        <div v-on="on">
+          <SinputContainer
+            v-bind="$attrs"
+            class="hover:cursor-pointer"
+            :label="props.label"
+            readonly
+            :value="shownValue"
+            :append-inner-icon="appendInnerIcon"
+            :append-outer-icon="appendOuterIcon"
+          />
+        </div>
       </template>
-      <div v-bind="containerProps" class="min-w-full py-1 h-[300px]">
+      <div v-bind="containerProps" class="min-w-full py-1 h-fit">
         <div v-bind="wrapperProps" ref="listItem">
             <div
               role="menuitem"
@@ -32,7 +32,8 @@
                   index: item.index,
                   isSelected: isSelected(item.data)
                 }">
-                <SCheckbox :checked="isSelected(item.data)" :label="item.data.name" />
+                <SCheckbox v-if="props.multiple" :checked="isSelected(item.data)" :label="item.data[props.itemText]" />
+                <span v-else>{{ item.data[props.itemText] }}</span>
               </slot>
             </div>
           </div>
@@ -42,16 +43,17 @@
 </template>
 <script lang="ts">
 export default {
-  inheritAttrs: false
+  inheritAttrs: false,
+  name: "SSelect"
 }
 </script>
 <script lang="ts" setup>
 import SInput from "../SInput/Index.vue";
+import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
-import {computed, defineAsyncComponent, nextTick, PropType, ref} from "vue";
+import {computed, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
-
-const SDropdown = defineAsyncComponent(() => import("../SDropdown/Index.vue"));
+import SinputContainer from "@components/SInputContainer/Index.vue";
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -64,7 +66,7 @@ const props = defineProps({
     type: [String, Number, Object]
   },
   items: {
-    type: Array as PropType<any>,
+    type: Array as PropType<any[]>,
     required: true
   },
   itemText: {
@@ -90,7 +92,7 @@ const props = defineProps({
 })
 
 // LOGIC BEHIND THE VIRTUAL LIST
-const {list, containerProps, wrapperProps, scrollTo} = useVirtualList(props.items, {
+const {list, containerProps, wrapperProps, scrollTo} = useVirtualList(computed(() => props.items), {
   itemHeight: 40
 })
 
@@ -98,7 +100,7 @@ const {list, containerProps, wrapperProps, scrollTo} = useVirtualList(props.item
 const SSelectDropdown = ref();
 async function closeDropdown () {
   // WE SHOULD SET THE TRACKER OF HIGHTLIGHT TO THIS EVERYTIME WE CLOSE THE DROPDOWN
-  SSelectDropdown.value.setIsOpen(false);
+  SSelectDropdown.value?.setIsOpen?.(false);
 
   await nextTick();
 
@@ -128,10 +130,12 @@ const appendOuterIcon = computed(() => (
 // END INPUT APPENDED ITEMS
 
 // START SELECT ITEM AND MODEL MANAGEMENT LOGIC
-const value = ref(); // THIS TRACKS THE VALUE SHOWN INSIDE THE INPUT
+const shownValue = ref(""); // THIS TRACKS THE VALUE SHOWN INSIDE THE INPUT
 const arrTracker = ref(new Set()); // THIS TRACKS THE V-MODEL WHICH WILL BE MADE AVAILABLE
 
 function selectItem (item: typeof props.items[0]) {
+  if (!item) return
+
   if (props.multiple) {
     arrTracker.value.has(item)
     ? arrTracker.value.delete(item)
@@ -146,38 +150,22 @@ function selectItem (item: typeof props.items[0]) {
 
       emit("update:modelValue", returnValue);
     }
-
-    const returnObject = Array.from(arrTracker.value);
-    // @TODO REVER ESSA TIPAGEM
-    value.value = returnObject.map((item: any) => item[props.itemText]);
-
-  } else {
+  }
+  else {
     arrTracker.value.clear()
     arrTracker.value.add(item)
 
-    value.value = item[props.itemText];
+    shownValue.value = item[props.itemText] || item;
 
     if (props.returnObject) {
       emit("update:modelValue", item);
     } else {
-      emit("update:modelValue", item[props.itemValue]);
+      emit("update:modelValue", item[props.itemValue] || item);
     }
 
     closeDropdown();
   }
 }
-
-// THIS CLEARS ALL INPUT VALUES
-async function clearInput () {
-  arrTracker.value.clear();
-
-  await nextTick();
-
-  const returnValue = Array.from(arrTracker.value);
-  value.value = returnValue;
-  emit("update:modelValue", returnValue);
-}
-
 // THIS DECIDES CLASSES WHICH WILL BE APPENDED TO THE ITEM
 // WHILE SELECTING AND NAVIGATING
 const menuItemClasses = (item:any, index: number) => ({
@@ -185,13 +173,15 @@ const menuItemClasses = (item:any, index: number) => ({
   's-select-highlight': isHighlighted(index)
 })
 
-
 // LOGIC BEHIND ARROWS NAVIGATION
 const highlightedItem = ref(-1);
 const {arrowDown, arrowUp, space, escape} = useMagicKeys({
   passive: false,
   onEventFired: (event) => {
     // THIS WILL PREVENT THE PAGE FROM SCROLLING
+
+    if (!SSelectDropdown.value.isOpen) return;
+
     const isArrowUpOrDown = (event.key === 'ArrowDown' || event.key === 'ArrowUp');
     const isSpaceKey = (event.code === 'Space');
     if ((isArrowUpOrDown || isSpaceKey) && event.type === 'keydown')

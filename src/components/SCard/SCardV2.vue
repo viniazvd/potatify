@@ -1,5 +1,5 @@
 <template>
-  <div data-testid="SCard" class="base card-shadows card-colors overflow-hidden" :class="classes">
+  <div data-testid="SCard" class="base card-shadows card-colors" :class="classes">
     <slot />
   </div>
 </template>
@@ -18,6 +18,12 @@ const classes = computed(() => ({
   [`bg-${props.backgroundColor}`]: props.backgroundColor
 }))
 
+</script>
+
+<script lang="ts">
+export default {
+  name: "SCard"
+}
 </script>
 <style lang="postcss" scoped>
 

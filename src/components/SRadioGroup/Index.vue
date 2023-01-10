@@ -52,15 +52,19 @@ const internalOptions = computed(() => props.options
 const emit = defineEmits(["update:modelValue"])
 
 const radioGroupClasses = computed(() => [
-  's-radio-group flex flex-wrap gap-4 flex-col',
-   props.row && 'flex-row'
+  's-radio-group flex flex-wrap gap-4',
+   props.row ? 'flex-row' : 'flex-col'
 ])
 
 const radioClasses = computed(() => [
   's-radio flex items-center'
 ])
 </script>
-
+<script lang="ts">
+export default {
+  name: "SRadioGroup"
+}
+</script>
 <style lang="postcss" scoped>
 .input:checked + .radio {
   border-width: 7px;

@@ -22,6 +22,11 @@ const width = computed(() => ({
   width: `${props.size}px`
 }))
 </script>
+<script lang="ts">
+export default {
+  name: "SSidebar"
+}
+</script>
 <style lang="postcss" scoped>
 .s-navigation-drawer {
   @apply fixed top-0 left-0 z-50 h-screen overflow-y-auto bg-white dark:bg-stone-800;

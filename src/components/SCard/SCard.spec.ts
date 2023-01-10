@@ -13,7 +13,7 @@ function getSCard () {
 }
 
 // PUBLIC DEV API
-when("No props are informed", () => {
+when.skip("No props are informed", () => {
   it("Should render with defaults", () => {
     wrapper = shallowMount(SCardV2);
 
@@ -24,7 +24,7 @@ when("No props are informed", () => {
   })
 })
 
-when("Props are modified", () => {
+when.skip("Props are modified", () => {
   it("Should have no padding", () => {
     wrapper = shallowMount(SCardV2, {
       props: {

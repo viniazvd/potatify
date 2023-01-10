@@ -1,2 +1,2 @@
-export * from "./SDataTable.vue"
-export * from "./SSimpleTable.vue"
+export { default as SDataTable } from "./SDataTable.vue"
+export { default as SSimpleTable } from "./SSimpleTable.vue"

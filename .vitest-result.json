@@ -1,14 +1,14 @@
 {
-  "numTotalTestSuites": 4,
-  "numPassedTestSuites": 4,
+  "numTotalTestSuites": 5,
+  "numPassedTestSuites": 5,
   "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 6,
-  "numPassedTests": 6,
+  "numTotalTests": 27,
+  "numPassedTests": 27,
   "numFailedTests": 0,
   "numPendingTests": 0,
-  "numTodoTests": 0,
-  "startTime": 1669042148722,
+  "numTodoTests": 1,
+  "startTime": 1670335296192,
   "success": true,
   "testResults": [
     {
@@ -16,75 +16,280 @@
         {
           "ancestorTitles": [
             "",
-            "no props are informed"
+            "I send data to the data table"
           ],
-          "fullName": " no props are informed should use the fallback content",
-          "status": "passed",
-          "title": "should use the fallback content",
-          "duration": 22,
+          "fullName": " I send data to the data table Should render the tabular data with as many array entries as it has length",
+          "status": "skipped",
+          "title": "Should render the tabular data with as many array entries as it has length",
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "used with src and alt"
+            "I send data to the data table"
           ],
-          "fullName": " used with src and alt Should render the component correctly",
-          "status": "passed",
-          "title": "Should render the component correctly",
-          "duration": 3,
+          "fullName": " I send data to the data table Should not render a loading div when no loading is present",
+          "status": "skipped",
+          "title": "Should not render a loading div when no loading is present",
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "I want a variant image"
+            "I send data to the data table"
           ],
-          "fullName": " I want a variant image Should render a round image if no variant is informed",
-          "status": "passed",
-          "title": "Should render a round image if no variant is informed",
-          "duration": 3,
+          "fullName": " I send data to the data table Should have slots available for each value sent by value",
+          "status": "skipped",
+          "title": "Should have slots available for each value sent by value",
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "I want a variant image"
+            "I send data to the data table"
           ],
-          "fullName": " I want a variant image Should render a round image if no variant is informed",
-          "status": "passed",
-          "title": "Should render a round image if no variant is informed",
-          "duration": 2,
+          "fullName": " I send data to the data table Should have slots available for each value sent by value",
+          "status": "skipped",
+          "title": "Should have slots available for each value sent by value",
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "I want a variant image"
+            "I send data to the data table"
           ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
-          "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 2,
+          "fullName": " I send data to the data table Should render a checkbox with each row when selectable is sent",
+          "status": "skipped",
+          "title": "Should render a checkbox with each row when selectable is sent",
           "failureMessages": []
         },
         {
           "ancestorTitles": [
             "",
-            "I want a variant image"
+            "I send data to the data table"
           ],
-          "fullName": " I want a variant image Should not include other variants when one is declared",
+          "fullName": " I send data to the data table Should render a loader when isLoading prop is true",
+          "status": "skipped",
+          "title": "Should render a loader when isLoading prop is true",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I send data to the data table"
+          ],
+          "fullName": " I send data to the data table Should render the header with each column mapping to a name in cols",
+          "status": "skipped",
+          "title": "Should render the header with each column mapping to a name in cols",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I send data to the data table"
+          ],
+          "fullName": " I send data to the data table Should render a selectable thead with an input checkbox inside when prop selectable is passed",
+          "status": "skipped",
+          "title": "Should render a selectable thead with an input checkbox inside when prop selectable is passed",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality should have a total quantity of registries written in the pagination section",
+          "status": "skipped",
+          "title": "should have a total quantity of registries written in the pagination section",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "status": "skipped",
+          "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "status": "skipped",
+          "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "status": "skipped",
+          "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "status": "skipped",
+          "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "status": "skipped",
+          "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "status": "skipped",
+          "title": "Should have the current page within the pagination container depending on how my items perPage I choose to show",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and accordingly",
+          "status": "skipped",
+          "title": "Should change pages and accordingly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and accordingly",
+          "status": "skipped",
+          "title": "Should change pages and accordingly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and accordingly",
+          "status": "skipped",
+          "title": "Should change pages and accordingly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and accordingly",
+          "status": "skipped",
+          "title": "Should change pages and accordingly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and accordingly",
+          "status": "skipped",
+          "title": "Should change pages and accordingly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and accordingly",
+          "status": "skipped",
+          "title": "Should change pages and accordingly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change pages and not go over the max pages available",
+          "status": "skipped",
+          "title": "Should change pages and not go over the max pages available",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change back the pages",
+          "status": "skipped",
+          "title": "Should change back the pages",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should not go back after the minimum of 1",
+          "status": "skipped",
+          "title": "Should not go back after the minimum of 1",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should show the correct number of items based on pagination premises",
+          "status": "skipped",
+          "title": "Should show the correct number of items based on pagination premises",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "I need a pagination functionality"
+          ],
+          "fullName": " I need a pagination functionality Should change perPage when clicked",
+          "status": "todo",
+          "title": "Should change perPage when clicked",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "table is loading"
+          ],
+          "fullName": " table is loading Should disable all buttons when is loading",
           "status": "passed",
-          "title": "Should not include other variants when one is declared",
-          "duration": 2,
+          "title": "Should disable all buttons when is loading",
+          "duration": 36,
           "failureMessages": []
         }
       ],
-      "startTime": 1669047351273,
-      "endTime": 1669047351308,
-      "status": "passed",
+      "startTime": 1670336456841,
+      "endTime": 1670336456877,
+      "status": "failed",
       "message": "",
-      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SAvatar/SAvatar.spec.ts"
+      "name": "C:/Users/allan/Documents/git/zri/vue-sdz-v3/src/components/SDataTable/tests/SDataTable.spec.ts"
     }
   ]
 }

@@ -75,6 +75,11 @@ const color = computed(() => {
   return colors[props.type]
 })
 </script>
+<script lang="ts">
+export default {
+  name: "SFeedback"
+}
+</script>
 <style lang="postcss" scoped>
 
 .base-feedback {

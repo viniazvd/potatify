@@ -21,7 +21,7 @@ module.exports = {
     maxWidth: {
       mobile: "768px",
       tablet: "992px",
-      desktop: "1200px"
+      desktop: "1200px",
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -45,7 +45,7 @@ module.exports = {
       screens: {
         mobile: '640px',
         tablet: '1024px',
-        desktop: '1280px',
+        desktop: '1280px'
       },
       transitionDuration: {
         '5000': '5000ms'

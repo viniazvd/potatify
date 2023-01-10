@@ -5,9 +5,9 @@
       <div class="min-w-full">
         <div class="overflow-x-auto">
           <table>
-            <thead>
+            <thead class="border-[1px]" data-testid="thead">
               <tr>
-                <th v-if="props.selectable">
+                <th data-testid="theadSelectable" v-if="props.selectable">
                   <input type="checkbox" v-model="checkAllIsToggled" />
                 </th>
                 <th
@@ -21,16 +21,21 @@
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr v-if="props.loading">
-                <th :colspan="props.data?.length" class="text-center">
-                  <SLoader size="24"></SLoader>
+            <tbody v-auto-animate>
+              <tr data-testid="loading" v-if="props.loading">
+                <th colspan="100%" class="text-center py-6">
+                  <SLoader size="24" class="mx-auto"></SLoader>
+                </th>
+              </tr>
+              <tr v-if="!internalData.length && !props.loading">
+                <th colspan="100%" class="prose prose-sm font-normal text-center py-6">
+                  Não há dados para exibir
                 </th>
               </tr>
               <!-- GERA CADA LINHA   -->
-              <tr v-for="(row, rowIndex) in internalData" :key="rowIndex">
+              <tr data-testid="bodyRow" v-for="(row, rowIndex) in internalData" :key="rowIndex">
                 <!-- GERA CADA COLUNA   -->
-                <td v-if="props.selectable">
+                <td data-testid="selectableRow" v-if="props.selectable">
                   <input :checked="isIncludedInModel(row)" type="checkbox" @change="setModelValue(row)" />
                 </td>
                 <td v-for="(col, index) in props.cols" :key="index" :class="setAlignTo(col.align)">
@@ -44,28 +49,51 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-between" v-if="pagination">
-      <div>
-        <button @click="paginate(changePerPage, 25)"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          per page
-        </button>
+    <div data-testid="pagination" class="flex justify-between bg-white items-center pt-2" v-if="pagination">
+<!--      <div v-if="false">-->
+<!--        <button @click="paginate(changePerPage, 25)"-->
+<!--                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"-->
+<!--        >-->
+<!--          per page-->
+<!--        </button>-->
+<!--      </div>-->
+      <button
+        data-testid="previousPage"
+        @click="paginate(previousPage)"
+        class="pagination-button !pr-4"
+        :class="pagination.page === 1 && 'disabled-pagination'"
+        :disabled="pagination.page === 1 || props.loading"
+      >
+        <SIcon icon="material-symbols:arrow-right-alt-rounded" class="rotate-180"></SIcon>
+        Anterior
+      </button>
+
+      <div class="prose prose-sm text-center">
+        <span data-testid="paginationPage">
+          Mostrando a página {{pagination.page}} de {{ totalPages }}
+        </span>
+        <span data-testid="paginationTotals">
+          de {{props.data?.length}} resultados
+        </span>
       </div>
-      <div class="flex gap-3">
-        <button @click="paginate(previousPage)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">anterior</button>
-        <button @click="paginate(nextPage)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">proximo</button>
-      </div>
-      <div>
-        page - {{pagination.page}}
-        total - {{props.data?.length}}
-      </div>
+
+      <button
+        data-testid="nextPage"
+        @click="paginate(nextPage)"
+        class="pagination-button !pl-4"
+        :class="totalPages === pagination.page && 'disabled-pagination'"
+        :disabled="totalPages === pagination.page || props.loading"
+      >Próximo
+        <SIcon icon="material-symbols:arrow-right-alt-rounded"></SIcon>
+      </button>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import SLoader from "@components/SLoader/Index.vue"
-import {computed, PropType, ref} from "vue";
+import {computed, defineAsyncComponent, PropType, ref} from "vue";
+
+const SIcon = defineAsyncComponent(() => import("../SIcon/Index.vue"));
 
 type TABLE_COLS = {
   name: string
@@ -81,9 +109,9 @@ const alignOptions = {
 }
 
 type DATA_TABLE_PAGINATION = {
-  perPage: number | string
-  page: number | string
-  total: number | string
+  perPage: number
+  page: number
+  total: number
 }
 
 const emit = defineEmits([
@@ -103,25 +131,51 @@ const props = defineProps({
     required: true
   },
   selectable: Boolean,
-  pagination: Object as PropType<DATA_TABLE_PAGINATION>,
+  page: {
+    type: Number,
+    default: 1
+  },
+  perPage: {
+    type: Number,
+    default: 10
+  },
+  total: {
+    type: Number,
+    default: 0
+  },
   serverSide: Boolean
 })
 
+const pagination = ref<DATA_TABLE_PAGINATION>({
+  perPage: props.perPage,
+  page: props.page,
+  total: props.total
+})
+
 // DATA MANAGEMENT
+const totalPages = ref(0);
+
 const internalData = computed(() => {
-  const page = Number(props.pagination?.page) ?? 1;
-  const perPage = Number(props.pagination?.perPage) ?? 10;
+  const page = pagination.value?.page;
+  const perPage = pagination.value?.perPage;
+  const itemsLength = props.data.length;
+
+  totalPages.value = Math.ceil(itemsLength / perPage);
 
   if (props.serverSide) {
     return props.data
   }
 
   return props.data?.reduce((initial, current, index) => {
-    const maxIndex = perPage * page
-    const minIndex = page === 1 ? 1 : (page - 1) * perPage
+    // INDEX IS BASED ON ZEROES,
+    // SO WE HAVE TO DECREASE BY ONE TO FIND
+    // THE INITIAL INDEX
+    let maxIndex = (perPage * page) - 1;
+    const minIndex = (page - 1) * perPage;
 
-    // @ts-ignore
-    if (index <= maxIndex && index >= (minIndex + ((page > 1 && 1) ?? 2))) {
+    maxIndex = maxIndex >= itemsLength ? itemsLength : maxIndex;
+
+    if (index <= maxIndex && index >= minIndex) {
       initial.push(current)
     }
 
@@ -139,40 +193,40 @@ async function paginate(callback: Function, ...args: any[]) {
 }
 
 function previousPage () {
-  let currentPage = Number(props.pagination?.page);
+  const currentPage = pagination.value.page;
 
-  if (currentPage <= 1) currentPage = 1;
-  else currentPage = currentPage - 1
+  if (currentPage == 1) return;
+
+  pagination.value.page = currentPage - 1
 
   emit("update:pagination", {
-    ...props.pagination,
-    page: currentPage
+    ...pagination.value
   })
 }
 
 const maxPages = computed(() => {
   if (props.serverSide) {
-    return props.pagination!.total
+    return pagination.value.total
   }
 
-  return Number(props.data?.length) / Number(props.pagination?.perPage)
+  return Math.ceil(Number(props.data?.length) / Number(pagination.value?.perPage))
 });
 
 function nextPage () {
-  let currentPage = Number(props.pagination?.page);
+  const currentPage = pagination.value.page;
 
-  if (currentPage < maxPages.value)
-    currentPage = currentPage + 1
+  if (currentPage >= maxPages.value) return;
+
+  pagination.value.page = currentPage + 1
 
   emit("update:pagination", {
-    ...props.pagination,
-    page: currentPage
+    ...pagination.value
   })
 }
 
 function changePerPage (value: number) {
   emit("update:pagination", {
-    ...props.pagination,
+    ...pagination.value,
     perPage: value
   })
 }
@@ -227,6 +281,12 @@ const colors = {}
 const borders = {}
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SDataTan;e"
+}
+</script>
 <style lang="postcss" scoped>
 
 table {
@@ -238,19 +298,34 @@ thead {
 }
 
 thead th {
-  @apply text-sm font-medium text-gray-900 px-6 py-4
+  @apply prose prose-gray prose-sm font-bold uppercase px-6 py-4 bg-gray-100
 }
 
 tbody {
   @apply bg-white transition duration-300 ease-in-out
 }
 
+tr:nth-child(even) {
+  @apply bg-stone-50
+}
+
 tbody tr {
-  @apply hover:bg-gray-100
+  @apply hover:bg-gray-100 border prose prose-lg
 }
 
 tbody td {
-  @apply text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap
+  @apply text-sm text-gray-900 font-medium px-6 py-5 whitespace-nowrap
+}
+
+
+/* pagination */
+
+.pagination-button {
+  @apply hover:bg-gray-100 ring-gray-200 border ring-offset-2 active:ring-4 rounded flex items-center gap-1 p-2
+}
+
+.disabled-pagination {
+  @apply bg-gray-100 text-gray-200 hover:cursor-not-allowed active:ring-0
 }
 
 </style>

@@ -50,6 +50,12 @@ const imageSize = computed(() => ({
 }))
 
 </script>
+
+<script lang="ts">
+export default {
+  name: "SAvatarV2"
+}
+</script>
 <style lang="postcss" scoped>
 
 .circle {

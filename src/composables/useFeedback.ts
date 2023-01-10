@@ -1,59 +1,40 @@
-import { defineStore } from 'pinia'
-import { useUUID } from './useUUID'
-import {PropType} from "vue";
-import {FeedbackAvatar} from "@components/SFeedback/interfaces/FeedbackAvatar.interface";
+import { ref } from 'vue'
 
-const { generateUUID } = useUUID();
-
-const createUUID = (): string => generateUUID()
+const createUUID = (): string => Math.floor(Math.random() * 9999999).toString()
 
 type Type = 'info' | 'error' | 'warning' | 'success'
 
-interface Options {
-  message: string
-  avatar?: FeedbackAvatar
+interface Feedback {
+  id: string
+  type: Type
   title?: string
-  description?: string
+  message: string
   duration?: number
   autoClose?: boolean
-  xPosition?: "left" | "right" | "center"
-  yPosition?: "top" | "bottom" | "middle"
 }
 
-
-export interface Feedback extends Options {
-  id: string
+type Options = {
+  id?: string
+  type: Type
+  title?: string
+  message: string
+  duration?: number
+  autoClose?: boolean
 }
 
-export type CreateFeedback = { (options: Options): void }
+type CreateFeedback = { (options: Options): void }
+// export const CREATE_FEEDBACK: InjectionKey<Options> = Symbol('create-feedback')
 
-export const useFeedbacks = defineStore("feedbacks", {
-  state: () => ({
-    feedbacks: [] as Feedback[]
-  }),
+export function useFeedback() {
+  const feedbacks = ref<Feedback[]>([])
 
-  actions: {
-    applyDelay(id: string, duration: number = 1000) {
-      setTimeout(() => {
-        this.removeFeedbacks(id);
-      }, duration)
-    },
-    createFeedback (options: Options) {
-      options.yPosition = options.yPosition ?? "top";
-      options.xPosition = options.xPosition ?? "right";
-
-      const id = createUUID();
-
-      this.feedbacks.push({ ...options, id });
-
-      if (this.feedbacks.length > 5) {
-        this.feedbacks.pop();
-      }
-
-      this.applyDelay(id, options.duration)
-    },
-    removeFeedbacks(id: string) {
-      this.feedbacks = this.feedbacks.filter(item => item.id !== id)
-    }
+  const createFeedback: CreateFeedback = (options: Options) => {
+    feedbacks.value.push({ ...options, id: createUUID() })
   }
-}) 
+
+  const removeFeedbacks = (id: string) => {
+    feedbacks.value = feedbacks.value.filter(item => item.id !== id)
+  }
+
+  return { feedbacks, createFeedback, removeFeedbacks }
+}

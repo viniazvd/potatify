@@ -1,45 +1,67 @@
 <template>
-  <label :for="inputId" class="inline-flex relative items-center mb-5 cursor-pointer">
-    <input type="checkbox" v-model="modelValue" :id="inputId" class="sr-only peer">
+  <label data-testid="SToggleParent" :class="[disabled, invertedLabel]" :for="inputId" class="inline-flex relative items-center cursor-pointer">
+    <input
+      data-testid="SToggleInput"
+      :disabled="props.disabled"
+      type="checkbox"
+      v-model="internalValue"
+      :id="inputId"
+      class="sr-only peer"
+    >
     <div
-      class="bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary dark:peer-focus:ring-primary-400 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600 peer-checked:bg-primary"
-      :class="[buttonSize, buttonColors]"
+      data-testid="SToggleBody"
+      class="relative peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-600"
+      :class="[buttonSize, uncheckedColor, buttonColors]"
     ></div>
-    <span class="s-label-switch" v-once>{{ props.label }}</span>
+    <span data-testid="SToggleLabel" class="s-label-switch">{{ props.label }}</span>
   </label>
 </template>
 <script lang="ts" setup>
-import {computed, defineProps, PropType} from "vue";
+import {computed, defineEmits, defineProps, PropType} from "vue";
 import {useUUID} from "@/composables/useUUID";
-
 const { uniqueId: inputId } = useUUID()
+const emit = defineEmits(["update:modelValue"]);
 
 const props = defineProps({
-  modelValue: null,
+  modelValue: {
+    type: Boolean,
+    default: false
+  },
+  disabled: Boolean,
   label: {
-    required: true,
     type: String
   },
   size: {
     type: String as PropType<"md" | "lg">,
     default: "md"
   },
-  color: {
-    type: String,
-    default: ""
-  }
+  color: String,
+  invertLabel: Boolean
 })
 
-const buttonColors = computed(() => ({
-  // peer-checked:bg-primary
-  [`peer-checked:bg-${props.color}`]: props.color
-}))
+const internalValue = computed({
+  get: () => props.modelValue,
+  set: value => emit("update:modelValue", value)
+})
+
+const buttonColors = computed(() => [
+  props.color ?? `peer-checked:bg-primary`
+])
+
+const uncheckedColor = computed(() => ["bg-gray-200"]);
+const disabled = computed(() => [ props.disabled && "disabled"]);
+const invertedLabel = computed(() => [props.invertLabel && "invert-label"])
 
 const buttonSize = computed(() => ({
-  "w-14 h-7 after:h-6 after:w-6 after:top-0.5 after:left-[4px]": props.size === "lg",
-  "w-11 h-6 after:h-5 after:w-5 after:top-[2px] after:left-[2px]": props.size === "md",
+  "lg-button": props.size === "lg",
+  "md-button": props.size === "md",
 }))
 
+</script>
+<script lang="ts">
+export default {
+  name: "SToggle"
+}
 </script>
 <style lang="postcss" scoped>
 
@@ -49,6 +71,26 @@ const buttonSize = computed(() => ({
 
 .s-label-switch {
   @apply ml-3 text-sm font-medium text-gray-900 dark:text-gray-300;
+}
+
+.disabled {
+  @apply cursor-not-allowed opacity-70
+}
+
+.invert-label {
+  @apply flex-row-reverse
+}
+
+.invert-label .s-label-switch {
+  @apply ml-0 mr-3
+}
+
+.lg-button {
+  @apply w-14 h-7 after:h-6 after:w-6 after:top-0.5 after:left-[4px]
+}
+
+.md-button {
+  @apply w-11 h-6 after:h-5 after:w-5 after:top-[2px] after:left-[2px]
 }
 
 </style>

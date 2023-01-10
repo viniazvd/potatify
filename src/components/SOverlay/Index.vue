@@ -28,3 +28,8 @@ function closeOverlay () {
 
 }
 </script>
+<script lang="ts">
+export default {
+  name: "SOverlay"
+}
+</script>
