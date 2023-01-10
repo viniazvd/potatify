@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, InjectionKey } from 'vue'
 
 const createUUID = (): string => Math.floor(Math.random() * 9999999).toString()
 
@@ -11,6 +11,7 @@ interface Feedback {
   message: string
   duration?: number
   autoClose?: boolean
+  prependIcon?: string
 }
 
 type Options = {
@@ -20,9 +21,10 @@ type Options = {
   message: string
   duration?: number
   autoClose?: boolean
+  prependIcon?: string
 }
 
-type CreateFeedback = { (options: Options): void }
+export type CreateFeedback = { (options: Options): void }
 // export const CREATE_FEEDBACK: InjectionKey<Options> = Symbol('create-feedback')
 
 export function useFeedback() {
