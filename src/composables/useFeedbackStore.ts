@@ -24,7 +24,7 @@ export interface Feedback extends Options {
   id: string
 }
 
-export type CreateFeedback = { (options: Options): void }
+export type CreateFeedbackStore = { (options: Options): void }
 
 export const useFeedbackStore = defineStore("feedbacks", {
   state: () => ({
