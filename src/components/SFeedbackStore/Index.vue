@@ -52,14 +52,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useFeedbacks } from '@/composables';
+import { useFeedbackStore } from '@/composables';
 import {defineAsyncComponent, onMounted} from 'vue';
 
 const SAvatar = defineAsyncComponent(() => import("@components/SAvatar/SAvatar.vue"));
 
 const emit = defineEmits<{ (e: 'close'): void }>();
 
-const feedbackStore = useFeedbacks();
+const feedbackStore = useFeedbackStore();
 
 onMounted(() => {
   // if (!props.autoClose) return;
