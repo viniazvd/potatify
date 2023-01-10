@@ -1,7 +1,7 @@
 <template>
   <div
     :ref="id"
-    class="base-feedback ring-1 ring-black/5 relative min-h-[50px] p-4 mb-2 min-w-content overflow-hidden bg-white shadow-md cursor-pointer rounded-md"
+    class="base-feedback z-[20] ring-1 ring-black/5 relative min-h-[50px] p-4 mb-2 min-w-content overflow-hidden bg-white shadow-md cursor-pointer rounded-md"
     @click.prevent="emit('close')"
   >
     <div class="flex place-content-between gap-2 items-center">
