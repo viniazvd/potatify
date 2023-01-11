@@ -14,7 +14,7 @@
           />
         </div>
       </template>
-      <div v-bind="containerProps" class="min-w-full py-1 h-fit">
+      <div v-bind="containerProps" class="min-w-full py-1 h-[300px]">
         <div v-bind="wrapperProps" ref="listItem">
             <div
               role="menuitem"
