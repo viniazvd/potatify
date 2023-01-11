@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <s-progress class="absolute bottom-0 right-0 w-full h-[5px]" :color="color" :duration="props.duration" />
+    <s-progress v-if="autoClose" class="absolute bottom-0 right-0 w-full h-[5px]" :color="color" :duration="props.duration" />
   </div>
 </template>
 
@@ -75,11 +75,13 @@ const color = computed(() => {
   return colors[props.type]
 })
 </script>
+
 <script lang="ts">
 export default {
   name: "SFeedback"
 }
 </script>
+
 <style lang="postcss" scoped>
 
 .base-feedback {
