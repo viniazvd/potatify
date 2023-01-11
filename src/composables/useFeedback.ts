@@ -4,7 +4,7 @@ const createUUID = (): string => Math.floor(Math.random() * 9999999).toString()
 
 type Type = 'info' | 'error' | 'warning' | 'success'
 
-export interface Feedback {
+export interface IFeedback {
   id: string
   type: Type
   title?: string
@@ -14,7 +14,7 @@ export interface Feedback {
   prependIcon?: string
 }
 
-export type Options = {
+export interface IOptions {
   id?: string
   type: Type
   title?: string
@@ -24,13 +24,13 @@ export type Options = {
   prependIcon?: string
 }
 
-export type CreateFeedback = { (options: Options): void }
+export type CreateFeedback = { (options: IOptions): void }
 // export const CREATE_FEEDBACK: InjectionKey<Options> = Symbol('create-feedback')
 
 export function useFeedback() {
-  const feedbacks = ref<Feedback[]>([])
+  const feedbacks = ref<IFeedback[]>([])
 
-  const createFeedback: CreateFeedback = (options: Options) => {
+  const createFeedback: CreateFeedback = (options: IOptions) => {
     feedbacks.value.push({ ...options, id: createUUID() })
   }
 
