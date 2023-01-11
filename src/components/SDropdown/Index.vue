@@ -6,7 +6,7 @@
 
     <STransition>
       <div
-        class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full z-10"
+        class="dropdown-borders dropdown-shadows dropdown-position dropdown-colors ring-1 ring-black/5 min-w-full z-20"
         :class="[anchor]"
         v-show="isOpen"
         ref="dropdownTarget">
