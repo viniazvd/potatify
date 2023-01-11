@@ -4,7 +4,7 @@ const createUUID = (): string => Math.floor(Math.random() * 9999999).toString()
 
 type Type = 'info' | 'error' | 'warning' | 'success'
 
-interface Feedback {
+export interface Feedback {
   id: string
   type: Type
   title?: string
@@ -14,7 +14,7 @@ interface Feedback {
   prependIcon?: string
 }
 
-type Options = {
+export type Options = {
   id?: string
   type: Type
   title?: string
