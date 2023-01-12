@@ -48,12 +48,17 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import SInput from "../SInput/Index.vue";
 import SDropdown from "../SDropdown/Index.vue";
 import SCheckbox from "../SCheckbox/Index.vue";
-import {computed, nextTick, PropType, ref} from "vue";
+import {onMounted, computed, nextTick, PropType, ref} from "vue";
 import {useMagicKeys, useVirtualList, whenever} from "@vueuse/core";
 import SinputContainer from "@components/SInputContainer/Index.vue";
+
+onMounted(() => {
+  shownValue.value = typeof props.modelValue === 'object'
+    ? props.modelValue[props.itemText]
+    : props.modelValue
+})
 
 const emit = defineEmits(["update:modelValue"]);
 
