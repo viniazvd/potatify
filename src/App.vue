@@ -2,6 +2,15 @@
   <main class="flex flex-col gap-4 p-4">
     <router-view></router-view>
 
+    <s-select
+      required
+      item-text="name"
+      item-value="name"
+      label="COE"
+      :items="[{ id: '312321321', name: 'Date' }, { id: '4312412', name: 'Date2' }]"
+      v-model="value"
+    />
+
     <transition-group tag="div" name="s-feedback" class="absolute right-3 top-3 flex flex-col-reverse gap-px">
       <s-feedback
         v-for="item in feedbacks"
@@ -20,11 +29,14 @@
 </template>
 
 <script setup lang="ts">
-import { provide } from 'vue';
+import { ref, provide } from 'vue';
 import SFeedback from "@components/SFeedback/Index.vue";
+import SSelect from "@components/SSelect/Index.vue";
 import { useFeedback } from "@/composables/useFeedback";
 
 const { feedbacks, createFeedback, removeFeedbacks } = useFeedback()
 provide('create-feedback', createFeedback)
+
+const value = ref({ id: '312321321', name: 'Date' })
 
 </script>
